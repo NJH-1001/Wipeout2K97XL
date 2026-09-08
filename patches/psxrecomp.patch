@@ -7869,7 +7869,7 @@ index 550b817a..01422c5a 100644
                  yield w
  
 diff --git a/tools/package_setup_host.sh b/tools/package_setup_host.sh
-index 19dbd8c3..0f2b3d30 100755
+index 19dbd8c3..42fa33b8 100755
 --- a/tools/package_setup_host.sh
 +++ b/tools/package_setup_host.sh
 @@ -3,7 +3,7 @@
@@ -7881,6 +7881,16 @@ index 19dbd8c3..0f2b3d30 100755
  # download cmake-clang-v1 from retcomm-toolchains (or accept an offline zip).
  #
  # Usage (from game repo root):
+@@ -208,8 +208,8 @@ mkdir -p "${STAGE}" "${DIST}"
+ 
+ EXE=""
+ for cand in \
+-  "${BUILD_DIR}/${EXE_NAME}" \
+   "${BUILD_DIR}/${EXE_NAME}.exe" \
++  "${BUILD_DIR}/${EXE_NAME}" \
+   "${BUILD_DIR}/Release/${EXE_NAME}.exe"
+ do
+   if [[ -f "${cand}" ]]; then
 @@ -272,7 +272,7 @@ EXE_BASENAME="$(basename "${EXE}")"
  EXE_DIR="$(dirname "${EXE}")"
  
