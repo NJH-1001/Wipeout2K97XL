@@ -41,6 +41,10 @@ models use SDL3 mappings but have not been physically tested here.
 
 The **NeGcon enhanced dual sticks** mod starts with this customizable preset:
 
+![Labeled default NeGcon enhanced dual-stick controls](docs/images/negcon-dual-sticks.svg)
+
+[Open the full-size controller diagram](docs/images/negcon-dual-sticks.svg).
+
 | Input | Action |
 | --- | --- |
 | Left stick horizontal | Analog steering |
@@ -48,7 +52,10 @@ The **NeGcon enhanced dual sticks** mod starts with this customizable preset:
 | Right stick left / right | Right / left air-brake (reversed) |
 | L1 / R1 or LB / RB | Left / right air-brake |
 | Right trigger | Analog acceleration, when hardware supports it |
-| Bottom face button | Full acceleration |
+| Bottom face button | Full acceleration / menu select |
+| Left trigger or left face button | Fire equipped weapon |
+| Right face button | Discard weapon (NeGcon A) |
+| Top face button | Change view / menu back (NeGcon B) |
 | D-pad | Menu navigation and original directional controls |
 | Start / Plus / Options / Menu | Start / pause |
 

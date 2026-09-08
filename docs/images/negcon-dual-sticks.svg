@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1160" viewBox="0 0 1600 1160" role="img" aria-labelledby="title desc">
+<title id="title">NeGcon enhanced dual sticks: default controller configuration</title>
+<desc id="desc">Analog steering on left stick. Right stick controls pitch and reversed air-brakes. Right trigger accelerates. Shoulder buttons retain left and right air-brakes. Numbered labels describe each control below.</desc>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#e9f0fa}.title{font-size:40px;font-weight:700}.sub{font-size:21px;fill:#a7b7ce}.head{font-size:23px;font-weight:700}.body{font-size:19px;fill:#c3cfe0}.num{font-size:18px;font-weight:700;fill:#071424;text-anchor:middle}.pad{fill:#25364c;stroke:#637d9d;stroke-width:3}.button{fill:#0e1a2c;stroke:#7e95b3;stroke-width:3}.small{font-size:17px;text-anchor:middle}</style>
+<rect width="1600" height="1160" rx="20" fill="#0a1220"/>
+<text x="70" y="76" class="title">NeGcon enhanced dual sticks</text>
+<text x="70" y="114" class="sub">DEFAULT PRESET · WIPEOUT XL USA · CUSTOMIZE IN LAUNCHER → MODS</text>
+<path class="pad" d="M555 223 Q505 216 480 267 L410 452 Q395 504 431 524 Q470 546 506 503 L590 415 L1010 415 L1094 503 Q1130 546 1169 524 Q1205 504 1190 452 L1120 267 Q1095 216 1045 223Z"/>
+<rect x="512" y="168" width="110" height="47" rx="17" class="button"/><text x="567" y="198" class="small">LT / L2 / ZL</text>
+<rect x="978" y="168" width="110" height="47" rx="17" class="button"/><text x="1033" y="198" class="small">RT / R2 / ZR</text>
+<rect x="493" y="229" width="146" height="37" rx="15" class="button"/><text x="566" y="254" class="small">LB / L1 / L</text>
+<rect x="961" y="229" width="146" height="37" rx="15" class="button"/><text x="1034" y="254" class="small">RB / R1 / R</text>
+<circle cx="558" cy="333" r="50" class="button"/><circle cx="558" cy="333" r="33" fill="#3b536e"/>
+<path d="M538 333H578 M542 328L537 333 542 338 M574 328L579 333 574 338" stroke="#58e0c0" stroke-width="3" fill="none"/>
+<circle cx="940" cy="422" r="50" class="button"/><circle cx="940" cy="422" r="33" fill="#3b536e"/>
+<path d="M920 422H960 M940 402V442" stroke="#58e0c0" stroke-width="3"/>
+<path d="M644 387H671V413H697V440H671V466H644V440H618V413H644Z" class="button"/>
+<circle cx="1041" cy="295" r="22" class="button"/><text x="1041" y="301" class="small">N</text>
+<circle cx="1085" cy="337" r="22" class="button"/><text x="1085" y="343" class="small">E</text>
+<circle cx="997" cy="337" r="22" class="button"/><text x="997" y="343" class="small">W</text>
+<circle cx="1041" cy="379" r="22" class="button"/><text x="1041" y="385" class="small">S</text>
+<rect x="718" y="299" width="47" height="25" rx="12" class="button"/>
+<rect x="835" y="299" width="47" height="25" rx="12" class="button"/>
+<circle cx="800" cy="367" r="19" class="button"/>
+
+<circle cx="518" cy="378" r="16" fill="#58e0c0"/><text x="518" y="384" class="num">1</text>
+<circle cx="904" cy="466" r="16" fill="#58e0c0"/><text x="904" y="472" class="num">2</text>
+<circle cx="1113" cy="190" r="16" fill="#58e0c0"/><text x="1113" y="196" class="num">3</text>
+<circle cx="651" cy="245" r="16" fill="#58e0c0"/><text x="651" y="251" class="num">4</text>
+<circle cx="1109" cy="245" r="16" fill="#58e0c0"/><text x="1109" y="251" class="num">4</text>
+<circle cx="473" cy="190" r="16" fill="#58e0c0"/><text x="473" y="196" class="num">5</text>
+<circle cx="1080" cy="409" r="16" fill="#58e0c0"/><text x="1080" y="415" class="num">6</text>
+<circle cx="1130" cy="337" r="16" fill="#58e0c0"/><text x="1130" y="343" class="num">7</text>
+<circle cx="1090" cy="285" r="16" fill="#58e0c0"/><text x="1090" y="291" class="num">8</text>
+<circle cx="956" cy="332" r="16" fill="#58e0c0"/><text x="956" y="338" class="num">9</text>
+<circle cx="613" cy="481" r="16" fill="#58e0c0"/><text x="613" y="487" class="num">10</text>
+<circle cx="894" cy="302" r="16" fill="#58e0c0"/><text x="894" y="308" class="num">11</text>
+<circle cx="706" cy="289" r="16" fill="#58e0c0"/><text x="706" y="295" class="num">12</text>
+<text x="70" y="212" class="head">ANALOG</text><text x="70" y="245" class="body">Steering + acceleration</text><text x="70" y="313" class="head">DIGITAL</text><text x="70" y="346" class="body">Pitch + air-brakes</text><text x="70" y="415" class="sub">Generic positional layout.</text><text x="70" y="443" class="sub">Use position, not button color.</text>
+<rect x="60" y="574" width="480" height="103" rx="12" fill="#132237"/>
+<circle cx="85" cy="600" r="16" fill="#58e0c0"/><text x="85" y="606" class="num">1</text>
+<text x="110" y="606" class="head">Left stick</text><text x="80" y="635" class="body">Left / right: analog steering</text><text x="80" y="661" class="body">Up / down: unassigned</text>
+<rect x="560" y="574" width="480" height="103" rx="12" fill="#132237"/>
+<circle cx="585" cy="600" r="16" fill="#58e0c0"/><text x="585" y="606" class="num">2</text>
+<text x="610" y="606" class="head">Right stick</text><text x="580" y="635" class="body">Up / down: pitch inputs</text><text x="580" y="661" class="body">Left: RIGHT brake · Right: LEFT brake</text>
+<rect x="1060" y="574" width="480" height="103" rx="12" fill="#132237"/>
+<circle cx="1085" cy="600" r="16" fill="#58e0c0"/><text x="1085" y="606" class="num">3</text>
+<text x="1110" y="606" class="head">Right trigger</text><text x="1080" y="635" class="body">Analog acceleration (NeGcon I)</text><text x="1080" y="661" class="body">Digital triggers give full acceleration</text>
+<rect x="60" y="690" width="480" height="103" rx="12" fill="#132237"/>
+<circle cx="85" cy="716" r="16" fill="#58e0c0"/><text x="85" y="722" class="num">4</text>
+<text x="110" y="722" class="head">Shoulder buttons</text><text x="80" y="751" class="body">LB / L1 / L: LEFT air-brake</text><text x="80" y="777" class="body">RB / R1 / R: RIGHT air-brake</text>
+<rect x="560" y="690" width="480" height="103" rx="12" fill="#132237"/>
+<circle cx="585" cy="716" r="16" fill="#58e0c0"/><text x="585" y="722" class="num">5</text>
+<text x="610" y="722" class="head">Left trigger</text><text x="580" y="751" class="body">Fire equipped weapon</text><text x="580" y="777" class="body">NeGcon II pressure</text>
+<rect x="1060" y="690" width="480" height="103" rx="12" fill="#132237"/>
+<circle cx="1085" cy="716" r="16" fill="#58e0c0"/><text x="1085" y="722" class="num">6</text>
+<text x="1110" y="722" class="head">Bottom face · S</text><text x="1080" y="751" class="body">Full acceleration / menu select</text><text x="1080" y="777" class="body">Xbox A · PS Cross · Switch B</text>
+<rect x="60" y="806" width="480" height="103" rx="12" fill="#132237"/>
+<circle cx="85" cy="832" r="16" fill="#58e0c0"/><text x="85" y="838" class="num">7</text>
+<text x="110" y="838" class="head">Right face · E</text><text x="80" y="867" class="body">Discard weapon (NeGcon A)</text><text x="80" y="893" class="body">Xbox B · PS Circle · Switch A</text>
+<rect x="560" y="806" width="480" height="103" rx="12" fill="#132237"/>
+<circle cx="585" cy="832" r="16" fill="#58e0c0"/><text x="585" y="838" class="num">8</text>
+<text x="610" y="838" class="head">Top face · N</text><text x="580" y="867" class="body">Change view / menu back (NeGcon B)</text><text x="580" y="893" class="body">Xbox Y · PS Triangle · Switch X</text>
+<rect x="1060" y="806" width="480" height="103" rx="12" fill="#132237"/>
+<circle cx="1085" cy="832" r="16" fill="#58e0c0"/><text x="1085" y="838" class="num">9</text>
+<text x="1110" y="838" class="head">Left face · W</text><text x="1080" y="867" class="body">Fire equipped weapon (NeGcon II)</text><text x="1080" y="893" class="body">Xbox X · PS Square · Switch Y</text>
+<rect x="60" y="922" width="480" height="103" rx="12" fill="#132237"/>
+<circle cx="85" cy="948" r="16" fill="#58e0c0"/><text x="85" y="954" class="num">10</text>
+<text x="110" y="954" class="head">D-pad</text><text x="80" y="983" class="body">Menu navigation</text><text x="80" y="1009" class="body">Original directional inputs retained</text>
+<rect x="560" y="922" width="480" height="103" rx="12" fill="#132237"/>
+<circle cx="585" cy="948" r="16" fill="#58e0c0"/><text x="585" y="954" class="num">11</text>
+<text x="610" y="954" class="head">Start / Menu / Options / +</text><text x="580" y="983" class="body">Start / pause</text><text x="580" y="1009" class="body">Right-center button</text>
+<rect x="1060" y="922" width="480" height="103" rx="12" fill="#132237"/>
+<circle cx="1085" cy="948" r="16" fill="#58e0c0"/><text x="1085" y="954" class="num">12</text>
+<text x="1110" y="954" class="head">Back / View / Create / −</text><text x="1080" y="983" class="body">No NeGcon Select button</text><text x="1080" y="1009" class="body">Stick clicks / Home: no game action</text>
+<text x="70" y="1085" class="sub">The right-stick brake directions are intentionally reversed. Shoulder brakes keep their normal directions.</text><text x="70" y="1118" class="sub">Face-button actions follow the game’s NeGcon settings. Mod choices and input.ini can change this preset.</text></svg>

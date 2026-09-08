@@ -1,5 +1,23 @@
 # Controller verification
 
+![Default NeGcon enhanced dual-stick controller diagram](images/negcon-dual-sticks.svg)
+
+The diagram uses physical button positions across Xbox, PlayStation and Switch.
+It depicts the shipped default; launcher choices and in-game remapping can change it.
+
+Left trigger and the left face button both send NeGcon II (fire weapon).
+The right face sends NeGcon A (discard weapon); the top face sends NeGcon B
+(change view in a race, back in menus). The bottom face sends NeGcon I
+(accelerate / select). The game has no NeGcon Select or stick-click input.
+
+Mapping evidence: the host input file and `wxl_map_controls`, the Ghidra
+initializer at 0x80065144 and decoder at 0x80065234. NeGcon A maps to the
+same discard action as the standard pad Square; NeGcon B maps to its Triangle
+view action. The [original control guide](https://gamefaqs.gamespot.com/ps/199318-wipeout-xl/faqs/2208)
+names those standard-pad actions. User confirmed left-trigger weapon use.
+Menu B-back is also visible in the user-verified team-selection screen.
+
+
 SDL3 3.4.10 is linked into the Windows runtime. Its standard positional gamepad
 API provides the mapping path for Switch, Switch 2, PS4, PS5 and Xbox families.
 The PowerA Switch 2 and Xbox controllers have been tested in-game; PS4, PS5
