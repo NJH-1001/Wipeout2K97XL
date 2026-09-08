@@ -1,0 +1,241 @@
+{
+  "status": "mesh-and-first-hill-billboard-user-confirmed",
+  "user_feedback": "Mesh improvement significant; first-hill 2D pipe pop-in fixed in user test. Remaining pop-in not readily perceptible.",
+  "candidate_tests": [
+    "Clang -Wall -Wextra -Werror synthetic record, visibility eligibility, mixed ordering, invalid-record rollback, projection guard and full 12288-packet capacity checks pass.",
+    "41 generated files differed only by five mod entry callbacks.",
+    "Independent native/Beetle track-4 captures agree on all 340 model vertex arrays and primitive topology."
+  ],
+  "restoration": {
+    "source_sha256": "1022d395c90cbb1b4ad277064e548ba4f18d903e8666cf385ab5dc849bd115b7",
+    "game_sha256": "9b2657e64cf092fc65b706f09c04e3a137a7be83ef2b5e4e8f6cd8a42a020aa8",
+    "catalog_sha256": "1523c7968da17a2b07e5aeae63e5b4d5b60c9e11bfd8aee4d6ffd10dd385c4e4",
+    "matches_accepted_road_build": true,
+    "visible_intro_capture": true,
+    "candidate_linked": false,
+    "package_changed": false,
+    "historical": true
+  },
+  "artifacts": [
+    {
+      "path": "src/track_distance_experimental.c",
+      "sha256": "f164f7740042bd88341f750798c1f4129b2cfbbcf371ad124293649a32051442"
+    },
+    {
+      "path": "tools/test_track_distance.c",
+      "sha256": "914b447c67dd55a8bc400dd9dcf8dc2f3d028c8d5eaf29986ad3e922ebc9cc3a"
+    },
+    {
+      "path": "tools/capture_scenery.py",
+      "sha256": "b2ab09f107d6e307d6b87e7670b1524575a5601a47eaba1fecd2c977054e23f0"
+    },
+    {
+      "path": "analysis/verification/scenery-talon.json",
+      "sha256": "32627450598d110d2ea67e2c1284376d2fcf8b092291fab7831566dbeba9ee34"
+    },
+    {
+      "path": "analysis/verification/scenery-talon.bin",
+      "sha256": "ae38b44f234c2486e5167a5c8fe81bcbacedddbcaaffa4dd7320a916db3e8019"
+    },
+    {
+      "path": "analysis/verification/scenery-oracle-geometry.json",
+      "sha256": "d6fa94cb525dbee54b26f06e836724fed01b21b3c8a4f8a5a8c8594a5c5a79cf"
+    },
+    {
+      "path": "analysis/verification/pop-in-gte-sample.json",
+      "sha256": "47cd4bebb2ed68260adf205a87d40312e578770ab8ca888feabf257da88f4a94"
+    },
+    {
+      "path": "analysis/verification/scenery-generation-diff.json",
+      "sha256": "687016738663259d1b845eaf10c8c2a38d63f09b1fcbb8a800585553bacd702e"
+    },
+    {
+      "path": "analysis/verification/scenery-v2-black-state.json",
+      "sha256": "07fa29bf96b52a1aff84a0c51102c74c3f1faf4ade79654de849747e606a5d45"
+    },
+    {
+      "path": "captures/scenery-v2-initial.png",
+      "sha256": "b79974750c59502588dc4094e5bce89489d77cf9efdb4da80f98d607de67f1c2"
+    },
+    {
+      "path": "captures/scenery-check-present.png",
+      "sha256": "a1ad58140afad1a73c0f55ccca54edc916bf156430d9468b10c87811e769db84"
+    }
+  ],
+  "prior_blocker": "Completed candidate captures were black, world pointer zero and extension pass count zero. User main-menu observation does not establish a game freeze or successful scene rendering.",
+  "blocker": null,
+  "resume": {
+    "date": "2026-09-08",
+    "bios": "OpenBIOS LLE",
+    "candidate_linked": true,
+    "local_enabled": true,
+    "default_enabled": false,
+    "relwithdebinfo_build": "pass",
+    "synthetic_tests": "pass",
+    "generated_comparison": "41 files, exactly five callback lines, otherwise identical",
+    "visible_talon_attract_capture": true,
+    "completed_sample_statuses": [
+      0
+    ],
+    "scenery_sample_statuses": [
+      0
+    ],
+    "pass_advance": 916,
+    "max_scenery_packets": 469,
+    "coherent_packet_buffers": 6,
+    "root_cause_of_prior_black_frames": "not established; fresh candidate captures and rendering pass now observed",
+    "user_race_assessment": "pending",
+    "package_changed": false,
+    "staged_catalog_label": "prior road-only label until next build"
+  },
+  "resume_artifacts": [
+    {
+      "path": "CMakeLists.txt",
+      "sha256": "4b892f697ec83b8ac8ed3be6796486554daa1fe48ecc6321eb2605268411f4cc"
+    },
+    {
+      "path": "game.toml",
+      "sha256": "abf2c9d5e063db43c9747e79ba2ec262f2118daccdf710aa718718f2d5b31dce"
+    },
+    {
+      "path": "mods/preloaded/packages/wxl.presentation.track-distance/1.0.0/manifest.toml",
+      "sha256": "ff7ac4b2956c30afc9f838519b2eb7dadb4c94b647fd53ceaed769c5695ef283"
+    },
+    {
+      "path": "analysis/verification/scenery-resume-generation.json",
+      "sha256": "4b99e553fa5c2f36abcbd6450e1d2f29eb61ef8ddc9fc8f32006d8f14e619dc0"
+    },
+    {
+      "path": "analysis/verification/scenery-resume-live-stats.json",
+      "sha256": "b9e9faf28026530d06bbb38de5f2506f56ede47f38cea3d58e7f55a53c2d788f"
+    },
+    {
+      "path": "analysis/verification/scenery-resume-packets.json",
+      "sha256": "2495d0dcb7ae5a16d7a87a815f25d5d681ee515ca5df78fc7c5838e996760e2b"
+    },
+    {
+      "path": "analysis/verification/scenery-resume-soak.json",
+      "sha256": "a6b2d7cbfe26ec1c3e1cc2c485eb8ab83dfcaa4c88665968b38ca98c18b4208c"
+    },
+    {
+      "path": "captures/scenery-resume-baseline.png",
+      "sha256": "68c8029c0c76ac9c0426a29d64fcc63612c34a2e111888b9598d8ed592e7d2eb"
+    },
+    {
+      "path": "captures/scenery-candidate-startup.png",
+      "sha256": "004efeb82e78f8e7758878c607bbaab2bfd2ce8d5a377209f7ecb2bb27dfdb59"
+    },
+    {
+      "path": "captures/scenery-candidate-race.png",
+      "sha256": "e99ec312ad16ca43fe67d72be533b0585b9a6e1b54be8960958df9a15b2c6d47"
+    },
+    {
+      "path": "build-win64/Wipeout2K97XL.exe",
+      "sha256": "3c9d4ef765a88dc601991cffe012e7fff7927420f176c5ea9555b8ee99ed80ea"
+    }
+  ],
+  "billboard_v3": {
+    "date": "2026-09-08",
+    "running": true,
+    "version": 3,
+    "source_scene": "user-paused first hill, Talon\u2019s Reach",
+    "group_depth": [
+      43272,
+      44722
+    ],
+    "offline_added_packets": 4,
+    "synthetic_tests": "pass",
+    "build": "RelWithDebInfo pass",
+    "generated_diff": "41 files, six callbacks only",
+    "live_pass_advance": 880,
+    "road_scenery_statuses": [
+      0
+    ],
+    "live_added_billboards_max": 1,
+    "missing_roll_max": 0,
+    "coherent_buffers": 6,
+    "visible_race_capture": true,
+    "user_hill_feedback": "2D pipes appear without pop-in; user cannot readily perceive other remaining pop-ins.",
+    "remaining_3d_pipe_cause": "unverified",
+    "capture_issue": "Intermittent black composed menu capture with visible canonical menu and user observation; subsequent composed race capture visible. Root cause not established.",
+    "package_changed": false
+  },
+  "billboard_artifacts": [
+    {
+      "path": "src/track_distance_experimental.c",
+      "sha256": "4f6be79ac12ad6a048f86533da9448849f5baeeca64f7c2172b5d67e08b048a9"
+    },
+    {
+      "path": "tools/test_track_distance.c",
+      "sha256": "719612c3c82b99de5902bb79bf437e2a716be5c45de815f432330a0428cc92f9"
+    },
+    {
+      "path": "tools/replay_billboard_packet.c",
+      "sha256": "0d27b31504d7bc524c666ad90fc10d92cf7c0b30875a7e5b25754a04b4290793"
+    },
+    {
+      "path": "game.toml",
+      "sha256": "dae1e25f28501971c1c905c75354a2c61618268736d6ac542ae6db7a3aad4207"
+    },
+    {
+      "path": "build-win64/Wipeout2K97XL.exe",
+      "sha256": "0e2769c99b7ccb78e68c7d59953aaae414fd6354c50de4c2f4d63e85ca412f9e"
+    },
+    {
+      "path": "analysis/verification/pipe-inventory-summary.json",
+      "sha256": "e89bfc07ac8de51bdb21459a80b2c37acf3380271b627e4e467b471eb2704cc9"
+    },
+    {
+      "path": "analysis/verification/pipes-hill-paused.json",
+      "sha256": "501c9496b65f32523dc4c8389a5ced4fee6464d5e4e0eee5a63f891c7c5f6a34"
+    },
+    {
+      "path": "analysis/verification/pipes-hill-paused.bin",
+      "sha256": "edd19ae3b9703e91852e16ff97466ad3f147abbe00f15991dd9747d525aae1e6"
+    },
+    {
+      "path": "analysis/verification/pipes-hill-projection.json",
+      "sha256": "b2d57cf8b0c70828ac8616ef74a073ba5601bdd077ef4e9ed553d7a5018577bd"
+    },
+    {
+      "path": "analysis/verification/pipes-hill-billboard-replay.json",
+      "sha256": "c022357d62e4f4c6b012d1e012b0313ace53eed1e923c90f0a8c5cb021bdf078"
+    },
+    {
+      "path": "analysis/verification/billboard-generation.json",
+      "sha256": "e38d9b0b90dbee4c3a71536e2c1394f9ec236d6c69c0b615a45eba2e853927ca"
+    },
+    {
+      "path": "analysis/verification/billboard-race-live.json",
+      "sha256": "5121838af4030eeb0860308f9bf29aa4c6150d74611f5a78b0afd8b849c41360"
+    },
+    {
+      "path": "captures/pipes-hill-paused.png",
+      "sha256": "a3f29154e7441cabb07965310bf2a9c70c35b13b473573ba65ecff11ba987ebc"
+    },
+    {
+      "path": "captures/billboard-user-race.png",
+      "sha256": "ed56ca74032cde9d17957ba50b834bb62e73fc1f99eb8902c27f2a485c8ff338"
+    },
+    {
+      "path": "captures/billboard-menu-canonical.png",
+      "sha256": "b72e37bbca1ed0783afc568f2a40699e1a60aabc18a06ca67185cd31a4a649ef"
+    },
+    {
+      "path": "captures/billboard-live-race2.png",
+      "sha256": "b79974750c59502588dc4094e5bce89489d77cf9efdb4da80f98d607de67f1c2"
+    },
+    {
+      "path": "analysis/rendering/8007f024.decomp.json",
+      "sha256": "706907f3dfb702092de449c767a29d831a4c3374c362f55880e0ae1e4b859a53"
+    },
+    {
+      "path": "analysis/rendering/8007ef1c.decomp.json",
+      "sha256": "15cb0c39e5951a64e3c42a32c6265cd19323447cc1387cd25056965a5ccaef42"
+    },
+    {
+      "path": "analysis/rendering/8007ef6c.decomp.json",
+      "sha256": "984969c9aeb4bf78304744716aa03939d9d281e63ceeebd3df29d5a8eaf18d9f"
+    }
+  ]
+}

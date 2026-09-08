@@ -1,0 +1,65 @@
+{
+  "status": "implemented-built-demo-race-observed-user-reports-looking-good",
+  "package_id": "wxl.presentation.widescreen",
+  "default_enabled": false,
+  "bios": "OpenBIOS LLE",
+  "renderer": "OpenGL",
+  "aspect": "16:9",
+  "native_display_width": 320,
+  "wide_surface_width": 426,
+  "per_side_margin": 53,
+  "site": {
+    "pc": "0x80020388",
+    "opcode": "0x248300A0",
+    "baseline": "projected extent + 160",
+    "enhanced": "projected extent + 160 + runtime horizontal margin",
+    "vertical_bound": "unchanged: projected extent + 120"
+  },
+  "verification": [
+    "Ghidra disassembly and original code-byte identity on independent Beetle and native; both execute the routine.",
+    "Regeneration changes one bound expression in one shard; zero-margin normalization matches the baseline including PGXP transport (ignoring indentation).",
+    "recompiler_patch_test passes, including cull-bias ALU-transport regression.",
+    "RelWithDebInfo Windows build and six-package staging pass.",
+    "Final-build TCP reports native-wide mode 2 and 106 extra pixels; completed demo-race presentation capture visually inspected.",
+    "Renderer-call-linked samples verify all three track pool capacities and first packet headers in both buffers."
+  ],
+  "limitations": [
+    "No claim of complete coverage of every track, camera, effect or overlay.",
+    "Existing Windows ZIP predates this mod; not yet repackaged."
+  ],
+  "artifacts": {
+    "game.toml": {
+      "sha256": "36a7ffd6f7a71857e3af13c52d2ed183a41fcd82c7b0875030cd86f0ce4b17b3",
+      "distribution": "source"
+    },
+    "src/widescreen_mod.c": {
+      "sha256": "3e2bfb89149e1321b37d9a606369db10817d7d288531395965d4e4d7316494b1",
+      "distribution": "source"
+    },
+    "mods/preloaded/packages/wxl.presentation.widescreen/1.0.0/manifest.toml": {
+      "sha256": "cbc8485614f8134796544db33eb7c6d52a95b5380ec29ca900ceeb734eddd262",
+      "distribution": "source"
+    },
+    "psxrecomp/recompiler/src/code_generator.cpp": {
+      "sha256": "cb37b2bc48d637b1584f1a51e6796490bfb42bc6edef7a9079ae551dd70f9e9f",
+      "distribution": "source"
+    },
+    "analysis/verification/widescreen-generation-diff.json": {
+      "sha256": "eb31bcec6869f9fda77201bc5ad33394c06a024aebdf089db42850bfdc0752aa",
+      "distribution": "local ignored proof"
+    },
+    "analysis/verification/widescreen-final-build.json": {
+      "sha256": "335639772a12dcfd02840aa894810097145083fa8ed6c55cc547b669a8a60934",
+      "distribution": "local ignored proof"
+    },
+    "analysis/verification/widescreen-track-pools.json": {
+      "sha256": "107bac1c871f62ee580c0b8b51ed2abd1dfdc79c7d30457b3d9649eee62829b0",
+      "distribution": "local ignored proof"
+    },
+    "analysis/verification/object-cull-baseline.json": {
+      "sha256": "9d9d94fa9354e5b398142d1af741d339874c2d8694449ea2996ceb839ef4b4f2",
+      "distribution": "local ignored proof"
+    }
+  },
+  "user_feedback": "User reports widescreen is looking good; asks separately to improve original draw-distance pop-in."
+}

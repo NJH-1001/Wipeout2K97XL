@@ -1,0 +1,59 @@
+{
+  "status": "damage-and-victory-borders-user-confirmed",
+  "date": "2026-09-08",
+  "bios": "OpenBIOS LLE",
+  "damage": {
+    "observed": "Paused mine hit rejects distance extension with status 3 and zero new packets",
+    "scanout": [
+      320,
+      238
+    ],
+    "draw_area": [
+      0,
+      0,
+      319,
+      239
+    ],
+    "projection": {
+      "h": 160,
+      "ofx": 160,
+      "ofy": 120
+    },
+    "nominal_dispenv": [
+      320,
+      240
+    ],
+    "screen_offset": [
+      -2,
+      2
+    ],
+    "ghidra": [
+      "8004B53C: randomized display screen x/y shake",
+      "8007C4FC: PutDispEnv scanout endpoints clamp to 256",
+      "80068318: nominal 320x240 scene setup"
+    ],
+    "change": "Validate both nominal DISPENV sizes instead of clipped visible dimensions; projection guards unchanged",
+    "tests": "C11 -Wall -Wextra -Werror regression passes; includes 238-line shake and rejection of 180-line modes in either buffer",
+    "oracle": "Beetle live nominal DISPENV is also 320x240; matching damage event has not yet been captured in Beetle",
+    "live_candidate": "PID 8064, TCP 4371; OpenBIOS boot reached game intro; damage test pending"
+  },
+  "borders": {
+    "change": "Flush canonical flat overlay triangles before releasing widescreen mirror suppression; flush earlier geometry before acquiring suppression",
+    "verification": "Candidate launched separately; after-change victory comparison pending",
+    "baseline": "User-confirmed victory screen captured visibly, with GP0 2A060606 full-screen 320x240 dimming quad; completed GPU frames 155963 and 155965"
+  },
+  "loading": "Blue side extension not implemented; loading presentation still needs capture",
+  "artifacts": {
+    "src/track_distance_experimental.c": "60de2c8d0c8d0297155a5ec0ce6ec9cc3032a7b974a45169099f659918cb8eb0",
+    "tools/test_track_distance.c": "e2c8a93303aa7d4b59a6ce219d72d015a2792f31cec986022ad4ff765c3f309a",
+    "psxrecomp/runtime/src/gpu_gl_renderer.c": "0521aa2df6ce5b6ae40cbbad6c23e52a746346a85561ad8652afefad70f009b9",
+    "build-win64/Wipeout2K97XL-candidate.exe": "bfd6c6e9f301b82fc3c2cc404996cea941011aba9bc6090188713d532e18d046",
+    "analysis/verification/mine-hit-paused.json": "b66c875ad30d1c1f8f5fd475f09c8cc3f1bc1d47caf67456ba4bcc24fc66a801",
+    "captures/mine-hit-paused.png": "210b074a7fd1cf5f5eb1d18bcc516e9a7adabe10d514a61f2143af44d0ea9443",
+    "captures/victory-present-before.png": "280bcdf052714d7f63e5dadb906e9483fffb452bd41ba287e7d144b655f116c9",
+    "captures/victory-confirmed-before.png": "7d61a4d4f0b01ff51f1699d4cc1899ec47ebcfdd1b11aaab830d0d22d3bc4a59",
+    "analysis/verification/victory-packets-155963.json": "5369eb6cabfba3cf1c5ba643f7b84ed739c294f3b011e08a20892772c523f074",
+    "analysis/verification/victory-packets-155965.json": "49cda167189093707b78b62d2885adc34643a2b9d629b967f965cbe70e8c5c25"
+  },
+  "user_confirmation": "Both fixes seem to have worked; thunder-bomb flash differs outside 4:3 and enemy ship draw distance remains short."
+}

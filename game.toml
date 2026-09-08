@@ -1,0 +1,65 @@
+# Autofilled by tools/new_project_layout/probe_disc.py from your legal dump.
+# Review before shipping. Runtime quirks / overlay seeds still need hand work.
+
+[game]
+name = "Wipeout2K97XL"
+id = "SCUS-94351"
+players = 1
+exe = "disc/SCUS_943.51"
+disc = "disc/Wipeout XL (USA).cue"
+load_address = "0x80010000"
+entry_pc = "0x80082D70"
+text_size = "0x00085000"
+stack_base = "0x801FFFF0"
+
+# Digests are for data Track 01 (first BINARY FILE / TRACK 01).
+[prepare_disc]
+out_dir = "disc"
+bin_name = "Wipeout XL (USA) (Track 01).bin"
+cue_name = "Wipeout XL (USA).cue"
+boot_exe = "SCUS_943.51"
+known_sizes = [86045568]
+known_md5 = [
+  "bee4ab5e4835235ccf6f16bc8caea5e6",
+]
+known_sha1 = [
+  "5694008c30fa9896d17afdd6281e4bebb9f63953",
+]
+known_crc32 = [
+  "18ebdeb3",
+]
+
+[recompiler]
+seeds = "seeds/ghidra_funcs.txt"
+out_dir = "generated"
+strict = true
+# Opt-in road/scenery-distance plugin entry points; callbacks are absent when disabled.
+mod_function_entry_funcs = ["0x8004DA10", "0x8003EA68", "0x800726AC", "0x80021B90", "0x80020128", "0x80010000", "0x80013C78", "0x800140AC", "0x80014AD4", "0x800684C4"]
+
+[runtime]
+window_title = "Wipeout2K97XL Recompiled"
+memcard_dir = "saves"
+bios_hle = false
+
+[video]
+supersampling = 4
+renderer = "opengl"
+aspect_ratio = "4:3"
+
+[controller]
+p1_device = "auto"
+default_mode = "negcon"
+lock_mode = true
+allow_hybrid = false
+
+# Online mount gate: digests + track count + optional TOC fingerprint
+# (see docs/NETPLAY.md).
+[netplay]
+require_cue = true
+required_tracks = 12
+required_disc_fp = "124781e058906aadee9f2cd90789fc017daf0e5e52b3e9dc05192a8ee1c1d516"
+
+# Verified scene-object horizontal extent; identity with the widescreen mod off.
+# Ghidra + independent Beetle evidence: docs/verification/rendering-manifest.json.
+[widescreen.cull]
+bias_sites = ["0x80020388"]

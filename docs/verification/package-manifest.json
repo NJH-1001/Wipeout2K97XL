@@ -1,0 +1,27 @@
+{
+  "status": "archive-build-and-user-verified-setup-ui",
+  "sha256": "3975d14e3a13c64b2b3d4951d214f5ac9ff50966d4e1f88958ab429b723ec12e",
+  "bytes": 58070476,
+  "entries": 3122,
+  "forbidden_entries": [],
+  "roms": [
+    "psxrecomp/beetle-psx/deps/openbios/openbios.bin",
+    "psxrecomp/bios/openbios.bin"
+  ],
+  "crc": "passed",
+  "architecture": "PE AMD64 0x8664",
+  "required_inputs": [
+    "Wipeout2K97XL.exe",
+    "input.ini",
+    "keybinds.ini",
+    "gamecontrollerdb.txt",
+    "docs/controller-mapping-LICENSE.txt",
+    "tools/stage_input_defaults.cmake",
+    "src/crt_mod.c",
+    "mods/preloaded/packages/wxl.presentation.crt/1.0.0/manifest.toml",
+    "psxrecomp/recompiler/seeds/openbios_elf_seeds.json"
+  ],
+  "setup_exe_sha256": "a5806eebe29ef48171c29456063a874feafeefa3a5bc7e1a19c4f088b2c896cd",
+  "limitation": "End-to-end Generate/rebuild from the package is not separately verified. Full rendering analysis and 16:9 remain unfinished.",
+  "setup_ui": "User confirms packaged setup executable works great"
+}

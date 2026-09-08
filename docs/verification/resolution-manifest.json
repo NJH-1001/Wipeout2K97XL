@@ -1,0 +1,25 @@
+{
+  "status": "4x-enabled-live-renderer-verified",
+  "setting": "[video] supersampling = 4",
+  "renderer": "OpenGL",
+  "bios": "OpenBIOS LLE",
+  "wide_capture_dimensions": [
+    1704,
+    960
+  ],
+  "note": "Maximum supported by this build. Original 2D texture/detail resolution remains unchanged. screenshot_hires can fall back to the native software mirror; wide_shot verified the actual scaled GL surface.",
+  "artifacts": [
+    {
+      "path": "game.toml",
+      "sha256": "225a6e1c894263b0d456f3519442d1757489076d14e0940be1b126b8a1d535b5"
+    },
+    {
+      "path": "analysis/verification/resolution-4x-wide.json",
+      "sha256": "55ea545dadced4f5f271df2e14ad318c919c4b72768b81062478e92247160ba0"
+    },
+    {
+      "path": "captures/resolution-4x-wide.png",
+      "sha256": "5ac6225b8e91d84f6fc791c998e0ddaa609307e0fe3dfe6cd4784b5ed550de89"
+    }
+  ]
+}

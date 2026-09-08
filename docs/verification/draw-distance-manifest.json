@@ -1,0 +1,175 @@
+{
+  "status": "road-improvement-user-confirmed-scenery-candidate-live-checks-pass",
+  "draw_distance_modified": "only when explicitly enabled",
+  "verified_limits": {
+    "object_far_tables": [
+      38200,
+      38200,
+      38200,
+      38200,
+      38200,
+      38200,
+      38200,
+      37000
+    ],
+    "alternate_object_far_tables": [
+      32000,
+      38200,
+      27000,
+      20000,
+      29000,
+      37200,
+      22000,
+      20000
+    ],
+    "track_coordinate_input": "Whole-quad renderer explicitly rejects camera-relative components outside signed 16-bit range.",
+    "track_view_lists": "Track WAD list contains section-start/run-length pairs; pointers installed by 0x8001F240.",
+    "scene_candidates": "0x80046594 builds section scenery candidates with a 128-entry temporary array.",
+    "ordering_table_entries": 8192,
+    "fixed_depth_backdrop_bucket": 8191,
+    "fixed_depth_runtime_call": "0x80012ED4 from 0x8004058C, a2=0x1FFF"
+  },
+  "observations": [
+    "Stable section-array readback and bounded whole-block captures pass in separate native/Beetle processes.",
+    "One 349-section capture uses radius 32767 for every section. Its all-direction lists omit a median of zero sections in a 30000-unit axis-aligned cube.",
+    "One Beetle track-index-4 camera sample has 202 faces within the projected bounding rectangle that fail signed-input range, versus 48 that fit. This is a bounds model, not an occlusion or rendered comparison."
+  ],
+  "tool_repair": "Beetle receive errors now release dead client sockets except would-block/interrupted cases. Four forced RST/reconnect cases pass.",
+  "blocker": "Visual promotion gate: open-road before/after improvement, boundary seams and overpass occlusion need driving/camera coverage; scenery remains unmodified.",
+  "limitations": [
+    "Road only: scenery, effects and billboards unchanged.",
+    "Exact division can differ by a pixel from GTE reciprocal approximation, potentially causing seams.",
+    "Crossing near/far/screen-coordinate limits are rejected; full geometric clipping remains open.",
+    "Multiple-track, open-road distance and overpass/occlusion visual checks remain open.",
+    "Current packaged setup predates this experimental candidate."
+  ],
+  "artifacts": {
+    "analysis/verification/distance-baseline-beetle.json": {
+      "sha256": "c056d20217ed50e8a63ef86bc886acfbb092defd15eeb7f5c5d8dbaf983d5634",
+      "bytes": 363974,
+      "distribution": "local ignored evidence"
+    },
+    "analysis/verification/distance-baseline-native.json": {
+      "sha256": "22c3b880f990316ca25fc8e1665b4daf01fec67372aeabef9d93586bff2b1441",
+      "bytes": 338045,
+      "distribution": "local ignored evidence"
+    },
+    "analysis/verification/distance-range-analysis.json": {
+      "sha256": "8e235e6eb74bf81b131a83fcd98b7ea20a36b07aaa2241d9fc4be3e738c24302",
+      "bytes": 3683,
+      "distribution": "local ignored evidence"
+    },
+    "analysis/verification/distance-fixed-ot-calls.json": {
+      "sha256": "dbb95279ef060d35749d3f0ace0b3e6c13cb8f5630037b9672125ca07e4e72a5",
+      "bytes": 574,
+      "distribution": "local ignored evidence"
+    },
+    "analysis/verification/beetle-client-reset.json": {
+      "sha256": "6a9fdd2c9dafac90af832d25f3da88070040c922a4c300665898cbcbffc808d2",
+      "bytes": 667,
+      "distribution": "local ignored evidence"
+    },
+    "analysis/rendering/80046594.decomp.json": {
+      "sha256": "e96ba5d010199b8bb2e505bbc86e7aee710feefbfd1223f876a790c21351fe51",
+      "bytes": 8362,
+      "distribution": "local ignored evidence"
+    },
+    "analysis/rendering/8001f240.decomp.json": {
+      "sha256": "4ac080c2e47422e7ac62073a55a92aafabe5f566814e5482a61168899f2461c4",
+      "bytes": 2171,
+      "distribution": "local ignored evidence"
+    },
+    "analysis/rendering/80013c78.json": {
+      "sha256": "3e2865db33bc43d653f3a462995de9f5c886edaba7f8ce9094200354b8bcaf71",
+      "bytes": 15299,
+      "distribution": "local ignored evidence"
+    },
+    "analysis/rendering/800684c4.decomp.json": {
+      "sha256": "7fe9a5057088ee465bfc7d3db7ade2d1871a34c735869a04a2924a57f2de4df9",
+      "bytes": 1530,
+      "distribution": "local ignored evidence"
+    }
+  },
+  "authorization": "User explicitly approved continuing the proposed default-off experiment after its risks and prior approval-review rejection were explained.",
+  "prototype_tests": [
+    "Synthetic projection bounds, disabled identity, camera/index error atomicity, FT4 encoding, backdrop slot preservation and 8192-packet capacity/chain checks pass with Clang -Wall -Wextra -Werror.",
+    "Framework GPU DMA aperture tests pass (7 boundary/address cases).",
+    "41 generated C files compare identical after removing exactly four new entry-hook calls.",
+    "Native disabled launch reads open bus from unallocated enhancement diagnostics.",
+    "Native first-track completed packet buffer: 105 FT4 packets pass full header, screen-coordinate and link checks.",
+    "Stationary camera transforms equal across off/on captures; animated content differs, so not complete scene replay.",
+    "41 native GTE projection samples differ from exact expanded division by at most one pixel. Not independent Beetle parity.",
+    "Projection guard corrected to GTE control indices 24/25/26; synthetic accepted/rejected projection regression passes."
+  ],
+  "prototype_artifacts": [
+    {
+      "path": "src/track_distance_mod.c",
+      "sha256": "1022d395c90cbb1b4ad277064e548ba4f18d903e8666cf385ab5dc849bd115b7"
+    },
+    {
+      "path": "tools/test_track_distance.c",
+      "sha256": "40720d97279b7e6ba4cd97e7d2562b376089df14b4ed6a400561fefe40918357"
+    },
+    {
+      "path": "tools/verify_track_distance_live.py",
+      "sha256": "eb8848276e5cc64d48e0b969c5a22c7787b48f3ea9e295a9241eb6ed65924176"
+    },
+    {
+      "path": "game.toml",
+      "sha256": "9b2657e64cf092fc65b706f09c04e3a137a7be83ef2b5e4e8f6cd8a42a020aa8"
+    },
+    {
+      "path": "mods/preloaded/packages/wxl.presentation.track-distance/1.0.0/manifest.toml",
+      "sha256": "1523c7968da17a2b07e5aeae63e5b4d5b60c9e11bfd8aee4d6ffd10dd385c4e4"
+    },
+    {
+      "path": "analysis/verification/distance-disabled-live.json",
+      "sha256": "9830bb5879a785238b53b6b35d63c5cbe3ad53216f688c7e2fd05719d44966e8"
+    },
+    {
+      "path": "analysis/verification/distance-generation-diff.json",
+      "sha256": "d9d2fb878a4bf972c4d46f6d3dbd914852c5b298c7de249ea76f131de2165cec"
+    },
+    {
+      "path": "analysis/verification/distance-live-comparison.json",
+      "sha256": "adca3635f3c073cf59d8160cb745075e060c2cc407c18cd5bf9d6a5af490bfed"
+    },
+    {
+      "path": "analysis/verification/distance-projection-gte.json",
+      "sha256": "37b86b04539dc524ed0e55a968683ed42cc0180baf3a4490477361a8ccf18a07"
+    },
+    {
+      "path": "build-win64/Wipeout2K97XL.exe",
+      "sha256": "244331c868d393cf851acf6ea89910021ac8be81f782faa66a271e78d4d0040b"
+    },
+    {
+      "path": "analysis/verification/distance-final-live.json",
+      "sha256": "bf7c4673612c5fd657417fac3ccd2a1029d122d4697549436812fd1b5a3ab8f1"
+    },
+    {
+      "path": "captures/distance-final-state.png",
+      "sha256": "13bf92d6a78657188f0a264bd0413bb3d777ca30157d1b3706da4793396d1e27"
+    }
+  ],
+  "final_build_verification": {
+    "configuration": "Windows x86-64 RelWithDebInfo",
+    "bios": "OpenBIOS LLE",
+    "track_1_observation": "Snowy demo screenshot with successful guard status observed; not a matched A/B image.",
+    "final_bounded_probe": {
+      "track_indices": [
+        0
+      ],
+      "pass_count_advance": 484,
+      "statuses": [
+        0
+      ],
+      "maximum_additional_polygons": 311,
+      "coherent_full_packet_buffers_verified": 4
+    },
+    "catalog_default_enabled": false,
+    "local_test_enabled": true,
+    "release_repackaged": false
+  },
+  "user_feedback": "User reports improved drawing distance but obvious residual scenery/building/sign pop-in on first track.",
+  "scenery_follow_up": "See scenery-distance-manifest.json: candidate retained but unlinked after black-capture/no-pass verification blocker; accepted road implementation restored by exact source/config/catalog hashes."
+}

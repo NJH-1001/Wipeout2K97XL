@@ -1,0 +1,49 @@
+name: Windows setup kit
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-2022
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: true
+          install: >-
+            mingw-w64-x86_64-toolchain mingw-w64-x86_64-cmake
+            mingw-w64-x86_64-ninja mingw-w64-x86_64-SDL3
+            mingw-w64-x86_64-python mingw-w64-x86_64-pkgconf
+            mingw-w64-x86_64-vulkan-headers mingw-w64-x86_64-shaderc
+            zip curl
+      - name: Apply framework changes
+        run: git -C psxrecomp apply ../patches/psxrecomp.patch
+      - name: Build emitters and setup host
+        run: |
+          set -euo pipefail
+          cmake -S psxrecomp/recompiler -B build-recompiler -G Ninja -DCMAKE_BUILD_TYPE=Release -DPSXRECOMP_STATIC_CLI=ON
+          cmake --build build-recompiler --target psxrecomp-game psxrecomp-bios -j4
+          cmake -S . -B build-ci -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DPSXRECOMP_FORCE_SETUP_HOST=ON -DPSXRECOMP_ALLOW_NO_BIOS=ON
+          cmake --build build-ci --target psx-runtime -j4
+      - name: Package and audit
+        env:
+          PSXRECOMP_RUNTIME_BIN_DIR: /mingw64/bin
+          EXCLUDE_DEV_MODS: '1'
+        run: |
+          set -euo pipefail
+          bash scripts/package_setup_release.sh build-ci windows-x64 build-recompiler
+          python tools/audit_release.py dist/wipeoutxl-*-windows-x64.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wipeoutxl-windows-x64
+          path: |
+            dist/*.zip
+            dist/*.sha256
+          if-no-files-found: error

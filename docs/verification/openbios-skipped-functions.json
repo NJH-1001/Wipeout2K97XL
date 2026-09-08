@@ -1,0 +1,6 @@
+[
+  {"address": "0xBFC095F8", "reason": "addr=0xBFC09608 raw=0x000065BC opcode=0x00: SPECIAL funct 0x3C not implemented in Phase 1a strict translator"},
+  {"address": "0xBFC22674", "reason": "addr=0xBFC22674 raw=0xBFC058C8 opcode=0x2F: top-level opcode 0x2F not implemented in Phase 1a"},
+  {"address": "0xBFC227D4", "reason": "addr=0xBFC227D4 raw=0xBFC019B4 opcode=0x2F: top-level opcode 0x2F not implemented in Phase 1a"},
+  {"address": "0xBFC227E4", "reason": "addr=0xBFC227E4 raw=0xBFC02FB8 opcode=0x2F: top-level opcode 0x2F not implemented in Phase 1a"}
+]

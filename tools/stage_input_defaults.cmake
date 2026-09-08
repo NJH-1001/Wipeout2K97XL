@@ -1,0 +1,7 @@
+foreach(name IN ITEMS input.ini keybinds.ini)
+    if(NOT EXISTS "${DESTINATION}/${name}")
+        configure_file("${SOURCE}/${name}" "${DESTINATION}/${name}" COPYONLY)
+    endif()
+endforeach()
+configure_file("${SOURCE}/gamecontrollerdb.txt" "${DESTINATION}/gamecontrollerdb.txt" COPYONLY)
+configure_file("${SOURCE}/docs/controller-mapping-LICENSE.txt" "${DESTINATION}/controller-mapping-LICENSE.txt" COPYONLY)

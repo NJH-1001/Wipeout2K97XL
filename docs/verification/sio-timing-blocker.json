@@ -1,0 +1,67 @@
+{
+  "status": "elapsed-cycle-loss-corrected-tests-and-live-packet-comparison-pass",
+  "date": "2026-09-07",
+  "standalone_negcon_protocol_test": "passed",
+  "full_sio_rumble_original_failures": 26,
+  "same_2000_cycles_in_16_cycle_steps": "passed",
+  "mechanism": "sio_pace_walk MAX_TRANSITIONS=1 exits after one event, discarding remaining cycles",
+  "native_negcon_integrated": false,
+  "artifacts": {
+    "psxrecomp/runtime/include/negcon_protocol.h": {
+      "bytes": 1937,
+      "sha256": "a2078a259b7e95356f1d45b27589a504cd3e3b0dfd84363ab4cf90282bd810b0"
+    },
+    "psxrecomp/runtime/tests/test_negcon_protocol.c": {
+      "bytes": 1989,
+      "sha256": "dfcff46eaca58b0038c539e329d69ab35d5c47187143bb64dc4a96735756249e"
+    },
+    "psxrecomp/runtime/src/sio.c": {
+      "bytes": 135663,
+      "sha256": "ed7b38ed60d5b7d26fc2a3723807799f4bcd318f771cb5652cedf546085ee87a"
+    },
+    "psxrecomp/runtime/tests/test_sio_dualshock_rumble.c": {
+      "bytes": 8786,
+      "sha256": "c1e8ddb720404f33ac5547ce6f7a5a2a815860c30e10e62cd1ea077e8bbfe71e"
+    },
+    "analysis/verification/sio-rumble-split-step.c": {
+      "bytes": 7280,
+      "sha256": "ae5d9a26b98f45e496f17b872baa585e3509d37ee33679e8a25171f0f90849b2"
+    },
+    "analysis/verification/sio-scheduler-live.json": {
+      "bytes": 144401,
+      "sha256": "5eeea2570a8814372b1fffe00a3226231a23d1b43a0193d0413ade4b346980da"
+    },
+    "build-win64/Wipeout2K97XL.exe": {
+      "bytes": 104619520,
+      "sha256": "36266844f9473a478550c0d5464c513072891077c6ab3e184c91dfc959a886e1"
+    },
+    "captures/native-sio-post-intro.bmp": {
+      "bytes": 230723,
+      "sha256": "3b883fe924fb7fe021808f9bb3f2645142b4bd26d412e9493b85c781cc64516b"
+    },
+    "analysis/verification/sio-scheduler-boot-status.json": {
+      "bytes": 1807,
+      "sha256": "49c24da17439df717bbc0f02060f3cf40613505c69f18aef89e631636019552f"
+    }
+  },
+  "correction": "Process all shift/ACK events due within the elapsed interval, consuming remainder in deadline order.",
+  "tests_passed": [
+    "sio_dualshock_rumble_test",
+    "sio_dualshock_rumble_step_1",
+    "sio_dualshock_rumble_step_16",
+    "sio_dualshock_rumble_step_127",
+    "sio_card_protocol_test",
+    "sio_spu_istat_ownership_test"
+  ],
+  "boundary_tests": "RX ready at 1088, IRQ at 1258 under current runtime constants; split and grouped intervals agree",
+  "limits": [
+    "Live digital packet parity is not exact hardware timing proof.",
+    "Per-device ACK timing, NeGcon integration and other-title regressions remain open."
+  ],
+  "native_visible_result": "post-intro 3D credits inspected after scheduler correction",
+  "native_status_summary": {
+    "completed_card_reads": 146,
+    "card_aborts": 0,
+    "dirty_code_aborts": 0
+  }
+}

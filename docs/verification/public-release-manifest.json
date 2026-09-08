@@ -1,0 +1,22 @@
+{
+  "status": "public-preview-verified",
+  "sha256": "95019065cd24709b61e32dee43cc9b72a0b7c1d8b17ac8a4907de9d1bb7f550e",
+  "bytes": 58203921,
+  "matched_tested_source_files": 313,
+  "archive_audit": "passed",
+  "setup_host": "RelWithDebInfo AMD64, no game code or BIOS backend",
+  "extracted_generation": "OpenBIOS and game passed",
+  "extracted_build": "Release passed",
+  "user_verification": [
+    "mod controls visible and usable",
+    "race controls working correctly"
+  ],
+  "catalog_tests": "defaults, validation, persistence, disable/reload passed",
+  "policy_tests": "approved preset and729 combinations passed",
+  "framework_patch": "applies to pinned checkout;46 modified/new inputs match",
+  "limitations": [
+    "initial preview; exhaustive rendering and full-game coverage incomplete",
+    "Windows CI workflow not yet run",
+    "only attached controllers physically tested"
+  ]
+}

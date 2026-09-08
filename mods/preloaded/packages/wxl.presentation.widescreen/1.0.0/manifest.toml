@@ -1,0 +1,22 @@
+format_version = 5
+id = "wxl.presentation.widescreen"
+version = "1.0.0"
+name = "16:9 Widescreen"
+author = "Wipeout2K97XL project"
+description = "Reveal a wider scene with original steering and simulation speed. Experimental while track and HUD coverage is being verified."
+resolver = "declarative"
+save_compatibility = "shared"
+
+[[target]]
+game_id = "SCUS-94351"
+
+[[feature]]
+id = "widescreen"
+name = "16:9 Widescreen"
+description = "Expand horizontal scene visibility. OpenGL required."
+group = "Visual"
+default_enabled = false
+
+[[plugin]]
+feature = "widescreen"
+id = "wxl.widescreen"

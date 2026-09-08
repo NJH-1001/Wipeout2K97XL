@@ -1,0 +1,90 @@
+{
+  "status": "native-sio-sdl-live-packet-and-user-steering-verified",
+  "date": "2026-09-07",
+  "bios_sha256": "6bee7e0b77c41ec069122127b6ec897eb7799fdf27a0bab38fb4f42424799b3d",
+  "game_payload_sha256": "92fecf36065150f7bfd274222f4c4bc101b1a4606e882edbe1f2d06713507aff",
+  "serial_cases_passed": 5,
+  "game_twist_endpoints_passed": [
+    0,
+    128,
+    255
+  ],
+  "artifacts": {
+    "analysis/verification/negcon-oracle.json": {
+      "sha256": "ea30c9fc3810c34c56de89e12acc4633beef4f28249e6e14d332f0ded5443a23",
+      "bytes": 87270
+    },
+    "analysis/verification/negcon-game-decoder.json": {
+      "sha256": "accaf7e33c2ec78fad770d2bada834ff8b6618332015ba74b3367cba24308a2e",
+      "bytes": 936
+    },
+    "analysis/verification/negcon-oracle-validation.json": {
+      "sha256": "46ef63048ca16c126bca447013ce941e5b38cfb5d7bbb3daa87524b41f9afc8d",
+      "bytes": 21873
+    },
+    "build-oracle/psx-beetle.exe": {
+      "sha256": "613e837640f1ec91d020a85bf3131f07d3acf3f12fe55d78fea992de9f2eb3c9",
+      "bytes": 14900926
+    },
+    "tools/verify_negcon_oracle.py": {
+      "sha256": "fa2dcaa6e127eb76ff4cedd8f48b76e9fff3cea0fccf722995efc9af1cf097a3",
+      "bytes": 3207
+    },
+    "analysis/verification/negcon-native.json": {
+      "sha256": "54ced426675b34b19e11a8718a75bfb933bf01a8a707e9fd7f882cb285ce62bb",
+      "bytes": 231772
+    },
+    "build-win64/Wipeout2K97XL.exe": {
+      "sha256": "0c2c65d0c0b463a1c1dfc2ecdd5f7d644cf14c9599cb46861620be343ee4c71d",
+      "bytes": 104633344
+    },
+    "psxrecomp/runtime/src/sio.c": {
+      "sha256": "b4cb60ce005e3a721bf3c833bb77be88ab8c8238a09e910931a29240a29e39ac",
+      "bytes": 138699
+    },
+    "psxrecomp/runtime/include/negcon_protocol.h": {
+      "sha256": "29eacef65e5f86d58ac61100e52516bbcea68839cd86ab16f1c08844d8ee0dba",
+      "bytes": 2512
+    },
+    "psxrecomp/runtime/tests/test_sio_negcon.c": {
+      "sha256": "01947406ef3af7c545d60ef5de91c243aca87ce4de7c5733583f929048b9f922",
+      "bytes": 2911
+    },
+    "psxrecomp/runtime/src/main.cpp": {
+      "sha256": "3f1e03d1cd38150351bf27b86d65002b78f681000e46d3be513410b60ffa067f",
+      "bytes": 779419
+    },
+    "psxrecomp/runtime/src/debug_server.c": {
+      "sha256": "58d66295f42e890df4b40dbaabc5d26261f92bfa2a2068c26b06956b99aa4cb1",
+      "bytes": 662531
+    },
+    "captures/native-negcon-ready.bmp": {
+      "sha256": "dad0c275304ef5c7be767d6ed56593b2dc1f922cc450e7e5ab58bad60602ba58",
+      "bytes": 230723,
+      "observation": "Native race scene visually verified"
+    },
+    "analysis/verification/xbox-negcon-trigger.json": {
+      "sha256": "7fe9b857318974a305099916059226c528e6587ac5d53aeb7673c6c41647ab84",
+      "bytes": 62666
+    }
+  },
+  "native_protocol_model_test": "passed",
+  "native_serial_cases_passed": 5,
+  "tests": {
+    "sio_and_launcher_ctest": 12,
+    "launcher_wiring": "passed",
+    "scope": "Exact shift/ACK boundaries, five oracle packet vectors, per-byte snapshots, latching, DTR restart, unsupported addresses/commands, digital restoration, DualShock rumble and old snapshots, card protocol, IRQ ownership."
+  },
+  "native_config": "game.toml: default_mode=negcon, lock_mode=true, allow_hybrid=false",
+  "physical_test": {
+    "device": "PowerA Advantage Wired Controller for Nintendo Switch 2",
+    "result": "User confirms PowerA Switch 2 smooth steering; Xbox proportional acceleration and other controls work",
+    "analog_trigger_test": {
+      "device_guid": "0300fa675e040000ff02000000007801",
+      "released": 0,
+      "full": 255,
+      "intermediate_levels": 83,
+      "user_acceleration_feel": "User confirmed partial versus full trigger acceleration and other controls work"
+    }
+  }
+}

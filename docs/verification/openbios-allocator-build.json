@@ -1,0 +1,37 @@
+{
+  "rom_sha256": "6bee7e0b77c41ec069122127b6ec897eb7799fdf27a0bab38fb4f42424799b3d",
+  "elf_sha256": "614c28b13d623ea5accc419c64eb2685a29a3256753c7b2adc7e9346709afda9",
+  "copies": [
+    {
+      "name": "Kernel ramtext",
+      "rom_lo": "0x1fc1e87c",
+      "rom_hi": "0x1fc2339c",
+      "ram_lo": "0x500",
+      "size": 19232,
+      "byte_match": true
+    },
+    {
+      "name": "Shell",
+      "rom_lo": "0x1fc0a6ac",
+      "rom_hi": "0x1fc1e538",
+      "ram_lo": "0x30000",
+      "size": 81548,
+      "byte_match": true
+    }
+  ],
+  "source_commit": "55fbf0468345acfbe5512628a3be5c0cfe3f22e7",
+  "uc_sdk_commit": "69e06871824e2d62069487a7426ded09090ceb69",
+  "source_patch": "psxrecomp/bios/patches/openbios-user-heap.patch",
+  "source_patch_sha256": "bf5731e0ae40a8136785685e519184d497bbdad6a6e22448b30d7740390c083d",
+  "probe_source_sha256": "1e8d6f335a24e1a04841f1a7517d1e171aa56f21a0af74ec27233e026b3b1fd8",
+  "probe_records": 32,
+  "reference_and_candidate_results_sha256": "f121f50cfd7bcb87f8082b61e1dd424c86c27fde910e5b481bfff225a8ecd261",
+  "emission": {
+    "seed_count": 642,
+    "emitted": 702,
+    "interpreted": 0,
+    "skipped": 0,
+    "instructions": 18043,
+    "dispatch_entries": 4096
+  }
+}

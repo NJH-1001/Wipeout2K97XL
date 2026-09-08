@@ -1,0 +1,2 @@
+# PowerA mapping from SDL_GameControllerDB 55c3bc818853e77937c2373527533d7baecd42f8
+03000000d620000020a7000000000000,PowerA Advantage Nintendo Switch 2 Controller,a:b1,b:b2,back:b8,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b12,leftshoulder:b4,leftstick:b10,lefttrigger:b6,leftx:a0,lefty:a1,misc1:b13,misc2:b16,rightshoulder:b5,rightstick:b11,righttrigger:b7,rightx:a2,righty:a3,start:b9,x:b0,y:b3,platform:Windows,

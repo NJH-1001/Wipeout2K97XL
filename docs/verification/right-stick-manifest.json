@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-08",
+  "status": "initial mapping user-confirmed; right-stick brake directions reversed for user trial; analog brake enhancement declined",
+  "checks": [
+    "RelWithDebInfo build passed",
+    "test_hybrid_dev_any_input.py passed",
+    "native TCP responds; input override -1",
+    "independent Beetle decoder and brake routine bytes match disc"
+  ],
+  "sha256": {
+    "input.ini": "d90003a906556312f5d358814bf2d97cef6b359721dbb2493afbbd97443cd598",
+    "psxrecomp/runtime/src/main.cpp": "7f8f4eecac7da519075e89e430c1e8b1f07803fe636bcda22e086b4f3903af54",
+    "build-win64/Wipeout2K97XL.exe": "f1551ac51dcfde1b0f25d8f8ed2cb9c5ef70012080f1a3f2051c461f43490c21"
+  },
+  "right_stick_brakes": {
+    "left": "R1",
+    "right": "L1",
+    "shoulder_buttons": "unchanged"
+  }
+}

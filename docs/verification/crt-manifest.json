@@ -1,0 +1,100 @@
+{
+  "status": "build-catalog-activation-and-3d-presentation-verified",
+  "date": "2026-09-07",
+  "build": "Windows x86-64 RelWithDebInfo 0.1.0 passed",
+  "shader_validation": {
+    "PRESENT_FS": "glslangValidator passed",
+    "INTERP_FS": "glslangValidator passed"
+  },
+  "catalog": "1 game-owned CRT package plus 4 framework packages staged and validated",
+  "activation": "Persisted JVC and Trinitron options each selected the expected native preset at launch",
+  "visual": "Fresh repeated full-window captures show normal 3D racing. Both CRT variants and restored-off captures completed on nonblack 3D frames and were visually reviewed. Earlier black frames were not synchronized to canonical VRAM and do not establish a persistent readback fault. User confirms actual game displays normally.",
+  "restored": "CRT runtime preset 0; exact previous mod state restored, default disabled",
+  "references": [
+    "https://github.com/MiSTer-devel/Presets_MiSTer/blob/main/Presets/Display%20Specific/JVC.ini",
+    "https://github.com/MiSTer-devel/Presets_MiSTer/blob/main/Presets/Display%20Specific/Sony%20Trinitron.ini"
+  ],
+  "implementation": "Original OpenGL scanline/gamma/mask approximations, not copies of FPGA polyphase/mask implementations. Off returns original shader sample; no guest instructions, GPU commands or VRAM patched.",
+  "artifacts": {
+    "captures/crt-off.png": {
+      "sha256": "9105aa9bcf280215b1aa2695926b5ed5d1be8871fce7ce3e3bdfc7bc71bf5a91",
+      "bytes": 23666007
+    },
+    "captures/crt-jvc.png": {
+      "sha256": "540b77ed12c9fdc24bd7b75aa6908c74240a5ad447e5dffcb69aeef089c0258d",
+      "bytes": 23666007
+    },
+    "captures/crt-trinitron.png": {
+      "sha256": "e457894ee74152df4867b9789ca6a0cc21979213a1a61151db2c34239a00281a",
+      "bytes": 23666007
+    },
+    "captures/crt-jvc-game.png": {
+      "sha256": "b79974750c59502588dc4094e5bce89489d77cf9efdb4da80f98d607de67f1c2",
+      "bytes": 23666007
+    },
+    "captures/crt-trinitron-game.png": {
+      "sha256": "b79974750c59502588dc4094e5bce89489d77cf9efdb4da80f98d607de67f1c2",
+      "bytes": 23666007
+    },
+    "captures/crt-transition-canonical.bmp": {
+      "sha256": "eaf76afe247072b3bc16c087a683422c212fa85b5aeb99ea5449ec931162c58b",
+      "bytes": 230723
+    },
+    "captures/crt-transition-off.png": {
+      "sha256": "b79974750c59502588dc4094e5bce89489d77cf9efdb4da80f98d607de67f1c2",
+      "bytes": 23666007
+    },
+    "analysis/verification/crt-capture-results.json": {
+      "sha256": "9ad99844934e83568f71fbd52b938ce2fc88918868f683384d2bb3be4481b165",
+      "bytes": 404
+    },
+    "src/crt_mod.c": {
+      "sha256": "111ec691debfd8bcfbde7440ace483f383f2c06dd62d173e16a71b7ed49123f7",
+      "bytes": 485
+    },
+    "mods/preloaded/packages/wxl.presentation.crt/1.0.0/manifest.toml": {
+      "sha256": "c705383490f8b0fa6bcfa0a521172cc6fde5dc7c08958d458ea9b4aee54bf90d",
+      "bytes": 862
+    },
+    "psxrecomp/runtime/src/gpu_gl_renderer.c": {
+      "sha256": "abffff00b9d524186d94f055d371257abbc3de9389359181fdddc1a359d0ec79",
+      "bytes": 224962
+    },
+    "build-win64/Wipeout2K97XL.exe": {
+      "sha256": "32f8d62195556823369500ed82673c34c477cd41ae1af16494d397ad3f067d23",
+      "bytes": 104638464
+    },
+    "analysis/verification/crt-visible-captures.json": {
+      "sha256": "834b755717adabd2e7baa4a736f44a70bf03e7208085a1922def74341ca9611f",
+      "bytes": 2173
+    },
+    "analysis/verification/crt-trinitron-activation.json": {
+      "sha256": "4bdb72efc2eb928748b754cd2c614ba6802e5d5433871311581f6fd1fed0355d",
+      "bytes": 48
+    },
+    "tools/verify_crt_capture.py": {
+      "sha256": "a36872af23a20e4d320255a2c0cd31c9b42837755ce08c5aef33448912d86516",
+      "bytes": 2494
+    },
+    "captures/crt-verified-off.png": {
+      "sha256": "28eb7f715d0a3cf926859f07cfecb586cdd13e31e088f6a53d11b3c2f94f25d3",
+      "bytes": 23666007
+    },
+    "captures/crt-verified-jvc.png": {
+      "sha256": "a8fa68d4da089cd14570e525a172fbd09a1a76659fc41cfe631aee6a9a200c7d",
+      "bytes": 23666007
+    },
+    "captures/crt-verified-trinitron.png": {
+      "sha256": "45ccaf1ff2b92504593e0216bf4de9f19d977187bcb7c8c31afd8402d80a86e3",
+      "bytes": 23666007
+    },
+    "captures/crt-verified-off-restored.png": {
+      "sha256": "1ef2b8d5b65b1ae9264f66dff9a581ae3c2933f29cca6bc1de55ff2b44890d7b",
+      "bytes": 23666007
+    }
+  },
+  "limitations": [
+    "Different running frames, not a pixel-identical before/after comparison.",
+    "OpenGL presentation only; effects are approximations of the named MiSTer preset styles."
+  ]
+}

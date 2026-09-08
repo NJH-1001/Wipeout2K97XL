@@ -1,0 +1,68 @@
+{
+  "status": "user-confirmed-loading-menu-and-transition",
+  "request": "Loading screen develops black side borders after initially appearing",
+  "reference": {
+    "ghidra": "Connected project Wipeout2K97XL PID22116",
+    "native_gpu_transition": "analysis/verification/loading-20260908-043006/gpu-frames.jsonl.gz",
+    "initial_loading_frame": 24158,
+    "clear_words": [
+      "0x022E0000",
+      "0x00000000",
+      "0x00F00140"
+    ],
+    "later_band": [
+      "0x022E0000",
+      "0x00500000",
+      "0x00640140"
+    ],
+    "independent_oracle": "No matched loading transition captured in Beetle this session; no hardware execution change"
+  },
+  "implementation": "Opt-in GL pillarbox color from uniform full-width clear metadata; 4:3 art remains proportionate; no generated or guest memory edits",
+  "tests": [
+    "test_clear_background passes",
+    "RelWithDebInfo build passes"
+  ],
+  "pid": 11104,
+  "hashes": {
+    "src/widescreen_mod.c": "ec4f8cce315db754a4a50684c641396c331b940b599e7376d8efd60840e71de0",
+    "psxrecomp/runtime/include/gpu_clear_background.h": "c5bbf7520f9b7ba20e3f935abcbc0fbe3aee789ef251168e130847d4bd80db68",
+    "psxrecomp/runtime/src/gpu.c": "8d698c5ad2a74a34ea136c3723bd92c98255ceb9022a076edfbdc393526cc85e",
+    "psxrecomp/runtime/src/gpu_gl_renderer.c": "2662f5d40b291141c75d76eb547b69b77d3980f4676cf171eec93738c40e54c5",
+    "tools/test_clear_background.c": "948dec3e704ae0da814a2679d948617bdaf88b5a831b8c33e7d6475fd21d19eb"
+  },
+  "loading_verification": {
+    "user": "loading screens look pretty good now",
+    "composed_captures": 12,
+    "proof": "analysis/verification/loading-background/proof.json",
+    "viewed": "captures/loading-background/005.png"
+  },
+  "menu_followup": {
+    "problem": "Rotating menu ship keeps GTE detector active and exposes repeated UI in wide margins",
+    "evidence": "analysis/verification/menu-options-frame.json",
+    "before": "captures/menu-options-current.png",
+    "hooks": {
+      "menu": "0x8004DA10",
+      "race_or_attract": "0x8003EA68"
+    },
+    "identity": "First256 bytes of both entry routines match disc in native and independent Beetle",
+    "proof": "analysis/verification/menu-mode-hook-proof.json",
+    "generated": "41 files,10 hooks,no other differences vs disabled baseline",
+    "generated_proof": "analysis/verification/menu-mode-generated-proof.json",
+    "status": "User confirms menu looks good; transition into level loading described as rough",
+    "user_confirmation": "oh its looking good now. transition to the level loading screen is a little rough"
+  },
+  "transition_followup": {
+    "symptom": "User screenshot: blue middle side band with black upper/lower corners during initial loading",
+    "state_proof": "analysis/verification/menu-loading-state-transitions.json",
+    "measurement": "frame10614 wide ->10656 native4:3 ->11057 wide; stale menu GTE history survives menu override release",
+    "mechanism": "Full blue clear runs with wide presentation inactive; later partial band alone reaches synthetic wide buffers",
+    "fix": [
+      "Opt-in full-width framebuffer clears maintain hidden wide surfaces during native4:3 UI",
+      "Leaving explicit UI mode expires previous menu projection/tag history; fresh world geometry rearms"
+    ],
+    "pid": 23472,
+    "build": "RelWithDebInfo passed",
+    "verification": "User confirms looks proper now",
+    "composed_capture_directory": "captures/loading-transition-fixed"
+  }
+}

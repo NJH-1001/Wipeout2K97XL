@@ -1,0 +1,261 @@
+{
+  "status": "far-ships-and-exhaust-user-confirmed",
+  "date": "2026-09-08",
+  "ship_dispatch": {
+    "address": "0x80021B90",
+    "size": 1672,
+    "native_and_beetle_sha256": "6a4506de18f79b257cc2a837f3ee1729716bb7987c08212bcf89b20cbe06002d",
+    "mesh_cutoff_metric": 1200,
+    "broader_visibility_metric": 2900,
+    "metric": "Approximate SDK square root of squared camera-relative coordinates shifted right 3",
+    "additional_gates": [
+      "positive projected depth unless local ship",
+      "cyclic track-section delta -39 through +39",
+      "destroyed/hidden flags",
+      "race mode and selected ghost/player handling"
+    ],
+    "renderer": "0x80011DE8, distinct from scenery 0x80010000",
+    "renderer_details": [
+      "Gouraud textured triangle/quad packets use 40/52 bytes",
+      "Depth bucket subtracts 120 after AVSZ and clamps negative to zero",
+      "Per-vertex projection flags reject invalid geometry"
+    ],
+    "required_before_extension": [
+      "measure packet capacity with all additional ships",
+      "validate far projection/depth and transforms",
+      "preserve mode/hidden/section semantics"
+    ],
+    "native_calls_verified": true,
+    "beetle_calls_verified": false,
+    "capacity_proposal": {
+      "original_bytes_per_buffer": 44032,
+      "observed_models": 15,
+      "max_observed_primitives": 113,
+      "max_observed_vertex_axis": 425,
+      "conservative_extra_bytes": 99840,
+      "proposed_bytes_per_buffer": 196608,
+      "existing_distance_allocation_bytes": 983040,
+      "combined_proposed_bytes": 1376256,
+      "current_arena_bytes": 1048576,
+      "proposed_arena_bytes": 2097152,
+      "proposed_arena_base": "0x00E00000",
+      "implementation_applied": true,
+      "range_proposal": 2900,
+      "projection_table_verification": "Disc, native and Beetle table hashes match; 6784 transition probes validate monotonicity; conservative bound 24191.75 below32767"
+    },
+    "approval_blocker": null,
+    "runtime_status": "Native far candidate PID12348 TCP4370; independent Beetle PID26732 TCP4382",
+    "user_authorization": "go for it",
+    "live_checks": {
+      "ship_passes": 6227,
+      "status": 0,
+      "peak_pool_bytes": 22724,
+      "pool_bytes": 196608,
+      "only_two_cutoff_words_differ_from_beetle": true,
+      "regenerated_files_compared": 41,
+      "trusted_hooks": 7,
+      "unexpected_generated_changes": 0,
+      "observed_screen": "Visible OpenBIOS game attract/credits rendering",
+      "visual_distance_confirmation": false
+    },
+    "tests": [
+      "ship opcode and pointer guards, model record/index bounds, both buffers, preserved original prefix, disabled restoration, high-water accounting",
+      "DMA: all 4194304 word-aligned 24-bit tags, allocated and unallocated behavior, final byte, cross-boundary widths, unrelated CPU alias rejection",
+      "existing road/scenery synthetic regressions passed"
+    ],
+    "implementation_notes": [
+      "Default-off ships feature uses original renderer and original visibility/mode/section gates",
+      "Supported psx_mod_write_code_word applies two verified SLTI immediates via executable-RAM backend; generated C is not hand edited",
+      "Nominal buffer tables are redirected with prefix reservation; already-linked original packets retain their RAM addresses",
+      "Expanded opt-in aperture is 2MiB at physicalE00000; unrelated CPU physical regions no longer alias via low24 bits",
+      "LLE save-state restore remains unsupported; no change to gate or release package"
+    ],
+    "user_retest": "User confirms far ships work wonderfully; requests matching exhaust range.",
+    "paused_diagnosis": {
+      "stable_camera_and_ships": true,
+      "in_range_section_rejections": [
+        {
+          "ship": 0,
+          "metric": 2769,
+          "section_delta": -52,
+          "eye_z": 22115
+        },
+        {
+          "ship": 3,
+          "metric": 2289,
+          "section_delta": -40,
+          "eye_z": 18367
+        }
+      ],
+      "farther_forward_ships": "metrics3434..6616, eye Z27474..52752, outside2900 candidate",
+      "proof": "analysis/verification/ship-visibility-paused-repro.json"
+    },
+    "section_candidate": {
+      "site": "0x80021E68",
+      "stock": "0x2C42004F",
+      "extended": "0x2C02004F",
+      "effect": "SLTIU v0,zero,79 removes section-only restriction; keeps distance, hidden, mode and positive-depth checks",
+      "synthetic_tests": "PASS including all65536 section values, original restoration and atomic opcode guard",
+      "live": "Built candidate now includes guarded section compare as part of original near-range extension.",
+      "binary_rebuilt": true
+    },
+    "next_verification": "Far model projection, original Gouraud packet parity, shared depth ordering with extended scenery. Do not raise stock GTE range beyond proven bounds.",
+    "far_packet_draft": {
+      "source": "src/ship_packet.h",
+      "linked_or_enabled": true,
+      "original_packet_comparison": "112 original Beetle RAM packet matches:82 FT3,30 FT4; all semantic material fields match, unused padding masked. Original positions and ambient color supplied to encoder; not projection/lighting proof.",
+      "proof": "analysis/verification/ship-packet-oracle-comparison.json",
+      "observed_model_formats": {
+        "FT3": 978,
+        "FT4": 324
+      },
+      "far_projection": "Current ship angles and position, validated hierarchy arithmetic; int64 intermediates; camera depth160..64000 and GPU coordinate bounds; near metric<2900 remains original",
+      "sorting": "Shared road/scenery/ship list, AVSZ ship bias-120 buckets, sorted before saturated far bucket insertion",
+      "arena_bytes": 1671168,
+      "slot_bytes": 52,
+      "synthetic_tests": "PASS near/far cutoff, invalid record/index atomicity, capacity rollback, disabled identity, road/ship joint OT order, existing road/scenery/billboard regressions",
+      "limitations": [
+        "User race appearance and occlusion pending",
+        "Ghost and split-screen far path explicitly excluded",
+        "Original exhaust effects are unchanged"
+      ],
+      "telemetry": "Road stats words22=far ship packets,23=status0OK/1unsupportedmode/2invalidmodel/3transform/4trackcolor/5capacity",
+      "compiled_rotation_replay": "PASS five current model nodes from stable snapshot; actual compiled helper used",
+      "live_sample": {
+        "passes": 2050,
+        "far_ship_packets": 6,
+        "far_status": 0,
+        "ship_pool_peak": 20828,
+        "ship_pool_capacity": 196608,
+        "screen": "Attract/credits race sequence; user race test pending"
+      }
+    }
+  },
+  "thunder_bomb": {
+    "status": "user-retest-no-visible-glitch-no-additional-patch",
+    "user_report": "After firing, user thinks the mismatch went away and suspects the victory overlay fix also addressed it",
+    "no_assumed_packet_type": true,
+    "snapshot": "build-win64/saves/candidate-verification/openbios/state_80082D70_slot11.pst",
+    "snapshot_sha256": "0794c96aaacb3530aa45e04c338155b30899f8d8f817eb1941c119f41152b1fa",
+    "snapshot_bytes": 1471613,
+    "save_receipt": "analysis/verification/thunder-bomb-save-receipt.json",
+    "save_completed": true,
+    "restore_verified": false,
+    "blocker": "savestate.c request_load_inner rejects LLE scheduler because cross-fiber restore longjmp is unsafe",
+    "weapon_fired": false,
+    "mechanism": "Shared fullscreen overlay batching fix could cover flash; exact thunder-bomb packet mechanism unverified",
+    "capture_result": "TCP4371 sequences did not visibly capture the firing event; two instances were open. Latest TCP4370 screenshot shows THERMO and TCP4371 still shows a weapon icon. Capture cannot independently confirm the reported flash.",
+    "capture_gaps": [
+      [
+        132917,
+        133076
+      ]
+    ],
+    "additional_fix_applied": false
+  },
+  "prior_fixes": "User confirms damage guard and victory dimming corrections work",
+  "loading_blue_fill": "still pending",
+  "ship_artifacts": {
+    "src/ship_distance_mod.c": "92285b45768a9ab532f03bd6966dd86f6eee98fa5d4a0ca35020d0616f8a6ca4",
+    "tools/test_ship_distance.c": "b61ea3d734cd7d889d42bb13d7307d9e18cac998b320d6998b9b58ef4921e842",
+    "psxrecomp/runtime/include/mod_memory.h": "2709f7175470a4daf6976a04dba7266669543eda6d4e5c4b30f7973cc52ae236",
+    "psxrecomp/runtime/tests/test_mod_gpu_dma_aperture.c": "b4494a4737e7a8de86d3d54461b2c98c656b10e70b7f8e50d95ddb7cdac918f1",
+    "analysis/verification/ship-distance-bounds-proof.json": "ffa804efa7bce3c026fd6a53b31b6ac32beff0ca6cca10216bab567e111c6839",
+    "analysis/verification/ship-live-initial.json": "8b2f1540968cac9721b684221d69d7b3dfe693c183612d3c284164eec03005d9",
+    "analysis/verification/ship-live-samples.json": "a9fa27583c2e575850e50f853bcb1ca60f16b38af397461c03e61eeee357f34d",
+    "analysis/verification/ship-live-patch-proof.json": "2d50fc234346e65b9e6d721565ad2790670f177be1cb314ca9dc014f1b0256c0",
+    "build-win64/Wipeout2K97XL.exe": "2e1930d3efc7b7ebb00da81fc789beefeeb7cb31b521b6955a805974db94eae3",
+    "tools/capture_ship_visibility.py": "28ce3c3ee5ae31639ea63af1305dadf07e387a0617cb452a437e67e688efa4de",
+    "src/ship_packet.h": "4bc26b0b0a076b83b4f1454856f8a0958d2c1545c759caf6478fb170abfe79ac",
+    "tools/test_ship_packet.c": "6bb3f07b08654bfbd81001cd76f4b9a9ed14253a4ef6935445f7e4f16d703523",
+    "analysis/verification/ship-transform-paused.json": "242370edf18236e29a112122d4db8eeb29a40bcf119007ead05b1db4b9e35585",
+    "analysis/verification/ship-section-ab.json": "d23b88e28656b35080a71ff620f853918f59b266c0e5e64185cb90badc688e65",
+    "src/ship_far_render.h": "58e62a7d8de5a8720a02d147cfc8a18618628cf42a0e6519b12dfb5510917e9a",
+    "src/track_distance_experimental.c": "cc16d888ec321db0ecff7c5afbf11abb8303f90bcd18ef5d84425037b4d327b8",
+    "tools/test_track_distance.c": "a6047a6e5a0fe3aacf9aee0e4371471589e7b69a72348459c1dff47cf62ae2bc",
+    "tools/replay_ship_packet.c": "4d4a8f1a18453d74d4cb0f9faf325734b168330e5896fb572fd0a79511a88cea",
+    "tools/compare_ship_packets.py": "2b52bf9143e05968ff00a7aee28760398f288b9f3ca3a9f635d37371811c9b2c",
+    "analysis/verification/ship-packet-oracle-comparison.json": "6360b6add0edcc4d9221bbce29c3d8e6a7202d9b9b4896a058eeab47f19cb599",
+    "build-win64/Wipeout2K97XL-ship-far-test.exe": "40b8f9df6277cf945e48d83447f6805c262e8dd0e8d6696f5606176a514510f6",
+    "tools/replay_ship_rotation.c": "b29af26d0f689da343e3514dc18540f5a4befd2c24309fe7aadc832d9983c9bd",
+    "analysis/verification/ship-rotation-replay-result.json": "a9e6a4ee3ffc88a25be9c8ee1f76cd13bb0142dfcab68326701ae9968733a8e1",
+    "analysis/verification/ship-far-live-first.json": "69979ac30e42ecc91b86403f70afc4fbcc10bc2feb0074651d5c9cbdebc59b5b",
+    "analysis/verification/ship-far-live-code.json": "60fb7c387975719e38e435140b76d40da344efb25f603810fec9f8c9f3f11c27"
+  },
+  "exhaust_extension": {
+    "status": "user-confirmed-with-subpixel-width",
+    "reference_functions": [
+      "800726AC history gate/anchors",
+      "80070EB0 ring update/fade",
+      "80071970 LOD selection",
+      "80071418 distant ribbon",
+      "80080E6C depth return"
+    ],
+    "reference_packets": "analysis/verification/exhaust-far-packet-proof.json",
+    "original_packet_matches": 13,
+    "beetle_packet_matches": 11,
+    "implementation": "Visual-only11-point history, same420/40 anchors and27-step fade; original two palettes with separate1/8 periodic accent, never consumes game RNG; original near trails unchanged. Far ribbon uses original two-pixel width, additive state and depth convention, shared packet sort.",
+    "tests": [
+      "no guest RAM writes during history capture",
+      "anchor coordinates and27-step fade",
+      "packet positions/colors/additive state",
+      "capacity rollback and unknown-state rejection",
+      "all prior scenery/ship tests",
+      "41 generated C files identical except8 declared hooks"
+    ],
+    "limitations": [
+      "Live visual confirmation pending",
+      "Far accent timing uses a separate periodic visual sequence, not original gameplay RNG",
+      "Engine flare helpers6F8AC/6FFAC remain original; this extends the trail ribbon",
+      "Ghost/split-screen excluded as with far ships"
+    ],
+    "sha256": {
+      "src/ship_far_exhaust.h": "72f86096e7280e6b63901e1d93af6edd529fbe8d0a88f62bc1de581c42093dc0",
+      "src/track_distance_experimental.c": "768a989aa60bef2884ab888ec2b3ffcc87cc27b006ee5e9f84ac904ca22351c3",
+      "game.toml": "9d644d10eb1364214e7c183b95072f5ee5ebd5d0e4953aba51e5b8a3a43b7291",
+      "tools/test_track_distance.c": "b211411002abadf03347c1acdbdce25cf80d41b489620926c2d7459d906ad49e",
+      "analysis/verification/exhaust-far-packet-proof.json": "942042f66010a68efee46a70267b02edd1d764f0f456e639b8aec9082a777eae",
+      "analysis/verification/exhaust-generated-proof.json": "1d14b973e94ce5f2ee6dde27d758a119cdb746a2219741031e2506e8b78356f5",
+      "build-win64/Wipeout2K97XL.exe": "c251be6b3bb6eef3e5a880159ed2ea46050078fefa85022f4d28cb367eae829c"
+    },
+    "live": {
+      "pid": 26176,
+      "port": 4370,
+      "scene_passes": 274,
+      "far_ship_polygons": 25,
+      "far_trail_polygons": 8,
+      "trail_status": 0,
+      "ship_pool_peak": 20356,
+      "capacity": 196608,
+      "proof": "analysis/verification/exhaust-live-initial.json"
+    },
+    "width_revision": {
+      "status": "user-confirmed",
+      "user_feedback": "Trail visible, oversized blue rectangle at distance",
+      "policy": "16.16 projection; width 2*23200/max(z,23200); only optional far trail",
+      "reference": "Original71418 fixed-width strip confirmed in prior13 packets (11 Beetle)",
+      "tests": [
+        "test_track_distance passed",
+        "test_mod_vertex actual runtime aperture implementation passed"
+      ],
+      "pid": 22776,
+      "renderer": "OpenGL4x",
+      "source_hashes": {
+        "src\\ship_far_exhaust.h": "93f08dcdb3dd6a98af63fd0d7d6c3b814ec248a94be533cff6f52c120a374f0f",
+        "src\\track_distance_experimental.c": "82b952400c0c37eba64f3eb2f8b84b47892b4fdd9e140cb05837c32ae5e5313e",
+        "psxrecomp\\runtime\\src\\mod_gpu_memory.c.inc": "4b2bc3ed81ce3f73995f75701bec57f33db8500db2b94a8dd1e7fea8d66d4d96",
+        "psxrecomp\\runtime\\src\\gpu.c": "3bbadf2596ee6bd3eb76d9de78f2a89eb454802078ec4ce5f173d820d8ca096e"
+      },
+      "user_confirmation": "oh yeah that's proper now. nice.",
+      "live": {
+        "proof": "analysis/verification/trail-subpixel-live.json",
+        "passes": 587,
+        "far_ship_polygons": 52,
+        "far_trail_polygons": 10,
+        "trail_error": 0,
+        "precision_hits": 18888,
+        "visible_race_capture": "captures/trail-subpixel-running.png"
+      }
+    }
+  }
+}

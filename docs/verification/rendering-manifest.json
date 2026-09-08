@@ -1,0 +1,632 @@
+{
+  "status": "partial-static-and-native-runtime-evidence-not-full-pipeline-verification",
+  "program": "SCUS_943.51.text.bin",
+  "payload_sha256": "92fecf36065150f7bfd274222f4c4bc101b1a4606e882edbe1f2d06713507aff",
+  "functions_scanned": 881,
+  "cop2_functions": 29,
+  "limitations": [
+    "Ghidra-discovered static functions only; dynamic overlays and code not recognized by Ghidra require separate coverage.",
+    "Function boundaries and inferred types require verification. Native frame/DMA captures exist, but no matched native/Beetle frame has been verified."
+  ],
+  "functions": [
+    {
+      "address": "0x80010000",
+      "instruction_count": 1914,
+      "gte": {
+        "RTPS": 1,
+        "NCLIP": 16,
+        "AVSZ3": 8,
+        "AVSZ4": 8
+      },
+      "transfers": {
+        "LWC2": 2,
+        "MFC2": 33,
+        "CFC2": 1,
+        "SWC2": 1,
+        "MTC2": 104
+      },
+      "calls": [
+        "0x8001e9f0",
+        "0x8007ef1c",
+        "0x8007f024"
+      ],
+      "indirect": []
+    },
+    {
+      "address": "0x80011de8",
+      "instruction_count": 1083,
+      "gte": {
+        "RTPS": 1,
+        "NCLIP": 8,
+        "AVSZ3": 4,
+        "AVSZ4": 4
+      },
+      "transfers": {
+        "LWC2": 2,
+        "MFC2": 17,
+        "CFC2": 1,
+        "SWC2": 1,
+        "MTC2": 52
+      },
+      "calls": [
+        "0x8001e9f0",
+        "0x8007ef1c",
+        "0x8007f024"
+      ],
+      "indirect": []
+    },
+    {
+      "address": "0x80012ed4",
+      "instruction_count": 563,
+      "gte": {
+        "RTPS": 1,
+        "NCLIP": 8
+      },
+      "transfers": {
+        "LWC2": 2,
+        "MFC2": 9,
+        "CFC2": 1,
+        "SWC2": 1,
+        "MTC2": 24
+      },
+      "calls": [
+        "0x8001e9f0"
+      ],
+      "indirect": []
+    },
+    {
+      "address": "0x80013c78",
+      "instruction_count": 269,
+      "gte": {
+        "RTPS": 1,
+        "RTPT": 1
+      },
+      "transfers": {
+        "MTC2": 8,
+        "CFC2": 2,
+        "SWC2": 4,
+        "MFC2": 1
+      },
+      "calls": [
+        "0x8001e9f0"
+      ],
+      "indirect": []
+    },
+    {
+      "address": "0x800140ac",
+      "instruction_count": 650,
+      "gte": {
+        "RTPS": 1,
+        "AVSZ4": 8
+      },
+      "transfers": {
+        "LWC2": 2,
+        "CFC2": 1,
+        "MFC2": 9,
+        "SWC2": 1,
+        "MTC2": 32
+      },
+      "calls": [
+        "0x8001e9f0"
+      ],
+      "indirect": []
+    },
+    {
+      "address": "0x80014ad4",
+      "instruction_count": 1124,
+      "gte": {
+        "RTPS": 1
+      },
+      "transfers": {
+        "LWC2": 2,
+        "CFC2": 1,
+        "MFC2": 1,
+        "SWC2": 1
+      },
+      "calls": [
+        "0x80015c64",
+        "0x80015cb8",
+        "0x80015d1c",
+        "0x8001e9f0"
+      ],
+      "indirect": []
+    },
+    {
+      "address": "0x80015cb8",
+      "instruction_count": 25,
+      "gte": {
+        "AVSZ4": 1
+      },
+      "transfers": {
+        "MTC2": 4,
+        "MFC2": 1
+      },
+      "calls": [],
+      "indirect": []
+    },
+    {
+      "address": "0x80015d1c",
+      "instruction_count": 214,
+      "gte": {
+        "RTPS": 1
+      },
+      "transfers": {
+        "LWC2": 2,
+        "CFC2": 1,
+        "MFC2": 1,
+        "SWC2": 1
+      },
+      "calls": [
+        "0x80016074",
+        "0x80016098",
+        "0x800160cc"
+      ],
+      "indirect": []
+    },
+    {
+      "address": "0x800160cc",
+      "instruction_count": 17,
+      "gte": {
+        "AVSZ4": 1
+      },
+      "transfers": {
+        "MTC2": 4,
+        "MFC2": 1
+      },
+      "calls": [],
+      "indirect": []
+    },
+    {
+      "address": "0x80016110",
+      "instruction_count": 220,
+      "gte": {
+        "RTPS": 1
+      },
+      "transfers": {
+        "MTC2": 2,
+        "CFC2": 1,
+        "SWC2": 2,
+        "MFC2": 1
+      },
+      "calls": [
+        "0x8001e9f0"
+      ],
+      "indirect": []
+    },
+    {
+      "address": "0x8007f570",
+      "instruction_count": 26,
+      "gte": {},
+      "transfers": {
+        "CTC2": 7
+      },
+      "calls": [],
+      "indirect": []
+    },
+    {
+      "address": "0x8007f9e8",
+      "instruction_count": 31,
+      "gte": {},
+      "transfers": {
+        "MTC2": 1,
+        "MFC2": 1
+      },
+      "calls": [],
+      "indirect": []
+    },
+    {
+      "address": "0x8007fb00",
+      "instruction_count": 33,
+      "gte": {},
+      "transfers": {
+        "MTC2": 1,
+        "MFC2": 1
+      },
+      "calls": [],
+      "indirect": []
+    },
+    {
+      "address": "0x8007fe30",
+      "instruction_count": 67,
+      "gte": {
+        "MVMVA": 3
+      },
+      "transfers": {
+        "CTC2": 5,
+        "MTC2": 6,
+        "MFC2": 8,
+        "SWC2": 1
+      },
+      "calls": [],
+      "indirect": []
+    },
+    {
+      "address": "0x800808d8",
+      "instruction_count": 12,
+      "gte": {},
+      "transfers": {
+        "CTC2": 5
+      },
+      "calls": [],
+      "indirect": []
+    },
+    {
+      "address": "0x80080908",
+      "instruction_count": 12,
+      "gte": {},
+      "transfers": {
+        "CTC2": 5
+      },
+      "calls": [],
+      "indirect": []
+    },
+    {
+      "address": "0x80080938",
+      "instruction_count": 12,
+      "gte": {},
+      "transfers": {
+        "CTC2": 5
+      },
+      "calls": [],
+      "indirect": []
+    },
+    {
+      "address": "0x80080968",
+      "instruction_count": 8,
+      "gte": {},
+      "transfers": {
+        "CTC2": 3
+      },
+      "calls": [],
+      "indirect": []
+    },
+    {
+      "address": "0x80080c30",
+      "instruction_count": 8,
+      "gte": {},
+      "transfers": {
+        "CTC2": 3
+      },
+      "calls": [],
+      "indirect": []
+    },
+    {
+      "address": "0x80080ce4",
+      "instruction_count": 6,
+      "gte": {},
+      "transfers": {
+        "CTC2": 2
+      },
+      "calls": [],
+      "indirect": []
+    },
+    {
+      "address": "0x80080cfc",
+      "instruction_count": 3,
+      "gte": {},
+      "transfers": {
+        "CTC2": 1
+      },
+      "calls": [],
+      "indirect": []
+    },
+    {
+      "address": "0x80080e40",
+      "instruction_count": 11,
+      "gte": {
+        "RTPS": 1
+      },
+      "transfers": {
+        "LWC2": 2,
+        "SWC2": 2,
+        "CFC2": 1,
+        "MFC2": 1
+      },
+      "calls": [],
+      "indirect": []
+    },
+    {
+      "address": "0x80080e6c",
+      "instruction_count": 21,
+      "gte": {
+        "RTPT": 1
+      },
+      "transfers": {
+        "LWC2": 6,
+        "SWC2": 4,
+        "CFC2": 1,
+        "MFC2": 1
+      },
+      "calls": [],
+      "indirect": []
+    },
+    {
+      "address": "0x80080ec0",
+      "instruction_count": 10,
+      "gte": {
+        "MVMVA": 1
+      },
+      "transfers": {
+        "LWC2": 2,
+        "SWC2": 3,
+        "CFC2": 1
+      },
+      "calls": [],
+      "indirect": []
+    },
+    {
+      "address": "0x800811c4",
+      "instruction_count": 9,
+      "gte": {
+        "NCLIP": 1
+      },
+      "transfers": {
+        "MTC2": 3,
+        "MFC2": 1
+      },
+      "calls": [],
+      "indirect": []
+    },
+    {
+      "address": "0x800811f8",
+      "instruction_count": 8,
+      "gte": {
+        "AVSZ3": 1
+      },
+      "transfers": {
+        "MTC2": 3,
+        "MFC2": 1
+      },
+      "calls": [],
+      "indirect": []
+    },
+    {
+      "address": "0x80081228",
+      "instruction_count": 9,
+      "gte": {
+        "AVSZ4": 1
+      },
+      "transfers": {
+        "MTC2": 4,
+        "MFC2": 1
+      },
+      "calls": [],
+      "indirect": []
+    },
+    {
+      "address": "0x8008125c",
+      "instruction_count": 22,
+      "gte": {
+        "OP": 1
+      },
+      "transfers": {
+        "CFC2": 3,
+        "CTC2": 6,
+        "LWC2": 3,
+        "SWC2": 3
+      },
+      "calls": [],
+      "indirect": []
+    },
+    {
+      "address": "0x80081330",
+      "instruction_count": 21,
+      "gte": {
+        "RTPS": 1
+      },
+      "transfers": {
+        "LWC2": 2,
+        "SWC2": 1,
+        "MFC2": 1,
+        "CFC2": 1
+      },
+      "calls": [],
+      "indirect": []
+    }
+  ],
+  "runtime_evidence": {
+    "native-gpu-frame.json": {
+      "bytes": 286377,
+      "sha256": "7a05b31ba94768176049af5bad15d401e9dee7677d7fedb73f669b71ff88fd76",
+      "distribution": "local ignored artifact"
+    },
+    "native-drawot-calls.json": {
+      "bytes": 3540,
+      "sha256": "d846af6d73d1b144554f3bdbf5d33df8b007a9b8403cd14b43ef38343cba8971",
+      "distribution": "local ignored artifact"
+    },
+    "native-dma-events.json": {
+      "bytes": 112651,
+      "sha256": "495682b59554a950b4526233723de73fad94efb37293110fa83fdeea53d68201",
+      "distribution": "local ignored artifact"
+    }
+  },
+  "frame_submit": "0x800684C4",
+  "gpu_driver_table": "0x800917F8",
+  "continuation_2026_09_07": {
+    "transform_hierarchy": "0x8001E8A8 instruction-verified parent+0x44, cache+0x20, dirty+0x40, Q12 translation composition",
+    "direction_lists": "0x8001F4FC/0x8001FD10 renderer pair lists and 0x8002005C quadrant selection",
+    "artifacts": {
+      "analysis/rendering/8001E8A8.json": {
+        "sha256": "7e1c5e0bc9f60dcd32599363e668320157f20c29ae03c309139cd0b01478fe8b",
+        "bytes": 6746
+      },
+      "analysis/rendering/80024878.json": {
+        "sha256": "f20bbd39a1c4a44740bac87c1561661e2a3b766786359ebaafae5be99ac18b81",
+        "bytes": 45038
+      }
+    }
+  },
+  "object_renderer_atlas": {
+    "status": "static-atlas-native-call-coverage-only",
+    "functions": [
+      "0x80010000",
+      "0x80011DE8",
+      "0x80012ED4"
+    ],
+    "oracle": "Corrected explicit-hex probe observes all seven main renderer entries; no matched object packet/frame parity yet.",
+    "artifacts": {
+      "analysis/rendering/80010000.json": {
+        "sha256": "dddad53522233af87586da01347489dd45e674b35563fe25c25255637cd81a7d",
+        "bytes": 108171,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/80011de8.json": {
+        "sha256": "954b54a52745ec637b64a3bd0c02cd955f00501f65a9a54ff9ed2a58499bd9dd",
+        "bytes": 61262,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/80012ed4.json": {
+        "sha256": "2a9e2bac67da819dbad7ea42bc7e5dace61942ea70e89f87cb368e14bfb49077",
+        "bytes": 32372,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/80010000.decomp.json": {
+        "sha256": "757f364a48e170694e415bc395486f998b6e16e40a0586fcd40abd17aaf7f3e8",
+        "bytes": 68207,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/80011de8.decomp.json": {
+        "sha256": "c8005d108bab635857a6c8eea7b309308905962732a886e96dead05821c971d1",
+        "bytes": 37638,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/80012ed4.decomp.json": {
+        "sha256": "20dd16dbd6f1b59d8c5355e4ec696c851c433159fe9f8e59369df7e14e27b353",
+        "bytes": 21771,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/object-entry-traces.json": {
+        "sha256": "335434958530a3f0515956ef211b3cb624ef15f3676439eb3c3f6d2aa09d9533",
+        "bytes": 44420,
+        "distribution": "local ignored artifact"
+      }
+    }
+  },
+  "track_pipeline": {
+    "status": "static-subdivision-material-allocation-map-with-independent-runtime-header-checks",
+    "coverage": "Seven rendering entries observed in both backends; first packet in both buffers for all three track pools verified after renderer calls. Full matched-frame and whole-pipeline verification remain open.",
+    "artifacts": {
+      "analysis/rendering/native-render-coverage-verified.json": {
+        "sha256": "3e710e4b13154106d8aee9fd261aa53764b9ad4222ad841a0900f34f0691893e",
+        "bytes": 71212,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/beetle-render-coverage-verified.json": {
+        "sha256": "6ff22e5038e972492fa958a2c422972a6b699aa54f4b43473d2827b9fe27b895",
+        "bytes": 78163,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/native-track-frame-verified.json": {
+        "sha256": "3c7756269e85d644da1ad0dc1bdc1c047486694afb11232083806ded0a6b5ac2",
+        "bytes": 1579,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/beetle-track-frame-verified.json": {
+        "sha256": "089f617f01dfb7f4719f1dfba4f7affd2ba4405d6507de44bc2ab9870a23945a",
+        "bytes": 1577,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/80062484.decomp.json": {
+        "sha256": "008da193226bc2247e0048d1801145c26f7f3e6911e73be074da4a00725d549f",
+        "bytes": 2051,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/80062550.json": {
+        "sha256": "7b6b6db6827b8f8cd4de0577ba4d89c12adf9e20a160a0b910ee8ececdef19b8",
+        "bytes": 8457,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/80061ff8.decomp.json": {
+        "sha256": "98fd0c8ceccb9ce28c473d6702db34c027bb8fd08290bc44151d3f0c1aa82f4d",
+        "bytes": 1682,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/80062134.decomp.json": {
+        "sha256": "24f03b85c78d40c7d599da5db8a00f53a93a046e7dd00a8a9b80c3adffdb7c70",
+        "bytes": 2050,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/800622dc.decomp.json": {
+        "sha256": "42c8c8da2d3da52cd9bf117cf26a41a87bd5862bafdf3533c47c0058ed621b60",
+        "bytes": 2048,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/8007b598.decomp.json": {
+        "sha256": "654e0dcf40d1fab725184005646cfd738be763d3601b45353014a331746ef47b",
+        "bytes": 215,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/80068214.json": {
+        "sha256": "b09bc42722a393acc8cabc85bf04234247ca51e131baf9d925d13f5fee28bc57",
+        "bytes": 3709,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/80068318.json": {
+        "sha256": "4a1c7e1faf2e5bb535ca32b273ca341b2c2b31d8e3912e84d26a214e0d24b6a0",
+        "bytes": 3953,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/8006842c.json": {
+        "sha256": "aace45ea1618757392eadcd9ddebf7cb3657304d4b3290ae8a3bdca8d23a1497",
+        "bytes": 2212,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/800140ac.json": {
+        "sha256": "ac56b39394041c4401bc930ecf9f8e2b46b06d3ab6f9106fcdd080f0f5370c1c",
+        "bytes": 37176,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/80014ad4.json": {
+        "sha256": "5333c9a4874407c042aede5451eff85f663b0d22f0f9d2ee891d705f66293ac7",
+        "bytes": 64768,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/80015d1c.json": {
+        "sha256": "f004ac37603e07e7d3a4d40dad6f3818214cf45dfe89644c84a5bb2aa84a71b2",
+        "bytes": 12407,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/80016110.json": {
+        "sha256": "210d7c23a7374307b9bc4ae62e15ef860fcae0370c69af70c144b893f39b17de",
+        "bytes": 12545,
+        "distribution": "local ignored artifact"
+      }
+    }
+  },
+  "invalidated_evidence": [
+    "Unprefixed-address oracle renderer probes; corrected probes verify watch read-back.",
+    "Asynchronous pool reads or snapshots selected only by nonzero counters; superseded by renderer-call-linked snapshots."
+  ],
+  "object_visibility": {
+    "entry": "0x80020128",
+    "status": "static-instructions-disc-byte-identity-and-both-backend-entry-coverage-verified",
+    "horizontal_bound_site": "0x80020388",
+    "horizontal_extent": 160,
+    "vertical_bound_site": "0x800203A8",
+    "vertical_extent": 120,
+    "limitation": "Branch outcomes, widened visibility, track-list coverage and HUD behavior remain unverified. No enhancement has been applied.",
+    "artifacts": {
+      "analysis/rendering/80020128.disasm.json": {
+        "sha256": "d28b45d0e635fac0761bd865c0b6b7c42d48bea211b9a423da1e42a562a2e964",
+        "bytes": 16114,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/80020128.decomp.json": {
+        "sha256": "57e955dff956be82fe84d67ec350e610dfd23fed4cc83039f294d671b6ed915f",
+        "bytes": 3146,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/rendering/8001a504.decomp.json": {
+        "sha256": "04977d18e5a02cbb2f5b3941d356728afe80262eb73add4a0a264c5c3ce6b07f",
+        "bytes": 12952,
+        "distribution": "local ignored artifact"
+      },
+      "analysis/verification/object-cull-baseline.json": {
+        "sha256": "9d9d94fa9354e5b398142d1af741d339874c2d8694449ea2996ceb839ef4b4f2",
+        "bytes": 12260,
+        "distribution": "local ignored artifact"
+      }
+    }
+  }
+}

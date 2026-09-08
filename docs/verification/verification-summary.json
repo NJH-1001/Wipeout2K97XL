@@ -1,0 +1,59 @@
+{
+  "date": "2026-09-07",
+  "bios_sha256": "6bee7e0b77c41ec069122127b6ec897eb7799fdf27a0bab38fb4f42424799b3d",
+  "emitted": 702,
+  "interpreted": 0,
+  "skipped": 0,
+  "instructions": 18043,
+  "dispatch_entries": 4096,
+  "oracle_bios_byte_identity": true,
+  "native_visible_result": "OpenBIOS boot through intro to visible Press Start; user confirms keyboard and PowerA Switch 2 input work",
+  "oracle_visible_result": "same-ROM OpenBIOS title and demo race",
+  "gameplay_verified": false,
+  "rendering_pipeline_complete": false,
+  "tests_passed": [
+    "full_function_emitter_test",
+    "bios_seed_objects_test",
+    "beetle_cycle_watch_test"
+  ],
+  "artifacts": {
+    "psxrecomp/generated/function_manifest.json": {
+      "bytes": 239457,
+      "sha256": "cd90dc7c62f40cf08e1d50558630240440ad954dc871146a3977feaa47131c09"
+    },
+    "psxrecomp/generated/unsupported_ops.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "psxrecomp/generated/OpenBIOS_skipped_functions.json": {
+      "bytes": 4,
+      "sha256": "3fbbd4c6d76130399b0c79cdf41758669224a91e05b7b216953f0c9728750865"
+    },
+    "build-win64/Wipeout2K97XL.exe": {
+      "bytes": 104619520,
+      "sha256": "36266844f9473a478550c0d5464c513072891077c6ab3e184c91dfc959a886e1"
+    },
+    "build-oracle/psx-beetle.exe": {
+      "bytes": 14900926,
+      "sha256": "613e837640f1ec91d020a85bf3131f07d3acf3f12fe55d78fea992de9f2eb3c9"
+    },
+    "psxrecomp/docs/beetle-observers.patch": {
+      "bytes": 15749,
+      "sha256": "c6d86f6a8ecd6e8031e194d17779724b2d28fb4474ba8eb685e0e9ce8d8bbf92"
+    },
+    "analysis/verification/native-host-pad.json": {
+      "bytes": 173,
+      "sha256": "8354bb2568bf2bbfc533acce176f0ff43728e2aa82db3896d9d91e5aea8d7bdc"
+    },
+    "analysis/verification/native-dma-events.json": {
+      "bytes": 112651,
+      "sha256": "495682b59554a950b4526233723de73fad94efb37293110fa83fdeea53d68201"
+    }
+  },
+  "user_input_verified": true,
+  "gameplay_verification_scope": "User reports the game works; complete races, saves and matched rendering have not been independently verified.",
+  "allocator_reference_records_matched": 32,
+  "negcon_oracle_serial_cases_passed": 5,
+  "native_negcon_verified": false,
+  "sio_elapsed_cycle_regressions": "six tests passed; native/Beetle digital packet parity passed"
+}

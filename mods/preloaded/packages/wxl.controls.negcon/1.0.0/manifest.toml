@@ -1,0 +1,170 @@
+format_version = 5
+id = "wxl.controls.negcon"
+version = "1.0.0"
+name = "NeGcon enhanced dual sticks"
+author = "Wipeout2K97XL project"
+description = "Configurable analog steering and acceleration with digital pitch and air-brakes. Changes apply on launch."
+resolver = "declarative"
+save_compatibility = "shared"
+
+[[target]]
+game_id = "SCUS-94351"
+
+[[feature]]
+id = "dual-sticks"
+name = "NeGcon enhanced dual sticks"
+description = "Custom starts with the recommended scheme. Recommended restores its behavior without erasing custom choices. Use input.ini to bypass overrides. Right-stick steering and brakes can overlap; disable stick brakes if unwanted."
+group = "Controls"
+default_enabled = true
+
+[[option]]
+feature = "dual-sticks"
+id = "preset"
+label = "Control preset"
+type = "choice"
+default = "custom"
+
+[[option.choice]]
+value = "custom"
+label = "Custom (options below)"
+
+[[option.choice]]
+value = "recommended"
+label = "Recommended dual sticks"
+
+[[option.choice]]
+value = "input-ini"
+label = "Use input.ini bindings"
+
+[[option]]
+feature = "dual-sticks"
+id = "steering"
+label = "Analog steering"
+type = "choice"
+default = "left"
+
+[[option.choice]]
+value = "left"
+label = "Left stick horizontal"
+
+[[option.choice]]
+value = "right"
+label = "Right stick horizontal"
+
+[[option.choice]]
+value = "off"
+label = "Disabled"
+
+[[option]]
+feature = "dual-sticks"
+id = "pitch"
+label = "Pitch (digital)"
+type = "choice"
+default = "right"
+
+[[option.choice]]
+value = "off"
+label = "Disabled"
+
+[[option.choice]]
+value = "left"
+label = "Left stick vertical"
+
+[[option.choice]]
+value = "right"
+label = "Right stick vertical"
+
+[[option]]
+feature = "dual-sticks"
+id = "brakes"
+label = "Right-stick air-brakes (digital)"
+type = "choice"
+default = "reversed"
+
+[[option.choice]]
+value = "off"
+label = "Disabled"
+
+[[option.choice]]
+value = "normal"
+label = "Normal"
+
+[[option.choice]]
+value = "reversed"
+label = "Reversed"
+
+[[option]]
+feature = "dual-sticks"
+id = "shoulders"
+label = "Mapped brake buttons"
+type = "choice"
+default = "preserve"
+
+[[option.choice]]
+value = "preserve"
+label = "Keep L1/R1 bindings"
+
+[[option.choice]]
+value = "swap"
+label = "Swap L1/R1"
+
+[[option.choice]]
+value = "off"
+label = "Disabled"
+
+[[option]]
+feature = "dual-sticks"
+id = "throttle"
+label = "Analog acceleration"
+type = "choice"
+default = "right"
+
+[[option.choice]]
+value = "off"
+label = "Disabled"
+
+[[option.choice]]
+value = "right"
+label = "Right trigger"
+
+[[option.choice]]
+value = "left"
+label = "Left trigger"
+
+[[option]]
+feature = "dual-sticks"
+id = "secondary"
+label = "NeGcon II pressure"
+type = "choice"
+default = "left"
+
+[[option.choice]]
+value = "off"
+label = "Disabled"
+
+[[option.choice]]
+value = "left"
+label = "Left trigger"
+
+[[option.choice]]
+value = "right"
+label = "Right trigger"
+
+[[option]]
+feature = "dual-sticks"
+id = "face-acceleration"
+label = "Mapped face-button acceleration"
+type = "choice"
+default = "on"
+
+[[option.choice]]
+value = "off"
+label = "Disabled"
+
+[[option.choice]]
+value = "on"
+label = "Enabled"
+
+[[plugin]]
+feature = "dual-sticks"
+id = "wxl.negcon"

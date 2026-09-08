@@ -1,0 +1,50 @@
+{
+  "status": "general-user-allocator-corrected-32-record-oracle-match-native-post-intro",
+  "bios": "OpenBIOS",
+  "allocation": {
+    "function": "0x8011B198",
+    "frame": 1961,
+    "pointer": "0x80195F10",
+    "payload_size": "0x4000",
+    "header_size": 16
+  },
+  "cleanup": {
+    "frame": 6052,
+    "caller": "0x8011A954",
+    "return_address": "0x8011A95C",
+    "bios_call": "A0:34"
+  },
+  "proof_hashes": {
+    "heap-calls.json": "d1a6dbd446e1abd89d5f56c0e14b5bb5847a99646fd39245a51f18691d6feb1e",
+    "heap-writes.json": "89e38a1eddefe5503327241b78536e02f1661d996a3d5de6d3540206d030c23d",
+    "intro-allocation-cleanup.json": "36881eb8e9fa54fd2506883bc90548e41e66d91ff097435f1dc2887be5a720b9",
+    "intro-custom-allocation.json": "6647bb463c34cc7d06cbf421eccf13eaa7f7e5b3424dc7b3ec175116175b4216",
+    "allocator-reference.bin": "629b737e4019d5e7974c70dd664eb5d684cb882136a17cf6a347c6da61eddf29",
+    "allocator-reference.json": "f0bb0bd25f9fa85935bf07f23e9604327999f209c77903aa604568b039bbdfe1",
+    "allocator-openbios.bin": "862ae0b7de7cc632a4cecc2e23dbe73279b02073ba18832458ed15f193a2a9fd",
+    "allocator-openbios.json": "9921c41653a0e8b9c2e2ae147cb18b87d9a27bb7d6bfba25361c2f6c44f5760d",
+    "allocator-reference-initial.bin": "68d1459cc2916e03e002c2264095c13c51b53d1af6f0164f2f0a7d7d78f52425"
+  },
+  "reference": {
+    "name": "PSXONPSP660.BIN",
+    "role": "comparison only; OpenBIOS remains target",
+    "sha256": "cbe758e1c8ece593c8e14ce1e8b3436428a01c608032a02613b3a4b442b4d712",
+    "rom_readback_verified": true,
+    "game_observation": "3D attract/credits after intro"
+  },
+  "probe": {
+    "records": 17,
+    "reference_phase": 2,
+    "openbios_phase": 2,
+    "source": "tools/allocator_probe",
+    "coverage": "initial directed cases; not exhaustive",
+    "realloc_sequence_failure_retained": true
+  },
+  "build_manifest": "openbios-allocator-build.json",
+  "expanded_probe": {
+    "records": 32,
+    "complete": true,
+    "byte_identical": true,
+    "result_sha256": "f121f50cfd7bcb87f8082b61e1dd424c86c27fde910e5b481bfff225a8ecd261"
+  }
+}

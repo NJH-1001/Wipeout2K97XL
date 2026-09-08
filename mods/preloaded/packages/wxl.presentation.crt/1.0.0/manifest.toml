@@ -1,0 +1,37 @@
+format_version = 5
+id = "wxl.presentation.crt"
+version = "1.0.0"
+name = "CRT Display"
+author = "Wipeout2K97XL project"
+description = "JVC- and Sony Trinitron-inspired display effects, based on the character of the MiSTer presets. OpenGL only."
+resolver = "declarative"
+save_compatibility = "shared"
+
+[[target]]
+game_id = "SCUS-94351"
+
+[[feature]]
+id = "crt"
+name = "CRT Display"
+description = "Adaptive scanlines and a display mask. Best at 3x scale or higher. These are visual approximations, not exact FPGA filter reproductions."
+group = "Visual"
+default_enabled = false
+
+[[option]]
+feature = "crt"
+id = "preset"
+label = "Display style"
+type = "choice"
+default = "jvc"
+
+[[option.choice]]
+value = "jvc"
+label = "JVC"
+
+[[option.choice]]
+value = "trinitron"
+label = "Sony Trinitron"
+
+[[plugin]]
+feature = "crt"
+id = "wxl.crt"
