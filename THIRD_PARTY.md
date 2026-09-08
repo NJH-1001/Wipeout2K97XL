@@ -16,3 +16,6 @@ Components retain their upstream licenses; included license files are authoritat
 
 No rights to the original game are granted. This compatibility project does not
 include the original game's content or retail Sony BIOS firmware.
+
+Runtime DLL notices are included under docs/licenses (LLVM, GCC runtime
+exception, winpthreads and SDL3).

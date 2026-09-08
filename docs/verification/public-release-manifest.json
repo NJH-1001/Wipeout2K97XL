@@ -1,7 +1,7 @@
 {
-  "status": "public-preview-verified",
-  "sha256": "95019065cd24709b61e32dee43cc9b72a0b7c1d8b17ac8a4907de9d1bb7f550e",
-  "bytes": 58203921,
+  "status": "published and verified",
+  "sha256": "a0cba6005f7c3783b79e8f969ca14070ec8ccacda635a1199911768fe0a090c8",
+  "bytes": 45046549,
   "matched_tested_source_files": 313,
   "archive_audit": "passed",
   "setup_host": "RelWithDebInfo AMD64, no game code or BIOS backend",
@@ -16,7 +16,14 @@
   "framework_patch": "applies to pinned checkout;46 modified/new inputs match",
   "limitations": [
     "initial preview; exhaustive rendering and full-game coverage incomplete",
-    "Windows CI workflow not yet run",
     "only attached controllers physically tested"
-  ]
+  ],
+  "release_url": "https://github.com/NJH-1001/Wipeout2K97XL/releases/tag/v0.1.0",
+  "github_asset_digest_matches": true,
+  "ci_url": "https://github.com/NJH-1001/Wipeout2K97XL/actions/runs/34230697278",
+  "ci_status": "success",
+  "dependency_audit": "all9PEs pass recursive import audit",
+  "artifact_origin": "Clean Windows CI output;2121 CI entries byte-identical, seven runtime license texts added",
+  "clean_PATH_startup": "passed",
+  "ci_emitter_generated_C_identity": 41
 }

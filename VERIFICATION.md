@@ -29,3 +29,18 @@ Full-game completion, exhaustive 3D rendering-path analysis, every track/camera,
 save/load round trips, separate Windows 10 and 11 systems, AMD hardware and
 untested controller families remain outside the completed verification scope.
 Raw diagnostic evidence stays local.
+
+
+## Independent Windows release build
+
+GitHub Actions run 34230697278 passes compilation, packaging and audit. The
+public kit uses that clean-runner artifact, with seven standard runtime license
+notices added. All 2121 original entries were independently compared byte for
+byte with the downloaded Actions artifact. The runner had no private disc data.
+All nine packaged PE files pass an explicit-filename dependency audit. The
+setup launcher opens with PATH restricted to Windows system directories.
+Its bundled emitters generate the same 41 game C files as the previously
+compiled, user-tested build; generated files remain local and outside the ZIP.
+
+An earlier local ZIP was withdrawn after discovering omitted LLVM runtime DLLs.
+The corrected published kit is the CI-produced archive described above.

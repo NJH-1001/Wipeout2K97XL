@@ -15,3 +15,5 @@ Visual mods are off by default. Windows binaries are unsigned.
 The archive contains setup tools and open-source firmware, not game content.
 Game code is generated locally. Keep local saves and custom settings backed up.
 See README.md and VERIFICATION.md for instructions and testing limits.
+
+The downloadable kit comes from [Windows CI run 34230697278](https://github.com/NJH-1001/Wipeout2K97XL/actions/runs/34230697278), source commit `160a562601b96ba9b65bc76d2f5ab4dcd987e552`, with runtime license notices added. Dependency audit and clean-PATH launcher startup pass.
