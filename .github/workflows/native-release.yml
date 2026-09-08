@@ -30,7 +30,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
-          sudo apt-get install -y ninja-build libgl1-mesa-dev libasound2-dev libpulse-dev libudev-dev libx11-dev libxext-dev libxrandr-dev libxcursor-dev libxi-dev libxfixes-dev libxss-dev libxtst-dev libxkbcommon-dev libwayland-dev libdecor-0-dev zip rsync xvfb
+          sudo apt-get install -y ninja-build libgl1-mesa-dev libasound2-dev libpulse-dev libudev-dev libx11-dev libxext-dev libxrandr-dev libxcursor-dev libxi-dev libxfixes-dev libxss-dev libxtst-dev libxkbcommon-dev libwayland-dev libdecor-0-dev zip rsync xvfb xdotool imagemagick
       - name: macOS dependencies
         if: runner.os == 'macOS'
         run: brew install ninja
@@ -49,10 +49,17 @@ jobs:
         run: bash scripts/package_setup_release.sh build-ci '${{ matrix.artifact }}' build-recompiler
       - name: Audit native package
         run: python tools/audit_native_release.py dist/wipeoutxl-*-${{ matrix.artifact }}.zip '${{ matrix.artifact }}'
+      - name: Extracted launcher smoke test (Linux)
+        if: runner.os == 'Linux'
+        run: xvfb-run -a python tools/smoke_native_setup.py dist/wipeoutxl-*-${{ matrix.artifact }}.zip
+      - name: Extracted launcher smoke test (macOS)
+        if: runner.os == 'macOS'
+        run: python tools/smoke_native_setup.py dist/wipeoutxl-*-${{ matrix.artifact }}.zip
       - uses: actions/upload-artifact@v4
         with:
           name: wipeoutxl-${{ matrix.artifact }}
           path: |
             dist/*.zip
             dist/*.sha256
+            native-setup.png
           if-no-files-found: error
