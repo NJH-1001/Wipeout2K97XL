@@ -1,0 +1,68 @@
+{
+  "ci_run": 34263238594,
+  "ci_source": "49c024a373e7bee20aa32df5caf60b1d9b8a3511",
+  "status": "draft-awaiting-native-gameplay-verification",
+  "checks": [
+    "native RelWithDebInfo setup-host build",
+    "native emitter build and startup",
+    "archive forbidden-content audit",
+    "native architecture and dependency audit",
+    "extracted launcher visible screenshot reviewed"
+  ],
+  "unverified": [
+    "local game generation and rebuild",
+    "OpenBIOS game boot and race",
+    "physical controller behavior",
+    "display mods"
+  ],
+  "artifacts": [
+    {
+      "name": "wipeoutxl-0.1.0-linux-x64.zip",
+      "bytes": 45599962,
+      "sha256": "812157350da6c3c64af77f1f74f8f819bb1a94bb73c9fda0c91cc0a5c0bcc39b",
+      "ci_zip_sha256": "6503ee393489daf42b243eb4b1c374bcca7c5f750ed8a0d8dddb8b0241a769da",
+      "only_changed_entries": [
+        "README.md",
+        "VERIFICATION.md",
+        "docs/controllers.md",
+        "docs/images/negcon-dual-sticks.svg",
+        "docs/native-platforms.md",
+        "NATIVE_RELEASE_NOTES.md"
+      ],
+      "all_other_entries_and_permissions": "byte-identical to CI",
+      "launcher_screenshot": "visually verified"
+    },
+    {
+      "name": "wipeoutxl-0.1.0-macos-x64.zip",
+      "bytes": 22313515,
+      "sha256": "e6227c4b7881a918377e1de0f34c0f7ccd27bdb181545176484cb509459665ff",
+      "ci_zip_sha256": "c88ac80cbbc0c65209491ba11563f1da18736524c6940ea4e2a4d79a397c96b6",
+      "only_changed_entries": [
+        "README.md",
+        "VERIFICATION.md",
+        "docs/controllers.md",
+        "docs/images/negcon-dual-sticks.svg",
+        "docs/native-platforms.md",
+        "NATIVE_RELEASE_NOTES.md"
+      ],
+      "all_other_entries_and_permissions": "byte-identical to CI",
+      "launcher_screenshot": "visually verified"
+    },
+    {
+      "name": "wipeoutxl-0.1.0-macos-arm64.zip",
+      "bytes": 21878588,
+      "sha256": "fb7ed2c5e55f0f319a6428fb7333e171d897529b9dc6d489cafb5e164068ca82",
+      "ci_zip_sha256": "b3f1ee17acd6f4c0f6b818e2e537077048a278c8e6beb18882c35355612ff68b",
+      "only_changed_entries": [
+        "README.md",
+        "VERIFICATION.md",
+        "docs/controllers.md",
+        "docs/images/negcon-dual-sticks.svg",
+        "docs/native-platforms.md",
+        "NATIVE_RELEASE_NOTES.md"
+      ],
+      "all_other_entries_and_permissions": "byte-identical to CI",
+      "launcher_screenshot": "visually verified"
+    }
+  ]
+}
