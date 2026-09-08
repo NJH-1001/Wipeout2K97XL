@@ -19,7 +19,7 @@ jobs:
           update: true
           install: >-
             mingw-w64-x86_64-toolchain mingw-w64-x86_64-cmake
-            mingw-w64-x86_64-ninja mingw-w64-x86_64-SDL3
+            mingw-w64-x86_64-ninja mingw-w64-x86_64-sdl3
             mingw-w64-x86_64-python mingw-w64-x86_64-pkgconf
             mingw-w64-x86_64-vulkan-headers mingw-w64-x86_64-shaderc
             zip curl
