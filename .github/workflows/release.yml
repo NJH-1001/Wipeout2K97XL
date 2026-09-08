@@ -24,7 +24,8 @@ jobs:
             mingw-w64-x86_64-vulkan-headers mingw-w64-x86_64-shaderc
             zip curl git
       - name: Apply framework changes
-        run: git -C psxrecomp apply ../patches/psxrecomp.patch
+        shell: bash
+        run: git -c core.autocrlf=true -C psxrecomp apply ../patches/psxrecomp.patch
       - name: Build emitters and setup host
         run: |
           set -euo pipefail
