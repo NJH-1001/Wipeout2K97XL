@@ -18,8 +18,8 @@
   "artifacts": [
     {
       "name": "wipeoutxl-0.1.0-linux-x64.zip",
-      "bytes": 45822533,
-      "sha256": "0e8a042320a740f375e819d33a20f838a097a7312d919e59df6606f1d5871bd6",
+      "bytes": 45827368,
+      "sha256": "53dc9e670ea2b95d0183e28f0d71a4374542c0fc3076f676f083d36e628c64b8",
       "ci_zip_sha256": "6503ee393489daf42b243eb4b1c374bcca7c5f750ed8a0d8dddb8b0241a769da",
       "only_changed_entries": [
         "README.md",
@@ -34,8 +34,8 @@
     },
     {
       "name": "wipeoutxl-0.1.0-macos-x64.zip",
-      "bytes": 22536086,
-      "sha256": "c258bdfa759b88b7983ba3765c2e78a94ecf3cefd9ecf67ed3611d182be5e1c9",
+      "bytes": 22540921,
+      "sha256": "7e651f0289d8ce07cb76cf107e1fb5c2678c574a134c51ffa5bee9d5eb76a715",
       "ci_zip_sha256": "c88ac80cbbc0c65209491ba11563f1da18736524c6940ea4e2a4d79a397c96b6",
       "only_changed_entries": [
         "README.md",
@@ -50,8 +50,8 @@
     },
     {
       "name": "wipeoutxl-0.1.0-macos-arm64.zip",
-      "bytes": 22101159,
-      "sha256": "0d3121b7b09990f733ef848dafd5d2a681e15530d6ed1bfd6aa8b95cc0255a5c",
+      "bytes": 22105994,
+      "sha256": "e6a8aba80974cf795b65defd46d39794770993a11947ad8fd295b4c15cfd6b62",
       "ci_zip_sha256": "b3f1ee17acd6f4c0f6b818e2e537077048a278c8e6beb18882c35355612ff68b",
       "only_changed_entries": [
         "README.md",
