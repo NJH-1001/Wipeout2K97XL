@@ -46,7 +46,7 @@ An earlier local ZIP was withdrawn after discovering omitted LLVM runtime DLLs.
 The corrected published kit is the CI-produced archive described above.
 
 
-## Native platform candidates
+## Native experimental previews
 
 Native CI builds Linux x64 and macOS x64/arm64 setup hosts and emitters.
 The archive audit checks content, architecture, executable mode and dependencies.
@@ -54,3 +54,6 @@ Extracted launcher screenshots are reviewed for a visible first-run window.
 Game generation/rebuild, OpenBIOS gameplay and hardware input on those platforms
 remain unverified: no Linux/Mac machine with the owned disc is available.
 See [native verification gates](docs/native-platforms.md).
+
+The owner explicitly approved publishing native kits as experimental previews
+marked **gameplay unverified**. This does not close the gameplay verification gates.

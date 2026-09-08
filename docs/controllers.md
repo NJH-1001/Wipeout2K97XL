@@ -1,9 +1,12 @@
 # Controller verification
 
-![Default NeGcon enhanced dual-stick controller diagram](images/negcon-dual-sticks.svg)
+![Default NeGcon enhanced dual-stick controller diagram](images/negcon-dual-sticks.png)
 
-The diagram uses physical button positions across Xbox, PlayStation and Switch.
-It depicts the shipped default; launcher choices and in-game remapping can change it.
+The user-provided diagram illustrates the enhanced sticks and triggers on a
+PlayStation-style controller. The same positional inputs apply to Xbox and Switch.
+Default right-stick brakes are reversed: left activates the right air-brake,
+right activates the left. L1/R1 retain normal left/right brakes. Launcher choices
+and in-game remapping can change this preset; see the full bindings below.
 
 Left trigger and the left face button both send NeGcon II (fire weapon).
 The right face sends NeGcon A (discard weapon); the top face sends NeGcon B

@@ -22,8 +22,8 @@ and all **12 BIN tracks**. Other regions and revisions are not supported.
 
 No disc images, extracted game executable, generated game code, retail BIOS,
 memory cards, captures or analysis databases are distributed. Windows setup
-binaries are unsigned. Native Linux x64 and macOS Intel/Apple Silicon candidate
-kits are prepared separately; gameplay verification remains open. See
+binaries are unsigned. [Experimental Linux and macOS previews](https://github.com/NJH-1001/Wipeout2K97XL/releases/tag/v0.1.0-native-preview)
+are available for Linux x64 and Intel/Apple Silicon Macs. **Gameplay unverified.** See
 [native platform status and setup](docs/native-platforms.md).
 
 ### Supported data track
@@ -43,9 +43,9 @@ models use SDL3 mappings but have not been physically tested here.
 
 The **NeGcon enhanced dual sticks** mod starts with this customizable preset:
 
-![Labeled default NeGcon enhanced dual-stick controls](docs/images/negcon-dual-sticks.svg)
+![NeGcon enhanced dual sticks: steering, pitch, air-brakes, weapon and acceleration](docs/images/negcon-dual-sticks.png)
 
-[Open the full-size controller diagram](docs/images/negcon-dual-sticks.svg).
+[Open the full-size controller diagram](docs/images/negcon-dual-sticks.png).
 
 | Input | Action |
 | --- | --- |

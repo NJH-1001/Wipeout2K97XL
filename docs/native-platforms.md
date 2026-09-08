@@ -15,9 +15,10 @@ launcher and captures its visible first-run window.
 These checks do **not** establish successful local game generation, compilation,
 OpenBIOS game boot, a completed race, controller behavior or display-mod behavior
 on Linux/macOS. No Linux or Mac test machine with the owner's disc is available.
-The native release is held as a draft pending that verification or an explicit
-decision to publish it as an unverified gameplay preview. Windows remains the
-gameplay-tested release. CI never receives the disc or generated game code.
+These kits are published as **experimental previews — gameplay unverified**,
+with the project owner’s explicit approval.
+[Download the previews](https://github.com/NJH-1001/Wipeout2K97XL/releases/tag/v0.1.0-native-preview).
+Windows remains the gameplay-tested release. CI never receives the disc or generated game code.
 
 ## Targets and prerequisites
 
