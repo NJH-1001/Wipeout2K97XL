@@ -31,7 +31,7 @@ jobs:
           set -euo pipefail
           cmake -S psxrecomp/recompiler -B build-recompiler -G Ninja -DCMAKE_BUILD_TYPE=Release -DPSXRECOMP_STATIC_CLI=ON
           cmake --build build-recompiler --target psxrecomp-game psxrecomp-bios -j4
-          cmake -S . -B build-ci -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DPSXRECOMP_FORCE_SETUP_HOST=ON -DPSXRECOMP_ALLOW_NO_BIOS=ON
+          cmake -S . -B build-ci -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DPSXRECOMP_FORCE_SETUP_HOST=ON -DPSXRECOMP_ALLOW_NO_BIOS=ON -DPSX_GAME_VERSION="$(cat VERSION)"
           cmake --build build-ci --target psx-runtime -j4
       - name: Package and audit
         env:
