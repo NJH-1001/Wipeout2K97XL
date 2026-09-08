@@ -1,0 +1,58 @@
+name: Linux and macOS setup kits
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-22.04
+            artifact: linux-x64
+          - os: macos-15-intel
+            artifact: macos-x64
+          - os: macos-15
+            artifact: macos-arm64
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Linux dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build libgl1-mesa-dev libasound2-dev libpulse-dev libudev-dev libx11-dev libxext-dev libxrandr-dev libxcursor-dev libxi-dev libxfixes-dev libxss-dev libxtst-dev libxkbcommon-dev libwayland-dev libdecor-0-dev zip rsync xvfb
+      - name: macOS dependencies
+        if: runner.os == 'macOS'
+        run: brew install ninja
+      - name: Apply framework changes
+        run: git -C psxrecomp apply ../patches/psxrecomp.patch
+      - name: Build native emitters and setup host
+        run: |
+          set -euo pipefail
+          cmake -S psxrecomp/recompiler -B build-recompiler -G Ninja -DCMAKE_BUILD_TYPE=Release -DPSXRECOMP_STATIC_CLI=ON
+          cmake --build build-recompiler --target psxrecomp-game psxrecomp-bios -j3
+          cmake -S . -B build-ci -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DPSXRECOMP_FORCE_SETUP_HOST=ON -DPSXRECOMP_ALLOW_NO_BIOS=ON -DPSX_GAME_VERSION="$(cat VERSION)" -DCMAKE_DISABLE_FIND_PACKAGE_SDL3=ON
+          cmake --build build-ci --target psx-runtime -j3
+      - name: Package
+        env:
+          EXCLUDE_DEV_MODS: '1'
+        run: bash scripts/package_setup_release.sh build-ci '${{ matrix.artifact }}' build-recompiler
+      - name: Audit native package
+        run: python tools/audit_native_release.py dist/wipeoutxl-*-${{ matrix.artifact }}.zip '${{ matrix.artifact }}'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wipeoutxl-${{ matrix.artifact }}
+          path: |
+            dist/*.zip
+            dist/*.sha256
+          if-no-files-found: error
