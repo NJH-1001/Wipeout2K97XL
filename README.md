@@ -22,7 +22,9 @@ and all **12 BIN tracks**. Other regions and revisions are not supported.
 
 No disc images, extracted game executable, generated game code, retail BIOS,
 memory cards, captures or analysis databases are distributed. Windows setup
-binaries are unsigned. No Linux, macOS or ARM release is offered here.
+binaries are unsigned. Native Linux x64 and macOS Intel/Apple Silicon candidate
+kits are prepared separately; gameplay verification remains open. See
+[native platform status and setup](docs/native-platforms.md).
 
 ### Supported data track
 
