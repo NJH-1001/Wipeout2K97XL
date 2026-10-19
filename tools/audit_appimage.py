@@ -34,7 +34,11 @@ with tempfile.TemporaryDirectory(prefix='wxl-appimage-audit-') as tmp:
         assert p.name not in {'settings.toml', 'state.toml', 'disc.cfg', 'bios.cfg', 'psx_bios_disasm.txt'}, rel
     env = {**os.environ, 'LD_LIBRARY_PATH': str(appdir / 'usr/lib') + ':' + str(appdir / 'usr/python/lib')}
     count = 0
-    for p in (appdir / 'usr').rglob('*'):
+    runtime_files = [kit / 'Wipeout2K97XL',
+                     kit / 'psxrecomp/recompiler/build/psxrecomp-game',
+                     kit / 'psxrecomp/recompiler/build/psxrecomp-bios']
+    runtime_files += list((appdir / 'usr/python').rglob('*')) + list((appdir / 'usr/lib').rglob('*'))
+    for p in runtime_files:
         if not p.is_file():
             continue
         with p.open('rb') as stream:

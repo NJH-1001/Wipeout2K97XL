@@ -61,7 +61,11 @@ for package in ['libstdc++6', 'libgcc-s1', 'zlib1g', 'ca-certificates']:
 # OpenGL on the host; never bundle a GPU driver or the dynamic loader.
 core = re.compile(r'lib(c|m|dl|pthread|rt|resolv|util|OpenGL|GLdispatch)\.so\.[0-9]+')
 env = {**os.environ, 'LD_LIBRARY_PATH': str(lib) + ':' + str(python_root / 'lib')}
-for p in list((appdir / 'usr').rglob('*')):
+runtime_files = [kit / 'Wipeout2K97XL',
+                 kit / 'psxrecomp/recompiler/build/psxrecomp-game',
+                 kit / 'psxrecomp/recompiler/build/psxrecomp-bios']
+runtime_files += list(python_root.rglob('*')) + list(lib.rglob('*'))
+for p in runtime_files:
     if not p.is_file():
         continue
     with p.open('rb') as stream:
