@@ -70,9 +70,11 @@ The read-only image seeds a writable copy under
 `~/.local/share/Wipeout2K97XL/versions/<payload-id>/` (or `$XDG_DATA_HOME`).
 Disc preparation, game generation, compiler outputs and rebuilt player live
 there. The AppImage never modifies itself or incorporates the user's data.
-Saves, input bindings, launcher settings and mod selections are shared under
+Saves, input bindings, launcher settings and mod selections are kept under
 `~/.local/share/Wipeout2K97XL/profile/`, including across changed image payloads.
-Keep this directory backed up. A new payload uses a separate build directory;
+Saves are shared immediately; settings are synchronized when the launcher/player
+closes, including settings saved by atomic file replacement. One instance may
+use a profile at a time. Keep this directory backed up. A new payload uses a separate build directory;
 it may require disc selection and rebuilding again.
 
 `WXL_APPIMAGE_DATA_DIR` can specify another **absolute** writable data directory.

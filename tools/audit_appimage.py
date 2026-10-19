@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 import re
+import signal
 import subprocess
 import sys
 import tempfile
@@ -63,7 +64,7 @@ with tempfile.TemporaryDirectory(prefix='wxl-appimage-audit-') as tmp:
     # Run the actual single-file artifact, including extraction (no FUSE required).
     home = tmp / 'writable data'
     env = {**os.environ, 'WXL_APPIMAGE_DATA_DIR': str(home), 'APPIMAGE_EXTRACT_AND_RUN': '1'}
-    proc = subprocess.Popen([str(image)], env=env, cwd=tmp)
+    proc = subprocess.Popen([str(image)], env=env, cwd=tmp, start_new_session=True)
     try:
         time.sleep(14)
         assert proc.poll() is None, proc.returncode
@@ -76,11 +77,11 @@ with tempfile.TemporaryDirectory(prefix='wxl-appimage-audit-') as tmp:
         assert (install / 'saves').resolve() == (home / 'profile/saves').resolve()
         assert (install / '.appimage-python/bin/python3').exists()
     finally:
-        proc.terminate()
+        os.killpg(proc.pid, signal.SIGTERM)
         try:
             proc.wait(timeout=10)
         except subprocess.TimeoutExpired:
-            proc.kill()
+            os.killpg(proc.pid, signal.SIGKILL)
 proof = json.loads((root / 'dist/appimage-build-proof.json').read_text())
 proof.update({'content_audit': 'passed', 'elf_architecture_and_dependencies': 'passed',
               'elf_files_checked': count, 'portable_python_https': 'passed',

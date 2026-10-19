@@ -21,22 +21,27 @@ if [[ ! -f "$install/.appimage-ready" ]]; then
     for file in input.ini keybinds.ini; do
         [[ -e "$profile/$file" ]] || cp -- "$install/$file" "$profile/$file"
     done
-    for file in settings.toml mods-state.toml; do
-        [[ -e "$profile/$file" ]] || : >"$profile/$file"
-    done
-    # Both the setup host and the locally built player use the shared profile.
+    [[ -e "$profile/settings.toml" ]] || : >"$profile/settings.toml"
+    [[ -e "$profile/mods-state.toml" ]] || printf 'format_version = 2\n' >"$profile/mods-state.toml"
+    # Save directories remain shared even when the game atomically replaces a card.
     for base in "$install" "$install/build-release"; do
         mkdir -p -- "$base/mods"
-        for file in input.ini keybinds.ini settings.toml; do
-            ln -sfn -- "$profile/$file" "$base/$file"
-        done
         ln -sfn -- "$profile/saves" "$base/saves"
-        ln -sfn -- "$profile/mods-state.toml" "$base/mods/state.toml"
     done
     : >"$install/.appimage-ready"
 fi
 flock -u 9
 exec 9>&-
+# Config writers replace files atomically, which would replace a file symlink.
+# Copy the shared profile in, then commit changed files after the player exits.
+exec 8>"$data/profile.lock"
+flock -n 8 || { echo 'Wipeout2K97XL is already running with this profile' >&2; exit 1; }
+for base in "$install" "$install/build-release"; do
+    for file in input.ini keybinds.ini settings.toml; do
+        cp -p -- "$profile/$file" "$base/$file"
+    done
+    cp -p -- "$profile/mods-state.toml" "$base/mods/state.toml"
+done
 
 # Keep dependencies available even when the setup host exits to rebuild.
 export LD_LIBRARY_PATH="$install/.appimage-lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
@@ -61,4 +66,23 @@ case "${WXL_STEAM_INPUT_MODE:-steam}" in
 esac
 export SDL_GAMECONTROLLER_ALLOW_STEAM_VIRTUAL_GAMEPAD="${SDL_GAMECONTROLLER_ALLOW_STEAM_VIRTUAL_GAMEPAD:-1}"
 cd -- "$install"
-exec "$install/Wipeout2K97XL" "$@"
+"$install/Wipeout2K97XL" "$@" &
+child=$!
+trap 'kill -TERM "$child" 2>/dev/null || true' TERM INT
+status=0
+wait "$child" || status=$?
+if kill -0 "$child" 2>/dev/null; then wait "$child" || status=$?; fi
+trap - TERM INT
+for file in input.ini keybinds.ini settings.toml mods-state.toml; do
+    relative="$file"
+    [[ "$file" != mods-state.toml ]] || relative=mods/state.toml
+    latest=""
+    for base in "$install" "$install/build-release"; do
+        candidate="$base/$relative"
+        if [[ -f "$candidate" ]] && ! cmp -s -- "$candidate" "$profile/$file"; then
+            if [[ -z "$latest" || ! "$latest" -nt "$candidate" ]]; then latest="$candidate"; fi
+        fi
+    done
+    [[ -z "$latest" ]] || cp -p -- "$latest" "$profile/$file"
+done
+exit "$status"
