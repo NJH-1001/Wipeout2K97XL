@@ -118,15 +118,15 @@
     {
       "run_id": 39342107976,
       "url": "https://github.com/NJH-1001/Wipeout2K97XL/actions/runs/39342107976",
-      "status": "in_progress",
-      "conclusion": null,
+      "status": "completed",
+      "conclusion": "success",
       "source_commit": "de093f5b1bf0a70762cedf87e05c286aa449ad48"
     },
     {
       "run_id": 39342109986,
       "url": "https://github.com/NJH-1001/Wipeout2K97XL/actions/runs/39342109986",
-      "status": "in_progress",
-      "conclusion": null,
+      "status": "completed",
+      "conclusion": "success",
       "source_commit": "de093f5b1bf0a70762cedf87e05c286aa449ad48"
     }
   ]
