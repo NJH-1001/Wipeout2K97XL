@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Wipeout2K97XL
+Comment=Wipeout XL setup kit for Steam Deck; supply your own disc
+Exec=AppRun
+Icon=wipeoutxl
+Categories=Game;
+Terminal=false

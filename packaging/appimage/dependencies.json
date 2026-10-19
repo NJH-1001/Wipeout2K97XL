@@ -1,0 +1,18 @@
+{
+  "linux_kit": {
+    "url": "https://github.com/NJH-1001/Wipeout2K97XL/releases/download/v0.1.0/wipeoutxl-0.1.0-linux-x64.zip",
+    "sha256": "4507a2f861018ca038909f63d139b3c95f5423560734aad2ffa185579b884f8d"
+  },
+  "python": {
+    "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20261013/cpython-3.12.15%2B20261013-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz",
+    "sha256": "178d3d83b6e8e99285a65d3fce9c16b87952cc5efdb4d1a0e3ff3be18ff0fc9c"
+  },
+  "appimagetool": {
+    "url": "https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage",
+    "sha256": "95cbe7cce9717fce90c484e34052ee7c7f1d7635b33c12525b4776826a7d29b6"
+  },
+  "runtime": {
+    "url": "https://github.com/AppImage/type2-runtime/releases/download/continuous/runtime-x86_64",
+    "sha256": "617aa77314d57c8b8e4fae9c3f0b35af7b30d5529cb69e98f64f92510ed98a46"
+  }
+}

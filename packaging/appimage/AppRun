@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+# The distributed payload is a setup kit. All owner-generated files stay outside it.
+set -euo pipefail
+APPDIR="${APPDIR:-$(cd -- "$(dirname -- "$0")" && pwd)}"
+identity="$(cat "$APPDIR/payload-id")"
+[[ "$identity" =~ ^[a-f0-9]{64}$ ]] || { echo 'Invalid AppImage payload identity' >&2; exit 1; }
+data="${WXL_APPIMAGE_DATA_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/Wipeout2K97XL}"
+[[ "$data" == /* ]] || { echo 'AppImage data directory must be absolute' >&2; exit 2; }
+install="$data/versions/$identity"
+profile="$data/profile"
+mkdir -p -- "$data/versions" "$profile/saves"
+# Serialize installation and first-time profile seeding; release before launching.
+exec 9>"$data/install.lock"
+flock 9
+if [[ ! -f "$install/.appimage-ready" ]]; then
+    mkdir -p -- "$install"
+    cp -a -- "$APPDIR/usr/share/wipeoutxl/kit/." "$install/"
+    mkdir -p -- "$install/.appimage-lib" "$install/.appimage-python"
+    cp -a -- "$APPDIR/usr/lib/." "$install/.appimage-lib/"
+    cp -a -- "$APPDIR/usr/python/." "$install/.appimage-python/"
+    for file in input.ini keybinds.ini; do
+        [[ -e "$profile/$file" ]] || cp -- "$install/$file" "$profile/$file"
+    done
+    for file in settings.toml mods-state.toml; do
+        [[ -e "$profile/$file" ]] || : >"$profile/$file"
+    done
+    # Both the setup host and the locally built player use the shared profile.
+    for base in "$install" "$install/build-release"; do
+        mkdir -p -- "$base/mods"
+        for file in input.ini keybinds.ini settings.toml; do
+            ln -sfn -- "$profile/$file" "$base/$file"
+        done
+        ln -sfn -- "$profile/saves" "$base/saves"
+        ln -sfn -- "$profile/mods-state.toml" "$base/mods/state.toml"
+    done
+    : >"$install/.appimage-ready"
+fi
+flock -u 9
+exec 9>&-
+
+# Keep dependencies available even when the setup host exits to rebuild.
+export LD_LIBRARY_PATH="$install/.appimage-lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+export RETCOMM_PYTHON="${RETCOMM_PYTHON:-$install/.appimage-python/bin/python3}"
+export PATH="$install/.appimage-python/bin:$PATH"
+export PYTHONNOUSERSITE=1
+unset PYTHONHOME PYTHONPATH
+export SSL_CERT_FILE="${SSL_CERT_FILE:-$install/.appimage-python/ssl/cert.pem}"
+export WIPEOUT2K97XL_PROJECT_ROOT="$install"
+
+# Steam Input supplies a standard virtual gamepad for Deck and Steam Controller 2026.
+# Disabling duplicate direct devices is confined to this child process.
+case "${WXL_STEAM_INPUT_MODE:-steam}" in
+    steam)
+        export SDL_JOYSTICK_HIDAPI_STEAM="${SDL_JOYSTICK_HIDAPI_STEAM:-0}"
+        export SDL_JOYSTICK_HIDAPI_STEAMDECK="${SDL_JOYSTICK_HIDAPI_STEAMDECK:-0}"
+        ;;
+    direct-deck)
+        export SDL_JOYSTICK_HIDAPI_STEAMDECK="${SDL_JOYSTICK_HIDAPI_STEAMDECK:-1}"
+        ;;
+    *) echo 'WXL_STEAM_INPUT_MODE must be steam or direct-deck' >&2; exit 2 ;;
+esac
+export SDL_GAMECONTROLLER_ALLOW_STEAM_VIRTUAL_GAMEPAD="${SDL_GAMECONTROLLER_ALLOW_STEAM_VIRTUAL_GAMEPAD:-1}"
+cd -- "$install"
+exec "$install/Wipeout2K97XL" "$@"
