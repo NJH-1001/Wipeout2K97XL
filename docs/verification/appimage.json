@@ -1,0 +1,37 @@
+{
+  "artifact": "wipeoutxl-0.1.0-steamdeck-x86_64.AppImage",
+  "sha256": "43be19a25a0ec326009345bf7a98d9e187d35115ed718df143f599c1bb50bca5",
+  "inputs": {
+    "linux_kit": {
+      "url": "https://github.com/NJH-1001/Wipeout2K97XL/releases/download/v0.1.0/wipeoutxl-0.1.0-linux-x64.zip",
+      "sha256": "4507a2f861018ca038909f63d139b3c95f5423560734aad2ffa185579b884f8d"
+    },
+    "python": {
+      "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20261013/cpython-3.12.15%2B20261013-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz",
+      "sha256": "178d3d83b6e8e99285a65d3fce9c16b87952cc5efdb4d1a0e3ff3be18ff0fc9c"
+    },
+    "appimagetool": {
+      "url": "https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage",
+      "sha256": "95cbe7cce9717fce90c484e34052ee7c7f1d7635b33c12525b4776826a7d29b6"
+    },
+    "runtime": {
+      "url": "https://github.com/AppImage/type2-runtime/releases/download/continuous/runtime-x86_64",
+      "sha256": "617aa77314d57c8b8e4fae9c3f0b35af7b30d5529cb69e98f64f92510ed98a46"
+    }
+  },
+  "payload_id": "0f13d58d946926b5ac2820551299d62b7c0a049773ddd50413d8eced60c7b8fb",
+  "runtime_binaries": "unchanged from pinned released Linux ZIP",
+  "physical_steam_deck_and_2026_controller": "unverified",
+  "content_audit": "passed",
+  "elf_architecture_and_dependencies": "passed",
+  "elf_files_checked": 20,
+  "portable_python_https": "passed",
+  "single_file_launcher_smoke": "passed",
+  "generated_game_and_steam_hardware": "unverified",
+  "ci_run": 39344531815,
+  "ci_source_commit": "0de2bd6a7aa4ecb82342d593932635d1d0921da8",
+  "ci_artifact_id": 12229679226,
+  "ci_artifact_sha256": "37b3fef13a8c1eb0230a33cc8206734a908feec2de425b61f618721ce09b32fa",
+  "launcher_screenshot": "visually reviewed; visible first-run setup",
+  "status": "approved-preview-for-publication"
+}

@@ -42,3 +42,14 @@ source `160a562601b96ba9b65bc76d2f5ab4dcd987e552`, and
 source `49c024a373e7bee20aa32df5caf60b1d9b8a3511`.
 See the [maintenance manifest](https://github.com/NJH-1001/Wipeout2K97XL/blob/main/docs/verification/maintenance-2026-10-19.json)
 for archive identities and exact metadata changes. Keep saves and custom settings backed up.
+
+## Steam Deck AppImage preview
+
+`wipeoutxl-0.1.0-steamdeck-x86_64.AppImage` and its checksum are now available
+on this page. It bundles Python and creates a writable project folder for local
+generation/rebuilding, preserving shared saves and settings across image updates.
+Use Steam Input with a Gamepad layout for Steam Deck controls and the wireless
+Steam Controller (2026). **Hardware, Gaming Mode and gameplay remain unverified.**
+See the [Steam setup guide](https://github.com/NJH-1001/Wipeout2K97XL/blob/main/docs/steam-deck.md)
+and [AppImage verification](https://github.com/NJH-1001/Wipeout2K97XL/blob/main/docs/verification/appimage.json).
+The setup launcher and emitters remain identical to the released Linux kit.

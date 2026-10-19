@@ -19,3 +19,13 @@ include the original game's content or retail Sony BIOS firmware.
 
 Runtime DLL notices are included under docs/licenses (LLVM, GCC runtime
 exception, winpthreads and SDL3).
+
+AppImage-only components: [AppImage type2-runtime](https://github.com/AppImage/type2-runtime),
+[python-build-standalone](https://github.com/astral-sh/python-build-standalone)
+(CPython 3.12.15, release 20261013, with included license files), Ubuntu runtime
+libraries and CA certificates (copyright notices copied into
+`docs/licenses/appimage` inside the payload). The build uses
+[appimagetool](https://github.com/AppImage/appimagetool). Download hashes are pinned
+in `packaging/appimage/dependencies.json`; native GPU drivers and glibc are supplied
+by the host system. Steam Input is supplied by the user’s Steam installation;
+no Steamworks SDK or Valve proprietary controller driver is bundled.

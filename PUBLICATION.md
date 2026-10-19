@@ -22,3 +22,9 @@ Metadata-only release refreshes may update documentation and declarative mod
 catalog labels while retaining every other archive entry and permission exactly.
 Record original/new hashes and the exact allowlist in a verification manifest.
 Never substitute a newly compiled runtime under an old verification claim.
+
+The Steam Deck AppImage is also an allowed setup distribution. It embeds the
+audited Linux kit and portable Python, never owner-generated code or assets.
+Runtime payload identities and content checks are recorded in the AppImage
+verification manifest; generated files stay in the user data directory.
+Steam Deck, Gaming Mode and Steam Controller (2026) physical input remain unverified.

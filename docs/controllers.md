@@ -112,3 +112,14 @@ Before public release, verify option combinations, settings persistence and
 mod enable/disable behavior, and physically retest the current preset on the
 available Xbox and PowerA Switch 2 controllers. Confirm package defaults include
 the approved preset and upgrades preserve existing custom mappings.
+
+## Steam Deck and Steam Controller (2026)
+
+Use Steam Input with a Gamepad layout for the Non-Steam game shortcut. Both
+sticks must output joystick axes and RT must output the analog right trigger.
+This feeds the same SDL3 gamepad path as the tested Xbox controller and preserves
+the configurable enhanced NeGcon preset. The AppImage configures Steam virtual
+gamepad input and avoids the duplicate direct Deck HIDAPI path by default.
+See [Steam setup and bindings](steam-deck.md). Physical Deck controls, the
+2026 wireless controller and Gaming Mode remain unverified. This is Steam Input
+gamepad emulation, not a Steamworks action-manifest integration.

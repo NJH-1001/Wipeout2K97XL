@@ -51,3 +51,10 @@ Before promoting these kits, test a fresh extracted kit end to end: select the
 owned disc, generate and rebuild, boot with OpenBIOS, complete a race, check the
 default dual-stick controls, save/reload and test enabled display mods. Record
 OS, architecture, GPU, controller model and any failures.
+
+## Steam Deck AppImage
+
+A single-file setup AppImage is available alongside these ZIPs. It bundles Python
+and seeds a writable project/profile outside the image. See the [Steam Deck /
+Steam Controller (2026) guide](steam-deck.md). It retains Linux gameplay-unverified
+status and is not Valve Steam Deck Verified.

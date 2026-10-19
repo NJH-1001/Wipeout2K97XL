@@ -18,10 +18,12 @@ Other regions and revisions are not supported.
 | --- | --- | --- |
 | `wipeoutxl-0.1.0-windows-x64.zip` | Windows 10/11, Intel/AMD x64 | User-tested racing and controllers |
 | `wipeoutxl-0.1.0-linux-x64.zip` | Linux x64, built on Ubuntu 22.04 | Build and launcher tested; gameplay unverified |
+| `wipeoutxl-0.1.0-steamdeck-x86_64.AppImage` | Steam Deck / Linux x64 | Packaging and launcher tested; Steam hardware/gameplay unverified |
 | `wipeoutxl-0.1.0-macos-x64.zip` | macOS 15, Intel | Build and launcher tested; gameplay unverified |
 | `wipeoutxl-0.1.0-macos-arm64.zip` | macOS 15, Apple Silicon | Build and launcher tested; gameplay unverified |
 
-Every ZIP has a SHA-256 checksum. Linux/Mac users should also read the
+Every download has a SHA-256 checksum. The AppImage bundles Python and creates
+a writable setup folder; see the [Steam Deck and Steam Controller (2026) guide](docs/steam-deck.md). Linux/Mac users should also read the
 [native setup instructions](docs/native-platforms.md).
 
 1. Extract the entire setup ZIP into a writable folder.
@@ -52,7 +54,9 @@ Connect a controller before launching; Player 1 automatically selects a
 recognized gamepad. Select Keyboard in the launcher to use keyboard controls.
 The emulated pad is locked to NeGcon mode. Xbox and the wired PowerA Advantage
 Switch 2 controller have been physically tested. Other Switch, PS4 and PS5
-models use SDL3 mappings but have not been physically tested here.
+models use SDL3 mappings but have not been physically tested here. Steam Deck
+and Steam Controller (2026) use [Steam Input gamepad emulation](docs/steam-deck.md)
+with this same NeGcon preset; those physical devices remain untested.
 
 The **NeGcon enhanced dual sticks** mod starts with this customizable preset:
 

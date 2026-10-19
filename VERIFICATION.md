@@ -68,3 +68,14 @@ refresh preserves the previously audited binaries, sources and executable modes
 except for the exact documentation/catalog allowlist in the maintenance manifest.
 The current upstream framework/UI were reviewed; the Wipeout patch fails against
 the latest framework, so the tested pins are retained pending migration.
+
+## Steam Deck AppImage preview
+
+[CI39344531815](https://github.com/NJH-1001/Wipeout2K97XL/actions/runs/39344531815)
+passes bootstrap/update/atomic-settings persistence tests, AppImage assembly,
+20 runtime ELF dependency checks, bundled Python HTTPS and an actual single-file
+launcher smoke test without FUSE. Its setup screenshot was visually reviewed.
+The ELF executables and complete source kit match the pinned released Linux ZIP.
+Steam Input gamepad emulation is configured for Deck and Steam Controller (2026).
+A physical Steam Deck, Gaming Mode, those controller inputs and locally generated
+Linux gameplay remain unverified. This does not claim Valve certification.
