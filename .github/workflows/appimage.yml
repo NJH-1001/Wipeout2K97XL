@@ -20,6 +20,7 @@ jobs:
       - name: Audit and test single-file launcher
         run: xvfb-run -a python tools/audit_appimage.py dist/*.AppImage
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
         with:
           name: wipeoutxl-steamdeck-appimage
           path: |

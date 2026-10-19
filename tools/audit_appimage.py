@@ -82,6 +82,25 @@ with tempfile.TemporaryDirectory(prefix='wxl-appimage-audit-') as tmp:
             proc.wait(timeout=10)
         except subprocess.TimeoutExpired:
             os.killpg(proc.pid, signal.SIGKILL)
+        # The AppImage extraction supervisor can exit before its AppRun/player.
+        # Wait for all non-zombie group members before deleting their data tree.
+        def active_group():
+            active = []
+            for stat in Path('/proc').glob('[0-9]*/stat'):
+                try:
+                    fields = stat.read_text().rsplit(')', 1)[1].split()
+                    if int(fields[2]) == proc.pid and fields[0] != 'Z':
+                        active.append(stat.parent.name)
+                except (OSError, ValueError, IndexError):
+                    pass
+            return active
+        deadline = time.monotonic() + 10
+        while active_group() and time.monotonic() < deadline:
+            time.sleep(0.2)
+        if active_group():
+            os.killpg(proc.pid, signal.SIGKILL)
+            time.sleep(0.5)
+        assert not active_group(), 'AppImage child processes did not stop'
 proof = json.loads((root / 'dist/appimage-build-proof.json').read_text())
 proof.update({'content_audit': 'passed', 'elf_architecture_and_dependencies': 'passed',
               'elf_files_checked': count, 'portable_python_https': 'passed',
