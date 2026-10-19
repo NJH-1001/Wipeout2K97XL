@@ -58,7 +58,7 @@ with tempfile.TemporaryDirectory(prefix='wxl-appimage-audit-') as tmp:
                 continue
             assert re.fullmatch(r'lib(c|m|dl|pthread|rt|resolv|util|OpenGL|GLdispatch)\.so\.[0-9]+', name.strip()), (p, line)
         count += 1
-    subprocess.run([str(appdir / 'usr/python/bin/python3'), '-I', '-c', 'import ssl,ctypes,tomllib,urllib.request; urllib.request.urlopen("https://api.github.com",timeout=30).close()'],
+    subprocess.run([str(appdir / 'usr/python/bin/python3'), '-I', '-c', 'import ssl,ctypes,tomllib,urllib.request; urllib.request.urlopen("https://www.python.org/robots.txt",timeout=30).close()'],
                    env={**env, 'SSL_CERT_FILE': str(appdir / 'usr/python/ssl/cert.pem')}, check=True)
 
     # Run the actual single-file artifact, including extraction (no FUSE required).
