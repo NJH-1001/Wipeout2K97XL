@@ -1,20 +1,33 @@
 # Wipeout XL Recompiled — Wipeout2K97XL
 
 An unofficial PSXRecomp compatibility project for **Wipeout XL (USA), SCUS-94351**.
-Windows 10/11, 64-bit Intel or AMD. OpenBIOS and SDL3.
+Windows 10/11 x64, plus Linux x64 and macOS Intel/Apple Silicon setup kits.
+OpenBIOS and SDL3. Linux/macOS gameplay remains unverified.
 
 [Download setup kits](https://github.com/NJH-1001/Wipeout2K97XL/releases/latest) ·
 [Report a problem](https://github.com/NJH-1001/Wipeout2K97XL/issues)
 
 ## Download and setup
 
-The public artifact is `wipeoutxl-0.1.0-windows-x64.zip`, a **setup kit**, not a
-prebuilt copy of the game. Supply your legally obtained USA Redump-style CUE
-and all **12 BIN tracks**. Other regions and revisions are not supported.
+All platform downloads are on the [same release page](https://github.com/NJH-1001/Wipeout2K97XL/releases/latest).
+Each ZIP is a **setup kit**: game code is generated on your machine.
+Supply your legally obtained USA Redump-style CUE and all **12 BIN tracks**.
+Other regions and revisions are not supported.
+
+| Download | Platform | Verification |
+| --- | --- | --- |
+| `wipeoutxl-0.1.0-windows-x64.zip` | Windows 10/11, Intel/AMD x64 | User-tested racing and controllers |
+| `wipeoutxl-0.1.0-linux-x64.zip` | Linux x64, built on Ubuntu 22.04 | Build and launcher tested; gameplay unverified |
+| `wipeoutxl-0.1.0-macos-x64.zip` | macOS 15, Intel | Build and launcher tested; gameplay unverified |
+| `wipeoutxl-0.1.0-macos-arm64.zip` | macOS 15, Apple Silicon | Build and launcher tested; gameplay unverified |
+
+Every ZIP has a SHA-256 checksum. Linux/Mac users should also read the
+[native setup instructions](docs/native-platforms.md).
 
 1. Extract the entire setup ZIP into a writable folder.
 2. Install Python 3.11 or newer. Allow disk space for your disc and a local build.
-3. Run `Wipeout2K97XL.exe`, keep OpenBIOS selected and select your CUE.
+3. Run `Wipeout2K97XL.exe` on Windows or `./Wipeout2K97XL` on Linux/macOS,
+   keep OpenBIOS selected and select your CUE.
 4. Choose **Generate & rebuild**. The wizard can obtain its supported CMake,
    Ninja and Clang toolchain; game code is generated and compiled locally.
 5. Reopen the setup executable after compilation. It forwards to the local
@@ -22,8 +35,8 @@ and all **12 BIN tracks**. Other regions and revisions are not supported.
 
 No disc images, extracted game executable, generated game code, retail BIOS,
 memory cards, captures or analysis databases are distributed. Windows setup
-binaries are unsigned. [Experimental Linux and macOS previews](https://github.com/NJH-1001/Wipeout2K97XL/releases/tag/v0.1.0-native-preview)
-are available for Linux x64 and Intel/Apple Silicon Macs. **Gameplay unverified.** See
+binaries are unsigned. Linux and macOS downloads are included alongside Windows;
+they retain **gameplay unverified** status. See
 [native platform status and setup](docs/native-platforms.md).
 
 ### Supported data track
@@ -86,9 +99,9 @@ left/right air-brakes, Enter for Start and Backspace for Select. See
   the appearance of MiSTer presets; they are not exact FPGA filter ports.
 
 Visual mods are off by default and can be enabled on the Mods page. The default
-renderer is OpenGL with 4x internal resolution and 4:3 presentation. Distance
-mods remain experimental: user playtests accepted their results, but exhaustive
-track, camera and clipping coverage is not complete. Netplay is not enabled.
+renderer is OpenGL with 4x internal resolution and 4:3 presentation. Extended
+Draw Distance and Extended Enemy Ship Distance are regular optional features,
+accepted through user race testing. Netplay is not enabled.
 
 ## Verification and reporting
 
@@ -115,3 +128,9 @@ python psxrecomp/psxrecomp_cli.py rebuild --project-root . --config game.toml --
 ```
 
 Release kits already contain the patched framework; do not apply the patch again.
+
+## Dependency maintenance
+
+See the [2026-10-19 dependency review](docs/dependency-review-2026-10-19.md) for
+current upstream versions, patch compatibility and the migration requirements.
+The shipped framework/UI pins retain the tested Wipeout integrations.

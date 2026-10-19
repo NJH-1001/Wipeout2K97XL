@@ -17,7 +17,7 @@ OpenBIOS game boot, a completed race, controller behavior or display-mod behavio
 on Linux/macOS. No Linux or Mac test machine with the owner's disc is available.
 These kits are published as **experimental previews — gameplay unverified**,
 with the project owner’s explicit approval.
-[Download the previews](https://github.com/NJH-1001/Wipeout2K97XL/releases/tag/v0.1.0-native-preview).
+[Download all platforms alongside Windows](https://github.com/NJH-1001/Wipeout2K97XL/releases/tag/v0.1.0).
 Windows remains the gameplay-tested release. CI never receives the disc or generated game code.
 
 ## Targets and prerequisites

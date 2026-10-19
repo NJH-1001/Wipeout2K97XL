@@ -18,3 +18,5 @@ retain those binaries unchanged; updated documentation and the user-provided
 controller diagram are added after CI. Each ZIP has a SHA-256 checksum.
 
 See [native platform instructions and verification gates](https://github.com/NJH-1001/Wipeout2K97XL/blob/main/docs/native-platforms.md).
+
+Linux/macOS downloads are now also available on the [main v0.1.0 release page](https://github.com/NJH-1001/Wipeout2K97XL/releases/tag/v0.1.0), alongside Windows. Extended draw distance is a regular optional feature; native gameplay verification remains open.

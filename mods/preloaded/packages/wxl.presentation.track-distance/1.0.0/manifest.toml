@@ -1,9 +1,9 @@
 format_version = 5
 id = "wxl.presentation.track-distance"
 version = "1.0.0"
-name = "Extended Draw Distance (Experiment)"
+name = "Extended Draw Distance"
 author = "Wipeout2K97XL project"
-description = "Experimental distant road, scenery meshes and billboard sprites. Projection and occlusion are under verification."
+description = "Extend distant roads, scenery meshes, billboard sprites and enemy ships."
 resolver = "declarative"
 save_compatibility = "shared"
 
@@ -12,8 +12,8 @@ game_id = "SCUS-94351"
 
 [[feature]]
 id = "distance"
-name = "Extended Draw Distance (Experiment)"
-description = "Add road, scenery meshes and billboard sprites up to 64000 depth units. Experimental; off by default."
+name = "Extended Draw Distance"
+description = "Add road, scenery meshes and billboard sprites up to 64000 depth units. Off by default."
 group = "Visual"
 default_enabled = false
 
@@ -23,8 +23,8 @@ id = "wxl.track-distance"
 
 [[feature]]
 id = "ships"
-name = "Extended Enemy Ship Distance (Experiment)"
-description = "Extend ship meshes to the scenery range when Extended Draw Distance is also enabled. Normal races; experimental, off by default, requires restart."
+name = "Extended Enemy Ship Distance"
+description = "Extend ship meshes to the scenery range when Extended Draw Distance is also enabled. Normal races; off by default, requires restart."
 group = "Visual"
 default_enabled = false
 

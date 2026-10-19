@@ -57,3 +57,14 @@ See [native verification gates](docs/native-platforms.md).
 
 The owner explicitly approved publishing native kits as experimental previews
 marked **gameplay unverified**. This does not close the gameplay verification gates.
+
+## 2026-10-19 release maintenance
+
+The owner promotes extended road/scenery/billboard and enemy-ship draw distance
+to regular optional features based on completed race testing. This does not
+assert exhaustive track coverage or change native platform verification status.
+All four platform ZIPs are listed on the Windows release page. This metadata
+refresh preserves the previously audited binaries, sources and executable modes
+except for the exact documentation/catalog allowlist in the maintenance manifest.
+The current upstream framework/UI were reviewed; the Wipeout patch fails against
+the latest framework, so the tested pins are retained pending migration.
