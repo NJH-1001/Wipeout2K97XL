@@ -1,0 +1,133 @@
+{
+  "date": "2026-10-19",
+  "status": "published",
+  "scope": "documentation-and-catalog-only; verified binaries retained",
+  "release_tag": "v0.1.0",
+  "source_commit": "de093f5b1bf0a70762cedf87e05c286aa449ad48",
+  "dependency_review": "docs/dependency-review-2026-10-19.md",
+  "artifacts": [
+    {
+      "name": "wipeoutxl-0.1.0-windows-x64.zip",
+      "platform": "windows-x64",
+      "sha256": "b165f9430748ae4623e0633f44b795edd064079b9b525bc4614205a7c6004fd8",
+      "original_published_sha256": "a0cba6005f7c3783b79e8f969ca14070ec8ccacda635a1199911768fe0a090c8",
+      "bytes": 45227349,
+      "updated_or_added_entries": [
+        "README.md",
+        "RELEASE_NOTES.md",
+        "VERIFICATION.md",
+        "PUBLICATION.md",
+        "NATIVE_RELEASE_NOTES.md",
+        "docs/native-platforms.md",
+        "docs/controllers.md",
+        "docs/images/negcon-dual-sticks.png",
+        "docs/dependency-review-2026-10-19.md",
+        "mods/preloaded/packages/wxl.presentation.track-distance/1.0.0/manifest.toml",
+        "mods/bundled/wxl.presentation.track-distance/1.0.0/manifest.toml"
+      ],
+      "other_entries_and_permissions": "byte-identical to original published ZIP",
+      "unchanged_entries": 2121,
+      "crc": "passed",
+      "content_audit": "passed",
+      "catalog_change": "names and descriptions only; IDs, defaults and behavior unchanged"
+    },
+    {
+      "name": "wipeoutxl-0.1.0-linux-x64.zip",
+      "platform": "linux-x64",
+      "sha256": "4507a2f861018ca038909f63d139b3c95f5423560734aad2ffa185579b884f8d",
+      "original_published_sha256": "2eb0acf32efd85b4c789a22adc66a7451614e5c7f0ddef037338031d2dd3c463",
+      "bytes": 45833178,
+      "updated_or_added_entries": [
+        "README.md",
+        "RELEASE_NOTES.md",
+        "VERIFICATION.md",
+        "PUBLICATION.md",
+        "NATIVE_RELEASE_NOTES.md",
+        "docs/native-platforms.md",
+        "docs/controllers.md",
+        "docs/images/negcon-dual-sticks.png",
+        "docs/dependency-review-2026-10-19.md",
+        "mods/preloaded/packages/wxl.presentation.track-distance/1.0.0/manifest.toml",
+        "mods/bundled/wxl.presentation.track-distance/1.0.0/manifest.toml"
+      ],
+      "other_entries_and_permissions": "byte-identical to original published ZIP",
+      "unchanged_entries": 2116,
+      "crc": "passed",
+      "content_audit": "passed",
+      "catalog_change": "names and descriptions only; IDs, defaults and behavior unchanged"
+    },
+    {
+      "name": "wipeoutxl-0.1.0-macos-x64.zip",
+      "platform": "macos-x64",
+      "sha256": "70dbe3594e051f3f2e34225475a9764ee23b71c340d74e6bcdafa1b2b3c98052",
+      "original_published_sha256": "238449b26603391eff83af7c6e978e3d79eb1ce7dc620c1a1db7e097bfcde556",
+      "bytes": 22546731,
+      "updated_or_added_entries": [
+        "README.md",
+        "RELEASE_NOTES.md",
+        "VERIFICATION.md",
+        "PUBLICATION.md",
+        "NATIVE_RELEASE_NOTES.md",
+        "docs/native-platforms.md",
+        "docs/controllers.md",
+        "docs/images/negcon-dual-sticks.png",
+        "docs/dependency-review-2026-10-19.md",
+        "mods/preloaded/packages/wxl.presentation.track-distance/1.0.0/manifest.toml",
+        "mods/bundled/wxl.presentation.track-distance/1.0.0/manifest.toml"
+      ],
+      "other_entries_and_permissions": "byte-identical to original published ZIP",
+      "unchanged_entries": 2116,
+      "crc": "passed",
+      "content_audit": "passed",
+      "catalog_change": "names and descriptions only; IDs, defaults and behavior unchanged"
+    },
+    {
+      "name": "wipeoutxl-0.1.0-macos-arm64.zip",
+      "platform": "macos-arm64",
+      "sha256": "71e81fa7c73bd7d16149219a13c3c6f472d849f7fca899731edf5b36928d6462",
+      "original_published_sha256": "d52e554a2e606997f8497a15b8e3087a9c455ce202bfeb53f5cce4440fd8534b",
+      "bytes": 22111804,
+      "updated_or_added_entries": [
+        "README.md",
+        "RELEASE_NOTES.md",
+        "VERIFICATION.md",
+        "PUBLICATION.md",
+        "NATIVE_RELEASE_NOTES.md",
+        "docs/native-platforms.md",
+        "docs/controllers.md",
+        "docs/images/negcon-dual-sticks.png",
+        "docs/dependency-review-2026-10-19.md",
+        "mods/preloaded/packages/wxl.presentation.track-distance/1.0.0/manifest.toml",
+        "mods/bundled/wxl.presentation.track-distance/1.0.0/manifest.toml"
+      ],
+      "other_entries_and_permissions": "byte-identical to original published ZIP",
+      "unchanged_entries": 2116,
+      "crc": "passed",
+      "content_audit": "passed",
+      "catalog_change": "names and descriptions only; IDs, defaults and behavior unchanged"
+    }
+  ],
+  "runtime_pins_changed": false,
+  "native_gameplay": "unverified",
+  "release_url": "https://github.com/NJH-1001/Wipeout2K97XL/releases/tag/v0.1.0",
+  "windows_pe_dependency_audit": {
+    "status": "passed",
+    "files": 9
+  },
+  "build_tooling_validation": [
+    {
+      "run_id": 39342107976,
+      "url": "https://github.com/NJH-1001/Wipeout2K97XL/actions/runs/39342107976",
+      "status": "in_progress",
+      "conclusion": null,
+      "source_commit": "de093f5b1bf0a70762cedf87e05c286aa449ad48"
+    },
+    {
+      "run_id": 39342109986,
+      "url": "https://github.com/NJH-1001/Wipeout2K97XL/actions/runs/39342109986",
+      "status": "in_progress",
+      "conclusion": null,
+      "source_commit": "de093f5b1bf0a70762cedf87e05c286aa449ad48"
+    }
+  ]
+}
