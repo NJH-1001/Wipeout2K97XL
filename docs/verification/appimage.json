@@ -33,5 +33,6 @@
   "ci_artifact_id": 12229679226,
   "ci_artifact_sha256": "37b3fef13a8c1eb0230a33cc8206734a908feec2de425b61f618721ce09b32fa",
   "launcher_screenshot": "visually reviewed; visible first-run setup",
-  "status": "approved-preview-for-publication"
+  "status": "published-preview",
+  "release_url": "https://github.com/NJH-1001/Wipeout2K97XL/releases/tag/v0.1.0"
 }
