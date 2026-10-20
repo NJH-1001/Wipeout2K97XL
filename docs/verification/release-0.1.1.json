@@ -48,7 +48,14 @@
     "native_launcher_screenshots": "visually reviewed for Linux and both macOS targets",
     "appimage": "Withdrawn; historical CI checks did not establish working generation/rebuild/play on Deck.",
     "windows_extracted_kit": "disc validated; OpenBIOS and game regenerated; all40shards identical to owner-tested build; RelWithDebInfo build and LLE boot passed; game menu and race with edge HUD visually reviewed",
-    "gameplay": "owner-approved on Windows; owner reports Linux ZIP working on Steam Deck; broader Linux/macOS/2026 Steam Controller testing incomplete"
+    "gameplay": "Owner-approved on Windows; Linux x64 build tested on physical Steam Deck by project owner and confirmed working well. Other Linux configurations, macOS gameplay and 2026 Steam Controller testing remain unverified.",
+    "steam_deck_owner_test": {
+      "date": "2026-10-19",
+      "artifact": "wipeoutxl-0.1.1-linux-x64.zip",
+      "result": "Tested on Steam Deck by project owner; works well.",
+      "source": "Direct owner confirmation in project conversation",
+      "scope": "Standard Linux ZIP; withdrawn AppImages are excluded."
+    }
   },
   "excluded": "disc, game executable, generated game code, retail BIOS, saves, captures and analysis databases",
   "withdrawn_appimages": {

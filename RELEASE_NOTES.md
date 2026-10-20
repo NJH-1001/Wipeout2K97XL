@@ -1,6 +1,7 @@
 # Wipeout2K97XL v0.1.1 — Optional widescreen HUD layout
 
-**Steam Deck:** use the Linux x64 ZIP. The owner reports it working on Deck.
+**Steam Deck tested:** the project owner has tested the Linux x64 build on
+Steam Deck and confirms that it works well. Use the Linux x64 ZIP.
 Dedicated Steam Deck AppImages have been withdrawn following setup/play failures.
 
 The 16:9 mod now includes **Race HUD layout → Widescreen edges**:
@@ -18,7 +19,7 @@ The layout was tested with OpenBIOS on Windows and approved by the owner.
 | Download | Platform | Status |
 | --- | --- | --- |
 | `wipeoutxl-0.1.1-windows-x64.zip` | Windows 10/11, Intel/AMD x64 | Windows gameplay and controllers tested |
-| `wipeoutxl-0.1.1-linux-x64.zip` | Linux x64 | Native build/launcher tested; gameplay unverified |
+| `wipeoutxl-0.1.1-linux-x64.zip` | Linux x64 | Owner-tested on Steam Deck; works well |
 | `wipeoutxl-0.1.1-macos-x64.zip` | macOS 15, Intel | Native build/launcher tested; gameplay unverified |
 | `wipeoutxl-0.1.1-macos-arm64.zip` | macOS 15, Apple Silicon | Native build/launcher tested; gameplay unverified |
 

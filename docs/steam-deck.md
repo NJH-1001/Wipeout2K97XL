@@ -2,7 +2,8 @@
 
 Use the **Linux x64 setup ZIP** from the
 [main release](https://github.com/NJH-1001/Wipeout2K97XL/releases/latest).
-The owner reports this version working on Steam Deck. Dedicated Steam Deck
+**Tested on Steam Deck:** the project owner confirms that the Linux build
+works well. Dedicated Steam Deck
 AppImages have been withdrawn after setup/play failures; use the Linux ZIP
 instead of an older AppImage download.
 
@@ -59,7 +60,7 @@ arguments to the Linux executable.
 
 ## Verification
 
-Linux build, dependency and launcher checks pass in CI. The owner reports the
-Linux ZIP working on Steam Deck. Detailed Gaming Mode, save/reload, display-mod
+Linux build, dependency and launcher checks pass in CI. The Linux ZIP has also
+been tested on a physical Steam Deck by the project owner and works well. Detailed Gaming Mode, save/reload, display-mod
 and 2026 wireless Steam Controller testing remains unverified. No Valve Steam
 Deck Verified certification is claimed. Mac gameplay remains unverified.
