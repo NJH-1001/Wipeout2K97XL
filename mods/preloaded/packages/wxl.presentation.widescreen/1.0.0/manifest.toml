@@ -3,7 +3,7 @@ id = "wxl.presentation.widescreen"
 version = "1.0.0"
 name = "16:9 Widescreen"
 author = "Wipeout2K97XL project"
-description = "Reveal a wider scene with original steering and simulation speed. Experimental while track and HUD coverage is being verified."
+description = "Reveal a wider scene with original steering and simulation speed. Choose the original centered race HUD or move it to widescreen edges."
 resolver = "declarative"
 save_compatibility = "shared"
 
@@ -20,3 +20,18 @@ default_enabled = false
 [[plugin]]
 feature = "widescreen"
 id = "wxl.widescreen"
+
+[[option]]
+feature = "widescreen"
+id = "hud-layout"
+label = "Race HUD layout"
+type = "choice"
+default = "original"
+
+[[option.choice]]
+value = "original"
+label = "Original centered HUD"
+
+[[option.choice]]
+value = "edges"
+label = "Widescreen edges"

@@ -34,7 +34,7 @@ seeds = "seeds/ghidra_funcs.txt"
 out_dir = "generated"
 strict = true
 # Opt-in road/scenery-distance plugin entry points; callbacks are absent when disabled.
-mod_function_entry_funcs = ["0x8004DA10", "0x8003EA68", "0x800726AC", "0x80021B90", "0x80020128", "0x80010000", "0x80013C78", "0x800140AC", "0x80014AD4", "0x800684C4"]
+mod_function_entry_funcs = ["0x8004DA10", "0x8003EA68", "0x800726AC", "0x80021B90", "0x80020128", "0x80010000", "0x80013C78", "0x800140AC", "0x80014AD4", "0x800684C4", "0x80036F34", "0x80037818", "0x80037A94", "0x80037E34", "0x8005F9B8", "0x8007B430"]
 
 [runtime]
 window_title = "Wipeout2K97XL Recompiled"

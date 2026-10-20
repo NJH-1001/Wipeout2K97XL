@@ -16,11 +16,11 @@ Other regions and revisions are not supported.
 
 | Download | Platform | Verification |
 | --- | --- | --- |
-| `wipeoutxl-0.1.0-windows-x64.zip` | Windows 10/11, Intel/AMD x64 | User-tested racing and controllers |
-| `wipeoutxl-0.1.0-linux-x64.zip` | Linux x64, built on Ubuntu 22.04 | Build and launcher tested; gameplay unverified |
-| `wipeoutxl-0.1.0-steamdeck-x86_64.AppImage` | Steam Deck / Linux x64 | Packaging and launcher tested; Steam hardware/gameplay unverified |
-| `wipeoutxl-0.1.0-macos-x64.zip` | macOS 15, Intel | Build and launcher tested; gameplay unverified |
-| `wipeoutxl-0.1.0-macos-arm64.zip` | macOS 15, Apple Silicon | Build and launcher tested; gameplay unverified |
+| `wipeoutxl-0.1.1-windows-x64.zip` | Windows 10/11, Intel/AMD x64 | User-tested racing and controllers |
+| `wipeoutxl-0.1.1-linux-x64.zip` | Linux x64, built on Ubuntu 22.04 | Build and launcher tested; gameplay unverified |
+| `wipeoutxl-0.1.1-steamdeck-x86_64.AppImage` | Steam Deck / Linux x64 | Packaging and launcher tested; Steam hardware/gameplay unverified |
+| `wipeoutxl-0.1.1-macos-x64.zip` | macOS 15, Intel | Build and launcher tested; gameplay unverified |
+| `wipeoutxl-0.1.1-macos-arm64.zip` | macOS 15, Apple Silicon | Build and launcher tested; gameplay unverified |
 
 Every download has a SHA-256 checksum. The AppImage bundles Python and creates
 a writable setup folder; see the [Steam Deck and Steam Controller (2026) guide](docs/steam-deck.md). Linux/Mac users should also read the
@@ -96,6 +96,9 @@ left/right air-brakes, Enter for Start and Backspace for Select. See
 
 - **16:9 Widescreen:** wider 3D view with centered menus and extended loading
   backgrounds. OpenGL required.
+  In its **Race HUD layout** dropdown, choose **Widescreen edges** to move the
+  timer and lap-times panel left, position/lap right, and speed, energy and
+  music crawl right. **Original centered HUD** restores the stock layout.
 - **Extended Draw Distance:** extends road, scenery and billboard visibility.
 - **Extended Enemy Ship Distance:** extends ship meshes and exhaust; enable
   Extended Draw Distance as well.

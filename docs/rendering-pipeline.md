@@ -601,3 +601,25 @@ mirrors the same clear rows/color; smaller texture fills do not enter this new
 path. Leaving explicit UI mode expires old projection/tag detection history;
 fresh game geometry rearms as usual. RelWithDebInfo build succeeds; candidate
 PID23472 transition accepted by user: looks proper now.
+
+
+### Optional race HUD anchoring (2026-10-19)
+
+Race routine `0x80039018` emits the checkpoint label/countdown, position/lap
+labels and numbers, lap-times panel, speed and music text through shared glyph
+helpers. Those helpers also draw menus and centered warnings; a coordinate-only
+HUD classifier would affect unrelated content. The game plugin identifies the
+specific race call sites by their MIPS return PC, then tags only quads passed
+to the PsyQ AddPrim helper (`0x8007B430`). Gauge frame/labels and the three
+animated fills have separately verified AddPrim callers in `0x80039018` and
+`0x800366E0`. All eight functions match the legal disc executable and live
+OpenBIOS Beetle memory; see `verification/hud-edges.json`.
+
+The renderer retains the packet's nine payload words with its presentation
+anchor. A recycled or changed packet cannot inherit an old anchor. Each whole
+quad moves by the native-wide side margin (53 pixels at 320-wide 16:9), without
+changing UVs, size, guest RAM, instructions or simulation. Complete text calls
+share one anchor, including the music crawl across the center of the screen.
+Menu/race entry clears tags. Default-original and 4:3 leave original positions.
+`ws_hud_packets` reports tag and left/right draw totals; its optional `enabled`
+flag supports live presentation comparisons without changing the mod selection.

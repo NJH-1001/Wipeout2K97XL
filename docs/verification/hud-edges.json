@@ -1,0 +1,103 @@
+{
+  "status": "owner-approved Windows gameplay; release preparation",
+  "bios": "OpenBIOS LLE",
+  "option": {
+    "package": "wxl.presentation.widescreen",
+    "feature": "widescreen",
+    "id": "hud-layout",
+    "default": "original",
+    "choices": [
+      "original",
+      "edges"
+    ]
+  },
+  "mechanism": "GPU payload-guarded packet presentation tags; guest instructions, RAM, simulation and timing unchanged",
+  "functions": [
+    {
+      "function": "0x80039018",
+      "size": 4124,
+      "sha256": "602cc4076a633b69ba516c48fb12b8a6e2739674e4c0b5d977e15427b3b2498b",
+      "beetle_match": true,
+      "native_match": true
+    },
+    {
+      "function": "0x800366e0",
+      "size": 2132,
+      "sha256": "1270536d6bc142ffda22107b04de25b98b9abc46f46cf26f531399016d0e82af",
+      "beetle_match": true,
+      "native_match": true
+    },
+    {
+      "function": "0x80036f34",
+      "size": 2276,
+      "sha256": "011817a91e5b3dcc63ca9efcaae65c3f602e3d89a11f6196cf3a9d8bd2261373",
+      "beetle_match": true,
+      "native_match": true
+    },
+    {
+      "function": "0x80037818",
+      "size": 636,
+      "sha256": "fcb70aaef645e39dd85170e54cf207764b991e37e831cf19dcaa2e05ee357b2e",
+      "beetle_match": true,
+      "native_match": true
+    },
+    {
+      "function": "0x80037a94",
+      "size": 928,
+      "sha256": "27a4a93bdfc2e617c03a36c5b774790daa68d4c6f0eed6a07dc6cffcc6c1ebe2",
+      "beetle_match": true,
+      "native_match": true
+    },
+    {
+      "function": "0x80037e34",
+      "size": 1004,
+      "sha256": "24a158aa37a8aa88ce97aa7b7b61880913d6de56147da62e672953b7c258aa68",
+      "beetle_match": true,
+      "native_match": true
+    },
+    {
+      "function": "0x8005f9b8",
+      "size": 848,
+      "sha256": "61f40b31dc17ee951f7f10b3b268eb2b4ef359feece9764abbc06bba96d58598",
+      "beetle_match": true,
+      "native_match": true
+    },
+    {
+      "function": "0x8007b430",
+      "size": 60,
+      "sha256": "1c2e33c9e0ddfcd56385916112089fab3d7d343336e2514633a70260ef7d4064",
+      "beetle_match": true,
+      "native_match": true
+    }
+  ],
+  "local_evidence": "analysis/verification/hud-edges (ignored; contains disassembly and local captures)",
+  "limitations": [
+    "Linux/macOS and physical Steam hardware not tested for this change."
+  ],
+  "validation": {
+    "relwithdebinfo_build": "passed",
+    "packet_guard_regression": "passed: aliases, reuse, collision, clear, opcode, bounds",
+    "clean_pinned_framework_patch_check": "passed",
+    "owner_feedback": "Owner approves complete HUD layout, including lap-times panel, and authorizes v0.1.1 publication.",
+    "lap_panel": "visually verified at bottom-left in an OpenBIOS LLE player race",
+    "presentation_ab": "edges/original/restored captures reviewed; paused menu stays centered",
+    "music": "complete text-call anchoring verified statically; visible crawl capture pending",
+    "other_platforms": "source-compatible; this candidate not built on Linux/macOS"
+  },
+  "source_sha256": {
+    "src\\widescreen_mod.c": "513d58e1714359e1dab831535db5eefc60193fc68d538b3216a75c508e267e28",
+    "game.toml": "1f67e52c658973796c217bd5235c8230482f422e1d2b31e26f35c026cf5f4ced",
+    "mods\\preloaded\\packages\\wxl.presentation.widescreen\\1.0.0\\manifest.toml": "4b1d00c7b876ad0b2da1434980d936b1784620dbc36b3738345a30c77426334b",
+    "psxrecomp\\runtime\\include\\ws_hud_packet.h": "d5c61c04592e5f602229fc32cab3b3f0efe9e7661ac6e70fa4c48db4c084c950",
+    "psxrecomp\\runtime\\src\\gpu.c": "955b456aa335b395529d6939c9afc766f188ed08cd5caaaeef5c1e26cbae04ae",
+    "tools\\test_hud_packet.c": "40f063e51a710c776a4a9a632e2548fcb358418f3e46b82dad56dd2a9bcf889f"
+  },
+  "candidate_executable_sha256": "4df12743f3dd99d260233c32ccb284038a66851f29bba54bcdc06135c6989625",
+  "live_census": {
+    "enabled": 1,
+    "tagged": 274,
+    "left_draws": 74999,
+    "right_draws": 204300
+  },
+  "release_version": "0.1.1"
+}
