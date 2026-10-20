@@ -33,12 +33,12 @@ with tempfile.TemporaryDirectory(prefix='wxl-appimage-audit-') as tmp:
         assert '.git' not in rel.parts
         assert p.suffix.lower() not in {'.bin', '.cue', '.iso', '.chd', '.mcr', '.mcd', '.gpr', '.bmp'} or rel.as_posix() in allowed, rel
         assert p.name not in {'settings.toml', 'state.toml', 'disc.cfg', 'bios.cfg', 'psx_bios_disasm.txt'}, rel
-    env = {**os.environ, 'LD_LIBRARY_PATH': str(appdir / 'usr/lib') + ':' + str(appdir / 'usr/python/lib')}
+    env = dict(os.environ)
     count = 0
     runtime_files = [kit / 'Wipeout2K97XL',
                      kit / 'psxrecomp/recompiler/build/psxrecomp-game',
                      kit / 'psxrecomp/recompiler/build/psxrecomp-bios']
-    runtime_files += list((appdir / 'usr/python').rglob('*')) + list((appdir / 'usr/lib').rglob('*'))
+    runtime_files += list((appdir / 'usr/python').rglob('*'))
     for p in runtime_files:
         if not p.is_file():
             continue
@@ -56,7 +56,7 @@ with tempfile.TemporaryDirectory(prefix='wxl-appimage-audit-') as tmp:
             location = value.strip().split()[0]
             if location.startswith(str(appdir)):
                 continue
-            assert re.fullmatch(r'lib(c|m|dl|pthread|rt|resolv|util|OpenGL|GLdispatch)\.so\.[0-9]+', name.strip()), (p, line)
+            assert re.fullmatch(r'lib(c|m|dl|pthread|rt|resolv|util|OpenGL|GLdispatch|stdc\+\+|gcc_s|z)\.so\.[0-9]+', name.strip()), (p, line)
         count += 1
     subprocess.run([str(appdir / 'usr/python/bin/python3'), '-I', '-c', 'import ssl,ctypes,tomllib,urllib.request; urllib.request.urlopen("https://www.python.org/robots.txt",timeout=30).close()'],
                    env={**env, 'SSL_CERT_FILE': str(appdir / 'usr/python/ssl/cert.pem')}, check=True)

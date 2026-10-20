@@ -15,8 +15,7 @@ flock 9
 if [[ ! -f "$install/.appimage-ready" ]]; then
     mkdir -p -- "$install"
     cp -a -- "$APPDIR/usr/share/wipeoutxl/kit/." "$install/"
-    mkdir -p -- "$install/.appimage-lib" "$install/.appimage-python"
-    cp -a -- "$APPDIR/usr/lib/." "$install/.appimage-lib/"
+    mkdir -p -- "$install/.appimage-python"
     cp -a -- "$APPDIR/usr/python/." "$install/.appimage-python/"
     for file in input.ini keybinds.ini; do
         [[ -e "$profile/$file" ]] || cp -- "$install/$file" "$profile/$file"
@@ -44,7 +43,8 @@ for base in "$install" "$install/build-release"; do
 done
 
 # Keep dependencies available even when the setup host exits to rebuild.
-export LD_LIBRARY_PATH="$install/.appimage-lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+# Preserve the host loader environment for SDL, graphics drivers and build tools.
+# Bundled Python alone resolves private dependencies through its ELF RUNPATH.
 export RETCOMM_PYTHON="${RETCOMM_PYTHON:-$install/.appimage-python/bin/python3}"
 export PATH="$install/.appimage-python/bin:$PATH"
 export PYTHONNOUSERSITE=1

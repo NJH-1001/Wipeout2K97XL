@@ -9,14 +9,19 @@ import time
 import urllib.request
 
 root = Path(__file__).resolve().parents[1]
-proof = json.loads((root / 'docs/verification/appimage.json').read_text())
 work = root / 'build-appimage-host-diagnostic'
 work.mkdir(exist_ok=True)
-image = work / proof['artifact']
-url = 'https://github.com/NJH-1001/Wipeout2K97XL/releases/download/v0.1.1/' + image.name
-with urllib.request.urlopen(url, timeout=120) as response:
-    image.write_bytes(response.read())
-assert hashlib.sha256(image.read_bytes()).hexdigest() == proof['sha256']
+candidate=os.environ.get('WXL_DIAGNOSTIC_APPIMAGE')
+if candidate:
+    image=Path(candidate).resolve()
+    proof=json.loads((image.parent/'appimage-build-proof.json').read_text())
+else:
+    proof=json.loads((root/'docs/verification/appimage.json').read_text())
+    image=work/proof['artifact']
+    url='https://github.com/NJH-1001/Wipeout2K97XL/releases/download/v0.1.1/'+image.name
+    with urllib.request.urlopen(url,timeout=120) as response:
+        image.write_bytes(response.read())
+assert hashlib.sha256(image.read_bytes()).hexdigest()==proof['sha256']
 image.chmod(0o755)
 subprocess.run([str(image), '--appimage-extract'], cwd=work, stdout=subprocess.DEVNULL, check=True)
 kit = work / 'squashfs-root/usr/share/wipeoutxl/kit'
@@ -51,3 +56,6 @@ for kind, command, cwd, extra in [
 (work / 'result.json').write_text(json.dumps(results, indent=2))
 print(json.dumps(results, indent=2))
 assert results['linux-kit']['alive_before_cleanup'] and results['linux-kit']['visible_window'], 'Baseline Linux kit did not open'
+
+if candidate:
+    assert results["appimage"]["alive_before_cleanup"] and results["appimage"]["visible_window"], "AppImage did not open on newer host"

@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Dependencies
-        run: sudo apt-get update && sudo apt-get install -y libopengl0 libgl1-mesa-dri squashfs-tools desktop-file-utils xvfb xdotool imagemagick
+        run: sudo apt-get update && sudo apt-get install -y libopengl0 libgl1-mesa-dri squashfs-tools desktop-file-utils patchelf xvfb xdotool imagemagick
       - name: Bootstrap persistence and input policy tests
         run: python tools/test_appimage_launcher.py
       - name: Fetch verified Linux kit from native CI
@@ -41,3 +41,28 @@ jobs:
             dist/appimage-build-proof.json
             appimage-launcher.png
           if-no-files-found: error
+
+  newer-host:
+    needs: appimage
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+      - run: sudo apt-get update && sudo apt-get install -y libopengl0 libgl1-mesa-dri xvfb xdotool imagemagick
+      - name: Download this run's audited image
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh run download "$GITHUB_RUN_ID" --repo "$GITHUB_REPOSITORY" --name wipeoutxl-steamdeck-appimage --dir build-appimage-candidate
+      - name: Compare with exact Linux payload on newer graphics stack
+        run: |
+          image=$(find build-appimage-candidate -name '*.AppImage' -type f)
+          WXL_DIAGNOSTIC_APPIMAGE="$image" xvfb-run -a python tools/diagnose_appimage_host.py
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: appimage-newer-host
+          path: |
+            build-appimage-host-diagnostic/result.json
+            build-appimage-host-diagnostic/*.png

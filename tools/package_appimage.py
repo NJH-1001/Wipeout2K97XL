@@ -43,9 +43,9 @@ with tarfile.open(inputs['python'], 'r:gz') as t:
 python_root = appdir / 'usr/python'
 (python_root / 'ssl').mkdir(exist_ok=True)
 shutil.copy2('/etc/ssl/certs/ca-certificates.crt', python_root / 'ssl/cert.pem')
-lib = appdir / 'usr/lib'
+lib = python_root / 'lib/appimage'
 lib.mkdir()
-needed = {'libstdc++.so.6', 'libgcc_s.so.1', 'libz.so.1'}
+needed = {'libz.so.1'}
 ldcache = subprocess.check_output(['ldconfig', '-p'], text=True)
 for name in needed:
     matches = [line.split('=>', 1)[1].strip() for line in ldcache.splitlines()
@@ -55,16 +55,13 @@ for name in needed:
 
 licenses = kit / 'docs/licenses/appimage'
 licenses.mkdir(parents=True)
-for package in ['libstdc++6', 'libgcc-s1', 'zlib1g', 'ca-certificates']:
+for package in ['zlib1g', 'ca-certificates']:
     shutil.copy2('/usr/share/doc/' + package + '/copyright', licenses / (package + '-copyright.txt'))
 # Resolve optional CPython extension dependencies too. Keep glibc and vendor-neutral
 # OpenGL on the host; never bundle a GPU driver or the dynamic loader.
 core = re.compile(r'lib(c|m|dl|pthread|rt|resolv|util|OpenGL|GLdispatch)\.so\.[0-9]+')
 env = {**os.environ, 'LD_LIBRARY_PATH': str(lib) + ':' + str(python_root / 'lib')}
-runtime_files = [kit / 'Wipeout2K97XL',
-                 kit / 'psxrecomp/recompiler/build/psxrecomp-game',
-                 kit / 'psxrecomp/recompiler/build/psxrecomp-bios']
-runtime_files += list(python_root.rglob('*')) + list(lib.rglob('*'))
+runtime_files = list(python_root.rglob('*'))
 for p in runtime_files:
     if not p.is_file():
         continue
@@ -92,6 +89,19 @@ for p in runtime_files:
         assert ownership.returncode == 0, (source, ownership.stderr)
         package = ownership.stdout.split(': ', 1)[0].split(':', 1)[0]
         shutil.copy2('/usr/share/doc/' + package + '/copyright', licenses / (package + '-copyright.txt'))
+# Keep private dependency lookup within Python's copied tree. Never export its
+# LD_LIBRARY_PATH to the launcher, Mesa, emitters, compiler or their children.
+for p in python_root.rglob('*'):
+    if not p.is_file() or p.is_symlink():
+        continue
+    with p.open('rb') as stream:
+        header=stream.read(20)
+    if header[:4] != b'\x7fELF' or int.from_bytes(header[16:18],'little') not in (2,3):
+        continue
+    existing=subprocess.check_output(['patchelf','--print-rpath',str(p)],text=True).strip()
+    private='$ORIGIN/' + os.path.relpath(lib,p.parent)
+    runpath=':'.join(dict.fromkeys([x for x in existing.split(':') if x]+[private]))
+    subprocess.run(['patchelf','--set-rpath',runpath,str(p)],check=True)
 for name, url in {
     'type2-runtime-LICENSE.txt': 'https://raw.githubusercontent.com/AppImage/type2-runtime/main/LICENSE',
     'appimagetool-LICENSE.txt': 'https://raw.githubusercontent.com/AppImage/appimagetool/main/LICENSE',
@@ -113,7 +123,9 @@ for p in sorted(appdir.rglob('*')):
 (appdir / 'payload-id').write_text(h.hexdigest() + '\n')
 outdir = root / 'dist'
 outdir.mkdir(exist_ok=True)
-output = outdir / ('wipeoutxl-' + (root / 'VERSION').read_text().strip() + '-steamdeck-x86_64.AppImage')
+revision=(root/'packaging/appimage/REVISION').read_text().strip()
+assert re.fullmatch(r'r[0-9]+',revision)
+output = outdir / ('wipeoutxl-' + (root / 'VERSION').read_text().strip() + '-steamdeck-x86_64-' + revision + '.AppImage')
 inputs['appimagetool'].chmod(0o755)
 env = {**os.environ, 'ARCH': 'x86_64', 'APPIMAGE_EXTRACT_AND_RUN': '1'}
 subprocess.run([str(inputs['appimagetool']), '--runtime-file', str(inputs['runtime']),
@@ -125,5 +137,7 @@ output.with_suffix('.AppImage.sha256').write_text(digest + '  ' + output.name + 
     'artifact': output.name, 'sha256': digest, 'inputs': pins,
     'payload_id': h.hexdigest(), 'runtime_binaries': 'unchanged from pinned released Linux ZIP',
     'physical_steam_deck_and_2026_controller': 'unverified',
+    'dependency_scope': 'host libraries for game/build tools; private RUNPATH only for bundled Python',
+    'packaging_revision': revision,
 }, indent=2))
 print(output, digest)

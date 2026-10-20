@@ -15,7 +15,7 @@ with tempfile.TemporaryDirectory(prefix='wxl launcher ') as temp:
     for name in ['input.ini', 'keybinds.ini']:
         (kit / name).write_text('default binding\n')
     exe = kit / 'Wipeout2K97XL'
-    exe.write_text('#!/bin/sh\nprintf "%s\\n" "$PWD" "$SDL_JOYSTICK_HIDAPI_STEAMDECK" "$SDL_GAMECONTROLLER_ALLOW_STEAM_VIRTUAL_GAMEPAD" "$RETCOMM_PYTHON" "$@"\nif [ "${TEST_REBIND:-0}" = 1 ]; then printf "atomic custom binding\\n" >input.ini.tmp; mv input.ini.tmp input.ini; printf "format_version = 2\\n# changed\\n" >mods/state.toml.tmp; mv mods/state.toml.tmp mods/state.toml; fi\n')
+    exe.write_text('#!/bin/sh\nprintf "%s\\n" "$PWD" "$SDL_JOYSTICK_HIDAPI_STEAMDECK" "$SDL_GAMECONTROLLER_ALLOW_STEAM_VIRTUAL_GAMEPAD" "$RETCOMM_PYTHON" "${LD_LIBRARY_PATH-UNSET}" "$@"\nif [ "${TEST_REBIND:-0}" = 1 ]; then printf "atomic custom binding\\n" >input.ini.tmp; mv input.ini.tmp input.ini; printf "format_version = 2\\n# changed\\n" >mods/state.toml.tmp; mv mods/state.toml.tmp mods/state.toml; fi\n')
     exe.chmod(0o755)
     (appdir / 'usr/lib').mkdir()
     (appdir / 'usr/python/bin').mkdir(parents=True)
@@ -30,7 +30,8 @@ with tempfile.TemporaryDirectory(prefix='wxl launcher ') as temp:
         env.pop(key, None)
     def launch(extra=None):
         return subprocess.check_output([str(run), 'argument with spaces'], env={**env, **(extra or {})}, text=True).splitlines()
-    first = launch()
+    first = launch({'LD_LIBRARY_PATH': '/host-driver-path'})
+    assert first[4] == '/host-driver-path', first
     install = Path(first[0])
     assert first[1:3] == ['0', '1'] and first[-1] == 'argument with spaces', first
     assert Path(first[3]).is_relative_to(install)
@@ -40,7 +41,7 @@ with tempfile.TemporaryDirectory(prefix='wxl launcher ') as temp:
     (install / 'saves/test.mcr').write_text('synthetic save')
     assert (install / 'build-release/saves/test.mcr').read_text() == 'synthetic save'
     (install / 'build-release/generated-local.c').write_text('synthetic locally generated file')
-    assert launch() == first
+    assert launch({'LD_LIBRARY_PATH': '/host-driver-path'}) == first
     assert (install / 'input.ini').read_text() == 'custom player binding\n'
     assert (install / 'build-release/generated-local.c').is_file()
     launch({'TEST_REBIND': '1'})
