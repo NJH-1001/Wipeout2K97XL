@@ -18,7 +18,7 @@ Other regions and revisions are not supported.
 | --- | --- | --- |
 | `wipeoutxl-0.1.1-windows-x64.zip` | Windows 10/11, Intel/AMD x64 | User-tested racing and controllers |
 | `wipeoutxl-0.1.1-linux-x64.zip` | Linux x64, built on Ubuntu 22.04 | Build and launcher tested; gameplay unverified |
-| `wipeoutxl-0.1.1-steamdeck-x86_64.AppImage` | Steam Deck / Linux x64 | Packaging and launcher tested; Steam hardware/gameplay unverified |
+| `wipeoutxl-0.1.1-steamdeck-x86_64-r2.AppImage` | Steam Deck / Linux x64 | Packaging and launcher tested; Steam hardware/gameplay unverified |
 | `wipeoutxl-0.1.1-macos-x64.zip` | macOS 15, Intel | Build and launcher tested; gameplay unverified |
 | `wipeoutxl-0.1.1-macos-arm64.zip` | macOS 15, Apple Silicon | Build and launcher tested; gameplay unverified |
 

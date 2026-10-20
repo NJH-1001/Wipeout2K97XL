@@ -37,7 +37,7 @@ with zipfile.ZipFile(inputs['linux_kit']) as z:
             (kit / info.filename).chmod((info.external_attr >> 16) & 0o777 or 0o644)
 
 # This preserves the previously verified ELF binaries exactly.
-shutil.copy2(root / 'docs/steam-deck.md', kit / 'docs/steam-deck.md')
+# Retain the pinned kit's docs exactly; the repository guide tracks later revisions.
 with tarfile.open(inputs['python'], 'r:gz') as t:
     t.extractall(appdir / 'usr', filter='data')
 python_root = appdir / 'usr/python'

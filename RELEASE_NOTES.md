@@ -1,5 +1,12 @@
 # Wipeout2K97XL v0.1.1 — Optional widescreen HUD layout
 
+**Steam Deck AppImage update:** use the **-r2.AppImage** download. It fixes a
+reproduced startup failure where the original image could not open an OpenGL
+window and misleadingly exited with “no BIOS selected.” The corrected wrapper
+passes launcher tests on Ubuntu 22.04 and 24.04; physical Deck confirmation
+is pending. The original AppImage is marked superseded. Other platform kits
+are unchanged. [r2 verification](https://github.com/NJH-1001/Wipeout2K97XL/actions/runs/39373180675).
+
 The 16:9 mod now includes **Race HUD layout → Widescreen edges**:
 
 - Checkpoint timer at the top left.
@@ -18,7 +25,7 @@ The layout was tested with OpenBIOS on Windows and approved by the owner.
 | `wipeoutxl-0.1.1-linux-x64.zip` | Linux x64 | Native build/launcher tested; gameplay unverified |
 | `wipeoutxl-0.1.1-macos-x64.zip` | macOS 15, Intel | Native build/launcher tested; gameplay unverified |
 | `wipeoutxl-0.1.1-macos-arm64.zip` | macOS 15, Apple Silicon | Native build/launcher tested; gameplay unverified |
-| `wipeoutxl-0.1.1-steamdeck-x86_64.AppImage` | Steam Deck / Linux x64 | Packaging/launcher tested; Steam hardware and gameplay unverified |
+| `wipeoutxl-0.1.1-steamdeck-x86_64-r2.AppImage` | Steam Deck / Linux x64 | Packaging/launcher tested; Steam hardware and gameplay unverified |
 
 Every download has a SHA-256 checksum. These are **setup kits**: supply your
 legally obtained Wipeout XL USA SCUS-94351 CUE and all 12 BIN tracks, keep

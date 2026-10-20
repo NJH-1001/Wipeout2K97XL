@@ -1,6 +1,6 @@
 {
-  "artifact": "wipeoutxl-0.1.1-steamdeck-x86_64.AppImage",
-  "sha256": "a5d2da83a7295f594936e9616f2bbfbc0685cb9544b9da6cfc20e8ca401257c5",
+  "artifact": "wipeoutxl-0.1.1-steamdeck-x86_64-r2.AppImage",
+  "sha256": "425fb25b5ee29a640f8693f4723243603a39e96883ee5d2f5ed8ea1d1ea18ab0",
   "inputs": {
     "linux_kit": {
       "url": "https://github.com/NJH-1001/Wipeout2K97XL/releases/download/v0.1.1/wipeoutxl-0.1.1-linux-x64.zip",
@@ -20,20 +20,25 @@
       "sha256": "617aa77314d57c8b8e4fae9c3f0b35af7b30d5529cb69e98f64f92510ed98a46"
     }
   },
-  "payload_id": "246d95de0e0f77245dc5fdead83a7e6abd4e956dd7f6184e2b4cf4721b288f05",
+  "payload_id": "1111ae248d20a6aeec3edf7e11ea3216bf5fc25ba14a3a828afdb31bc2b2af2f",
   "runtime_binaries": "unchanged from pinned released Linux ZIP",
   "physical_steam_deck_and_2026_controller": "unverified",
+  "dependency_scope": "host libraries for game/build tools; private RUNPATH only for bundled Python",
+  "packaging_revision": "r2",
   "content_audit": "passed",
   "elf_architecture_and_dependencies": "passed",
-  "elf_files_checked": 20,
+  "elf_files_checked": 18,
   "portable_python_https": "passed",
   "single_file_launcher_smoke": "passed",
   "generated_game_and_steam_hardware": "unverified",
-  "release_version": "0.1.1",
+  "ci_run": 39373180675,
+  "ci_source_commit": "9ea25dd8726923ceb8970519b6106f550ebbedb6",
+  "ci_artifact_id": 12242003774,
+  "artifact_zip_sha256": "a628c135957418af40000697dcf8fd67f1aa11bf38c72ad2ac0fdf31fa15aac2",
   "status": "verified",
-  "ci_run": 39352426493,
-  "ci_source_commit": "1417daa671512d0c49294e58321b5e1503c8cfe1",
-  "ci_artifact_id": 12232874135,
-  "repository": "NJH-1001/Wipeout2K97XL",
-  "release_tag": "v0.1.1"
+  "release_version": "0.1.1",
+  "reproduced_failure_ci": 39372769554,
+  "newer_host_launcher": "passed; visible Ubuntu24.04 launcher reviewed",
+  "physical_steam_deck_confirmation": "pending",
+  "reported_linux_zip_on_deck": "owner reports working"
 }

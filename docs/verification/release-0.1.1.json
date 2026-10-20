@@ -4,11 +4,11 @@
   "status": "verified",
   "release_url": "https://github.com/NJH-1001/Wipeout2K97XL/releases/tag/v0.1.1",
   "source_commit": "8744ef3327cfe2c72c37b1aedd46d078028ddb7e",
-  "appimage_source_commit": "1417daa671512d0c49294e58321b5e1503c8cfe1",
+  "appimage_source_commit": "9ea25dd8726923ceb8970519b6106f550ebbedb6",
   "ci_runs": {
     "release.yml": 39351929147,
     "native-release.yml": 39351930903,
-    "appimage.yml": 39352426493
+    "appimage.yml": 39373180675
   },
   "artifacts": [
     {
@@ -40,11 +40,11 @@
       "ci_artifact_id": 12234025233
     },
     {
-      "name": "wipeoutxl-0.1.1-steamdeck-x86_64.AppImage",
-      "sha256": "a5d2da83a7295f594936e9616f2bbfbc0685cb9544b9da6cfc20e8ca401257c5",
-      "bytes": 70920696,
-      "ci_run": 39352426493,
-      "ci_artifact_id": 12232874135
+      "name": "wipeoutxl-0.1.1-steamdeck-x86_64-r2.AppImage",
+      "sha256": "425fb25b5ee29a640f8693f4723243603a39e96883ee5d2f5ed8ea1d1ea18ab0",
+      "bytes": 70150648,
+      "ci_run": 39373180675,
+      "ci_artifact_id": 12242003774
     }
   ],
   "verification": {
@@ -53,9 +53,16 @@
     "exact_hud_source_and_catalog_checks": "passed",
     "archive_content_architecture_dependencies": "passed",
     "native_launcher_screenshots": "visually reviewed for Linux and both macOS targets",
-    "appimage": "20 ELF dependencies, portable Python HTTPS, bootstrap persistence, real single-file launcher passed; screenshot reviewed",
+    "appimage": "r2:18ELF dependencies, portable Python HTTPS, bootstrap persistence, host-library environment preservation and visible launchers on Ubuntu22.04/24.04 passed; physicalDeck confirmation pending",
     "windows_extracted_kit": "disc validated; OpenBIOS and game regenerated; all40shards identical to owner-tested build; RelWithDebInfo build and LLE boot passed; game menu and race with edge HUD visually reviewed",
     "gameplay": "owner-approved on Windows; Linux/macOS/Steam hardware unverified"
   },
-  "excluded": "disc, game executable, generated game code, retail BIOS, saves, captures and analysis databases"
+  "excluded": "disc, game executable, generated game code, retail BIOS, saves, captures and analysis databases",
+  "superseded_appimage": {
+    "name": "wipeoutxl-0.1.1-steamdeck-x86_64.AppImage",
+    "sha256": "a5d2da83a7295f594936e9616f2bbfbc0685cb9544b9da6cfc20e8ca401257c5",
+    "bytes": 70920696,
+    "ci_run": 39352426493,
+    "ci_artifact_id": 12232874135
+  }
 }

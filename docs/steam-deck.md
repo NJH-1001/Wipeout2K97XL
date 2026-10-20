@@ -1,16 +1,31 @@
 # Steam Deck AppImage and Steam Controller (2026)
 
-Download `wipeoutxl-0.1.1-steamdeck-x86_64.AppImage` and its SHA-256 checksum
+Download `wipeoutxl-0.1.1-steamdeck-x86_64-r2.AppImage` and its SHA-256 checksum
 from the [main release](https://github.com/NJH-1001/Wipeout2K97XL/releases/tag/v0.1.1).
 This is a Linux x86-64 setup AppImage for Steam Deck and compatible desktops.
 Supply your own Wipeout XL USA SCUS-94351 CUE and all 12 BIN tracks.
 The image contains no game data or generated game code.
 
+## AppImage r2 startup fix
+
+Use the filename ending in **-r2.AppImage**. The original v0.1.1 AppImage
+could close before showing a window with “no BIOS selected.” An independent
+Ubuntu 24.04 comparison reproduced its OpenGL window failure while the exact
+unwrapped Linux executable opened normally. The wrapper had injected bundled
+libraries into the host graphics process. Revision r2 preserves host libraries
+for the launcher/game and confines private dependencies to bundled Python's
+ELF RUNPATH. It passes visible launcher checks on Ubuntu 22.04 and 24.04.
+Steam Deck physical-device confirmation is pending. The Linux ZIP is an
+alternative reported working on Steam Deck by the owner.
+
+A new image payload uses a new writable project folder; complete setup and
+rebuild there. Shared saves/settings are preserved. Keep OpenBIOS selected.
+
 ## Install and play
 
 1. In Steam Deck Desktop Mode, save the AppImage in a permanent location,
    such as `~/Applications/`. In file Properties, allow executing it as a program
-   (or run `chmod +x wipeoutxl-0.1.1-steamdeck-x86_64.AppImage`).
+   (or run `chmod +x wipeoutxl-0.1.1-steamdeck-x86_64-r2.AppImage`).
 2. Add the AppImage as a **Non-Steam Game** in Steam. Use native Linux launch;
    do not force Proton for this artifact. If mounting fails because FUSE is
    unavailable, add `--appimage-extract-and-run` to its launch options.
