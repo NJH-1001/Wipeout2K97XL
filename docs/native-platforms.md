@@ -14,7 +14,8 @@ launcher and captures its visible first-run window.
 
 These checks do **not** establish successful local game generation, compilation,
 OpenBIOS game boot, a completed race, controller behavior or display-mod behavior
-on Linux/macOS. No Linux or Mac test machine with the owner's disc is available.
+on Linux/macOS. The owner subsequently reported the Linux kit working on Steam
+Deck; detailed platform/controller/display-mod verification remains incomplete.
 These kits are published as **experimental previews — gameplay unverified**,
 with the project owner’s explicit approval.
 [Download all platforms alongside Windows](https://github.com/NJH-1001/Wipeout2K97XL/releases/tag/v0.1.1).
@@ -52,9 +53,8 @@ owned disc, generate and rebuild, boot with OpenBIOS, complete a race, check the
 default dual-stick controls, save/reload and test enabled display mods. Record
 OS, architecture, GPU, controller model and any failures.
 
-## Steam Deck AppImage
+## Steam Deck
 
-A single-file setup AppImage is available alongside these ZIPs. It bundles Python
-and seeds a writable project/profile outside the image. See the [Steam Deck /
-Steam Controller (2026) guide](steam-deck.md). It retains Linux gameplay-unverified
-status and is not Valve Steam Deck Verified.
+Use the **Linux x64 ZIP** from the main release. The owner reports this kit
+working on Deck. Dedicated Steam Deck AppImages have been withdrawn.
+See the [Steam Deck / Steam Controller guide](steam-deck.md).

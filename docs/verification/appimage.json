@@ -35,10 +35,12 @@
   "ci_source_commit": "9ea25dd8726923ceb8970519b6106f550ebbedb6",
   "ci_artifact_id": 12242003774,
   "artifact_zip_sha256": "a628c135957418af40000697dcf8fd67f1aa11bf38c72ad2ac0fdf31fa15aac2",
-  "status": "verified",
+  "status": "withdrawn",
   "release_version": "0.1.1",
   "reproduced_failure_ci": 39372769554,
   "newer_host_launcher": "passed; visible Ubuntu24.04 launcher reviewed",
   "physical_steam_deck_confirmation": "pending",
-  "reported_linux_zip_on_deck": "owner reports working"
+  "reported_linux_zip_on_deck": "owner reports working",
+  "withdrawal_date": "2026-10-19",
+  "withdrawal_reason": "Owner requested removal after Steam Deck setup/play failures; use Linux x64 ZIP. Historical provenance only."
 }

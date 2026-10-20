@@ -18,13 +18,13 @@ Other regions and revisions are not supported.
 | --- | --- | --- |
 | `wipeoutxl-0.1.1-windows-x64.zip` | Windows 10/11, Intel/AMD x64 | User-tested racing and controllers |
 | `wipeoutxl-0.1.1-linux-x64.zip` | Linux x64, built on Ubuntu 22.04 | Build and launcher tested; gameplay unverified |
-| `wipeoutxl-0.1.1-steamdeck-x86_64-r2.AppImage` | Steam Deck / Linux x64 | Packaging and launcher tested; Steam hardware/gameplay unverified |
 | `wipeoutxl-0.1.1-macos-x64.zip` | macOS 15, Intel | Build and launcher tested; gameplay unverified |
 | `wipeoutxl-0.1.1-macos-arm64.zip` | macOS 15, Apple Silicon | Build and launcher tested; gameplay unverified |
 
-Every download has a SHA-256 checksum. The AppImage bundles Python and creates
-a writable setup folder; see the [Steam Deck and Steam Controller (2026) guide](docs/steam-deck.md). Linux/Mac users should also read the
-[native setup instructions](docs/native-platforms.md).
+Every download has a SHA-256 checksum. Steam Deck users should use the
+**Linux x64 ZIP**, which the owner reports working on Deck. Dedicated Steam Deck
+AppImages have been withdrawn. See the [Steam Deck and Steam Controller guide](docs/steam-deck.md)
+and [native setup instructions](docs/native-platforms.md).
 
 1. Extract the entire setup ZIP into a writable folder.
 2. Install Python 3.11 or newer. Allow disk space for your disc and a local build.
@@ -56,7 +56,8 @@ The emulated pad is locked to NeGcon mode. Xbox and the wired PowerA Advantage
 Switch 2 controller have been physically tested. Other Switch, PS4 and PS5
 models use SDL3 mappings but have not been physically tested here. Steam Deck
 and Steam Controller (2026) use [Steam Input gamepad emulation](docs/steam-deck.md)
-with this same NeGcon preset; those physical devices remain untested.
+with this same NeGcon preset. The Linux kit is owner-reported working on Deck;
+the 2026 wireless controller remains physically unverified.
 
 The **NeGcon enhanced dual sticks** mod starts with this customizable preset:
 

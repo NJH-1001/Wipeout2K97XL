@@ -38,13 +38,6 @@
       "bytes": 22577363,
       "ci_run": 39351930903,
       "ci_artifact_id": 12234025233
-    },
-    {
-      "name": "wipeoutxl-0.1.1-steamdeck-x86_64-r2.AppImage",
-      "sha256": "425fb25b5ee29a640f8693f4723243603a39e96883ee5d2f5ed8ea1d1ea18ab0",
-      "bytes": 70150648,
-      "ci_run": 39373180675,
-      "ci_artifact_id": 12242003774
     }
   ],
   "verification": {
@@ -53,16 +46,29 @@
     "exact_hud_source_and_catalog_checks": "passed",
     "archive_content_architecture_dependencies": "passed",
     "native_launcher_screenshots": "visually reviewed for Linux and both macOS targets",
-    "appimage": "r2:18ELF dependencies, portable Python HTTPS, bootstrap persistence, host-library environment preservation and visible launchers on Ubuntu22.04/24.04 passed; physicalDeck confirmation pending",
+    "appimage": "Withdrawn; historical CI checks did not establish working generation/rebuild/play on Deck.",
     "windows_extracted_kit": "disc validated; OpenBIOS and game regenerated; all40shards identical to owner-tested build; RelWithDebInfo build and LLE boot passed; game menu and race with edge HUD visually reviewed",
-    "gameplay": "owner-approved on Windows; Linux/macOS/Steam hardware unverified"
+    "gameplay": "owner-approved on Windows; owner reports Linux ZIP working on Steam Deck; broader Linux/macOS/2026 Steam Controller testing incomplete"
   },
   "excluded": "disc, game executable, generated game code, retail BIOS, saves, captures and analysis databases",
-  "superseded_appimage": {
-    "name": "wipeoutxl-0.1.1-steamdeck-x86_64.AppImage",
-    "sha256": "a5d2da83a7295f594936e9616f2bbfbc0685cb9544b9da6cfc20e8ca401257c5",
-    "bytes": 70920696,
-    "ci_run": 39352426493,
-    "ci_artifact_id": 12232874135
+  "withdrawn_appimages": {
+    "date": "2026-10-19",
+    "reason": "Owner requested removal after Steam Deck setup/play failures; use Linux x64 ZIP.",
+    "artifacts": [
+      {
+        "name": "wipeoutxl-0.1.1-steamdeck-x86_64-r2.AppImage",
+        "sha256": "425fb25b5ee29a640f8693f4723243603a39e96883ee5d2f5ed8ea1d1ea18ab0",
+        "bytes": 70150648,
+        "ci_run": 39373180675,
+        "ci_artifact_id": 12242003774
+      },
+      {
+        "name": "wipeoutxl-0.1.1-steamdeck-x86_64.AppImage",
+        "sha256": "a5d2da83a7295f594936e9616f2bbfbc0685cb9544b9da6cfc20e8ca401257c5",
+        "bytes": 70920696,
+        "ci_run": 39352426493,
+        "ci_artifact_id": 12232874135
+      }
+    ]
   }
 }
