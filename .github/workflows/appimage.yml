@@ -1,8 +1,14 @@
 name: Steam Deck AppImage
 on:
   workflow_dispatch:
+    inputs:
+      native_run_id:
+        description: 'Successful native build run containing the checksum-pinned Linux kit'
+        required: false
+        type: string
 permissions:
   contents: read
+  actions: read
 jobs:
   appimage:
     runs-on: ubuntu-22.04
@@ -15,7 +21,13 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y libopengl0 libgl1-mesa-dri squashfs-tools desktop-file-utils xvfb xdotool imagemagick
       - name: Bootstrap persistence and input policy tests
         run: python tools/test_appimage_launcher.py
-      - name: Build from checksum-pinned released Linux kit
+      - name: Fetch verified Linux kit from native CI
+        if: inputs.native_run_id != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NATIVE_RUN_ID: ${{ inputs.native_run_id }}
+        run: python tools/fetch_appimage_linux_kit.py "$NATIVE_RUN_ID"
+      - name: Build from checksum-pinned Linux kit
         run: python tools/package_appimage.py
       - name: Audit and test single-file launcher
         run: xvfb-run -a python tools/audit_appimage.py dist/*.AppImage
