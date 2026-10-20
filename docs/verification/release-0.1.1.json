@@ -1,0 +1,61 @@
+{
+  "version": "0.1.1",
+  "date": "2026-10-19",
+  "status": "verified",
+  "release_url": "https://github.com/NJH-1001/Wipeout2K97XL/releases/tag/v0.1.1",
+  "source_commit": "8744ef3327cfe2c72c37b1aedd46d078028ddb7e",
+  "appimage_source_commit": "1417daa671512d0c49294e58321b5e1503c8cfe1",
+  "ci_runs": {
+    "release.yml": 39351929147,
+    "native-release.yml": 39351930903,
+    "appimage.yml": 39352426493
+  },
+  "artifacts": [
+    {
+      "name": "wipeoutxl-0.1.1-linux-x64.zip",
+      "sha256": "9042ec768294d7bbcd14d996866f25c5c012006f4dbb2b437a2c66ce0950e1aa",
+      "bytes": 45898128,
+      "ci_run": 39351930903,
+      "ci_artifact_id": 12233517716
+    },
+    {
+      "name": "wipeoutxl-0.1.1-macos-arm64.zip",
+      "sha256": "1af57d5cc9ceda605b686239da9ae6bc381d3fe508aeebbbc3e981b5e6490488",
+      "bytes": 22147165,
+      "ci_run": 39351930903,
+      "ci_artifact_id": 12233199643
+    },
+    {
+      "name": "wipeoutxl-0.1.1-windows-x64.zip",
+      "sha256": "67329c1558843935be08d8e0af36df58b9517a32fd6e1ab5c262e356a96410c1",
+      "bytes": 45316262,
+      "ci_run": 39351929147,
+      "ci_artifact_id": 12233722451
+    },
+    {
+      "name": "wipeoutxl-0.1.1-macos-x64.zip",
+      "sha256": "6ba47114e41c6e894c6fa2baccbc1105137d5c8d762a3f87aa6d1c1844c42cee",
+      "bytes": 22577363,
+      "ci_run": 39351930903,
+      "ci_artifact_id": 12234025233
+    },
+    {
+      "name": "wipeoutxl-0.1.1-steamdeck-x86_64.AppImage",
+      "sha256": "a5d2da83a7295f594936e9616f2bbfbc0685cb9544b9da6cfc20e8ca401257c5",
+      "bytes": 70920696,
+      "ci_run": 39352426493,
+      "ci_artifact_id": 12232874135
+    }
+  ],
+  "verification": {
+    "all_ci_conclusions": "success",
+    "all_platform_packet_regressions": "passed",
+    "exact_hud_source_and_catalog_checks": "passed",
+    "archive_content_architecture_dependencies": "passed",
+    "native_launcher_screenshots": "visually reviewed for Linux and both macOS targets",
+    "appimage": "20 ELF dependencies, portable Python HTTPS, bootstrap persistence, real single-file launcher passed; screenshot reviewed",
+    "windows_extracted_kit": "disc validated; OpenBIOS and game regenerated; all40shards identical to owner-tested build; RelWithDebInfo build and LLE boot passed; game menu and race with edge HUD visually reviewed",
+    "gameplay": "owner-approved on Windows; Linux/macOS/Steam hardware unverified"
+  },
+  "excluded": "disc, game executable, generated game code, retail BIOS, saves, captures and analysis databases"
+}

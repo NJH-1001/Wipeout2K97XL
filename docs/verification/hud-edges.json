@@ -1,5 +1,5 @@
 {
-  "status": "owner-approved Windows gameplay; release preparation",
+  "status": "owner-approved; v0.1.1 release verified",
   "bios": "OpenBIOS LLE",
   "option": {
     "package": "wxl.presentation.widescreen",
@@ -82,15 +82,7 @@
     "lap_panel": "visually verified at bottom-left in an OpenBIOS LLE player race",
     "presentation_ab": "edges/original/restored captures reviewed; paused menu stays centered",
     "music": "complete text-call anchoring verified statically; visible crawl capture pending",
-    "other_platforms": "source-compatible; this candidate not built on Linux/macOS"
-  },
-  "source_sha256": {
-    "src\\widescreen_mod.c": "513d58e1714359e1dab831535db5eefc60193fc68d538b3216a75c508e267e28",
-    "game.toml": "1f67e52c658973796c217bd5235c8230482f422e1d2b31e26f35c026cf5f4ced",
-    "mods\\preloaded\\packages\\wxl.presentation.widescreen\\1.0.0\\manifest.toml": "4b1d00c7b876ad0b2da1434980d936b1784620dbc36b3738345a30c77426334b",
-    "psxrecomp\\runtime\\include\\ws_hud_packet.h": "d5c61c04592e5f602229fc32cab3b3f0efe9e7661ac6e70fa4c48db4c084c950",
-    "psxrecomp\\runtime\\src\\gpu.c": "955b456aa335b395529d6939c9afc766f188ed08cd5caaaeef5c1e26cbae04ae",
-    "tools\\test_hud_packet.c": "40f063e51a710c776a4a9a632e2548fcb358418f3e46b82dad56dd2a9bcf889f"
+    "other_platforms": "Linux, macOS Intel and Apple Silicon build, regression, archive and launcher checks passed in native CI39351930903; gameplay unverified"
   },
   "candidate_executable_sha256": "4df12743f3dd99d260233c32ccb284038a66851f29bba54bcdc06135c6989625",
   "live_census": {
@@ -99,5 +91,13 @@
     "left_draws": 74999,
     "right_draws": 204300
   },
-  "release_version": "0.1.1"
+  "release_version": "0.1.1",
+  "source_sha256_lf": {
+    "src/widescreen_mod.c": "22dccc62c61fecf28390b3d117dede94326dc342ac4b28014e3acabbd8f74fe3",
+    "game.toml": "7cd045fbaab16638671f2a0a5dceefcb1a281b3a8fad529a3bd0a0b0610a8210",
+    "mods/preloaded/packages/wxl.presentation.widescreen/1.0.0/manifest.toml": "6798df677daf7fd73b09b35114637dfbdca14bde2eb4cfa9fd502000943db123",
+    "psxrecomp/runtime/include/ws_hud_packet.h": "05b8127276a1c05a63c7c1d2be6d161b9b9b4e679b66c9b71f2ce1623b4ddd62",
+    "psxrecomp/runtime/src/gpu.c": "d12db2eacc92cfae10697f6b150829899261eced9aded1ffbc0087ea054baa71",
+    "tools/test_hud_packet.c": "a4f2b714c88665da68c4a47ddf3de97ffbff21995f171fe5399bae6f8bcef083"
+  }
 }

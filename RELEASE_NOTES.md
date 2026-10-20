@@ -39,3 +39,10 @@ Extended draw distance is a regular option. Visual mods remain off by default.
 [Setup instructions](https://github.com/NJH-1001/Wipeout2K97XL#download-and-setup) ·
 [Steam Deck guide](https://github.com/NJH-1001/Wipeout2K97XL/blob/main/docs/steam-deck.md) ·
 [HUD verification](https://github.com/NJH-1001/Wipeout2K97XL/blob/main/docs/verification/hud-edges.json)
+
+
+Build provenance: [Windows](https://github.com/NJH-1001/Wipeout2K97XL/actions/runs/39351929147),
+[Linux and both macOS targets](https://github.com/NJH-1001/Wipeout2K97XL/actions/runs/39351930903),
+and [Steam Deck AppImage](https://github.com/NJH-1001/Wipeout2K97XL/actions/runs/39352426493).
+See the [release verification manifest](https://github.com/NJH-1001/Wipeout2K97XL/blob/main/docs/verification/release-0.1.1.json)
+for artifact hashes and the Windows extracted-kit rebuild check.
