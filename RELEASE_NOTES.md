@@ -1,48 +1,40 @@
-# Wipeout2K97XL v0.1.1 — Optional widescreen HUD layout
+# Wipeout2K97XL v0.2.0 - Smooth rendering
 
-**Steam Deck tested:** the project owner has tested the Linux x64 build on
-Steam Deck and confirms that it works well. Use the Linux x64 ZIP.
-Dedicated Steam Deck AppImages have been withdrawn following setup/play failures.
+Optional **Smooth rendering** adds 60, 90 and 120 fps choices under **Mods >
+Visual > Render frame rate**, including the main menu's 3D previews. It renders
+intermediate polygon positions while preserving the original simulation,
+steering, physics, timers and audio cadence. OpenGL is required. The feature
+is off by default. HUD and effects retain their original update rate.
 
-The 16:9 mod now includes **Race HUD layout → Widescreen edges**:
+This update also corrects shared-vertex fallback that could separate road
+polygons, retains polygons that enter view in an intermediate frame, and
+refreshes cached menu backgrounds to prevent preview trails.
 
-- Checkpoint timer at the top left.
-- Position and lap at the top right.
-- Speed, thrust, energy and music crawl at the bottom right.
-- Lap-times heading, lap numbers and times at the bottom left.
+Interpolation adds visual delay. Higher rates require additional GPU work and
+a suitable display. Physical input-to-photon latency and exhaustive track,
+camera and effect coverage remain unverified. The owner accepted the Windows
+racing appearance; native gameplay verification does not transfer to this build.
 
-The original centered HUD remains the default. Change the dropdown under
-**Mods → 16:9 Widescreen**, then launch the game. HUD size and game simulation
-are unchanged. Menus, pause text and the central weapon display stay centered.
-The layout was tested with OpenBIOS on Windows and approved by the owner.
+| Download | Platform |
+| --- | --- |
+| `wipeoutxl-0.2.0-windows-x64.zip` | Windows 10/11 x64 |
+| `wipeoutxl-0.2.0-linux-x64.zip` | Linux x64, Ubuntu 22.04 baseline |
+| `wipeoutxl-0.2.0-macos-x64.zip` | macOS 15 Intel |
+| `wipeoutxl-0.2.0-macos-arm64.zip` | macOS 15 Apple Silicon |
 
-| Download | Platform | Status |
-| --- | --- | --- |
-| `wipeoutxl-0.1.1-windows-x64.zip` | Windows 10/11, Intel/AMD x64 | Windows gameplay and controllers tested |
-| `wipeoutxl-0.1.1-linux-x64.zip` | Linux x64 | Owner-tested on Steam Deck; works well |
-| `wipeoutxl-0.1.1-macos-x64.zip` | macOS 15, Intel | Native build/launcher tested; gameplay unverified |
-| `wipeoutxl-0.1.1-macos-arm64.zip` | macOS 15, Apple Silicon | Native build/launcher tested; gameplay unverified |
+These are setup kits. Supply your legally owned USA SCUS-94351 CUE and all
+12 BIN tracks, keep OpenBIOS selected, then **Generate & rebuild**. Existing
+users should extract to a new writable folder, regenerate and rebuild, and
+back up saves and custom settings. No disc, generated game code, retail BIOS,
+memory cards or captures are distributed. Windows/macOS binaries are unsigned.
+Python 3.11+ is required. Every archive has a SHA-256 checksum.
 
-Every download has a SHA-256 checksum. These are **setup kits**: supply your
-legally obtained Wipeout XL USA SCUS-94351 CUE and all 12 BIN tracks, keep
-OpenBIOS selected, then use **Generate & rebuild**. No disc, generated game code,
-retail BIOS, memory cards or captures are distributed. Windows/macOS binaries
-are unsigned. Python 3.11+ is required.
+The Linux ZIP from the prior release was owner-tested on Steam Deck; this
+version's smoothing is not physically tested there. macOS gameplay remains
+unverified. Dedicated AppImages remain withdrawn.
 
-Existing users should extract into a new writable folder and regenerate/rebuild
-from their own disc. Back up saves and custom settings before updating.
-
-Includes the existing configurable NeGcon enhanced dual sticks, analog steering
-and acceleration, Steam Input gamepad route, WASD controls, extended draw distance,
-and JVC/Trinitron-inspired CRT effects. Framework and recomp-ui pins are retained.
-Extended draw distance is a regular option. Visual mods remain off by default.
+Includes the existing configurable NeGcon dual sticks, WASD, widescreen HUD
+layout, extended draw distance and CRT effects. Framework/UI pins are retained.
 
 [Setup instructions](https://github.com/NJH-1001/Wipeout2K97XL#download-and-setup) ·
-[Steam Deck guide](https://github.com/NJH-1001/Wipeout2K97XL/blob/main/docs/steam-deck.md) ·
-[HUD verification](https://github.com/NJH-1001/Wipeout2K97XL/blob/main/docs/verification/hud-edges.json)
-
-
-Build provenance: [Windows](https://github.com/NJH-1001/Wipeout2K97XL/actions/runs/39351929147),
-[Linux and both macOS targets](https://github.com/NJH-1001/Wipeout2K97XL/actions/runs/39351930903).
-See the [release verification manifest](https://github.com/NJH-1001/Wipeout2K97XL/blob/main/docs/verification/release-0.1.1.json)
-for artifact hashes and the Windows extracted-kit rebuild check.
+[Rendering details](https://github.com/NJH-1001/Wipeout2K97XL/blob/main/docs/framerate.md)

@@ -2,8 +2,8 @@
 
 An unofficial PSXRecomp compatibility project for **Wipeout XL (USA), SCUS-94351**.
 Windows 10/11 x64, plus Linux x64 and macOS Intel/Apple Silicon setup kits.
-OpenBIOS and SDL3. The Linux build has been tested on Steam Deck by the
-project owner and works well. macOS gameplay remains unverified.
+OpenBIOS and SDL3. The prior Linux release was tested on Steam Deck by the project owner.
+This version's new smoothing and macOS gameplay remain unverified there.
 
 [Download setup kits](https://github.com/NJH-1001/Wipeout2K97XL/releases/latest) ·
 [Report a problem](https://github.com/NJH-1001/Wipeout2K97XL/issues)
@@ -17,13 +17,13 @@ Other regions and revisions are not supported.
 
 | Download | Platform | Verification |
 | --- | --- | --- |
-| `wipeoutxl-0.1.1-windows-x64.zip` | Windows 10/11, Intel/AMD x64 | User-tested racing and controllers |
-| `wipeoutxl-0.1.1-linux-x64.zip` | Linux x64, built on Ubuntu 22.04 | Owner-tested on Steam Deck; works well |
-| `wipeoutxl-0.1.1-macos-x64.zip` | macOS 15, Intel | Build and launcher tested; gameplay unverified |
-| `wipeoutxl-0.1.1-macos-arm64.zip` | macOS 15, Apple Silicon | Build and launcher tested; gameplay unverified |
+| `wipeoutxl-0.2.0-windows-x64.zip` | Windows 10/11, Intel/AMD x64 | User-tested racing and controllers |
+| `wipeoutxl-0.2.0-linux-x64.zip` | Linux x64, built on Ubuntu 22.04 | Native CI checks; prior release owner-tested on Steam Deck |
+| `wipeoutxl-0.2.0-macos-x64.zip` | macOS 15, Intel | Build and launcher tested; gameplay unverified |
+| `wipeoutxl-0.2.0-macos-arm64.zip` | macOS 15, Apple Silicon | Build and launcher tested; gameplay unverified |
 
 Every download has a SHA-256 checksum. Steam Deck users should use the
-**Linux x64 ZIP**, tested on Steam Deck by the project owner and working well. Dedicated Steam Deck
+**Linux x64 ZIP**. The prior release was tested on Steam Deck by the owner. Dedicated Steam Deck
 AppImages have been withdrawn. See the [Steam Deck and Steam Controller guide](docs/steam-deck.md)
 and [native setup instructions](docs/native-platforms.md).
 
@@ -39,7 +39,7 @@ and [native setup instructions](docs/native-platforms.md).
 No disc images, extracted game executable, generated game code, retail BIOS,
 memory cards, captures or analysis databases are distributed. Windows setup
 binaries are unsigned. Linux and macOS downloads are included alongside Windows;
-The Linux build is owner-tested on Steam Deck; other Linux configurations and
+The prior Linux release is owner-tested on Steam Deck; this update and other Linux configurations and
 macOS gameplay remain unverified. See
 [native platform status and setup](docs/native-platforms.md).
 
@@ -96,6 +96,11 @@ left/right air-brakes, Enter for Start and Backspace for Select. See
 [controller details](docs/controllers.md) for other button assignments.
 
 ## Display mods
+
+- **Smooth rendering:** optional 60, 90 or 120 fps intermediate 3D rendering
+  in races and menu previews. Original simulation, handling and audio keep
+  their original cadence. OpenGL required; choose the rate under Mods.
+  Adds visual delay; actual output depends on GPU and display refresh.
 
 - **16:9 Widescreen:** wider 3D view with centered menus and extended loading
   backgrounds. OpenGL required.

@@ -12,9 +12,9 @@ The release gate checks archive contents, CPU architecture, executable permissio
 dynamic dependencies and emitter startup. It then extracts the kit, opens the
 launcher and captures its visible first-run window.
 
-**Steam Deck tested:** the project owner has tested the Linux x64 build on
-Steam Deck and confirms that it works well. Use the standard Linux ZIP from the
-[main release](https://github.com/NJH-1001/Wipeout2K97XL/releases/tag/v0.1.1).
+**Prior release Steam Deck tested:** the project owner tested the previous Linux
+x64 build on Steam Deck. The new smoothing remains unverified on physical Deck. Use the standard Linux ZIP from the
+[main release](https://github.com/NJH-1001/Wipeout2K97XL/releases/latest).
 
 This is hands-on owner testing, separate from the CI build/launcher checks.
 Other Linux configurations and macOS gameplay remain unverified; detailed
@@ -57,5 +57,5 @@ OS, architecture, GPU, controller model and any failures.
 ## Steam Deck
 
 Use the **Linux x64 ZIP** from the main release. The project owner has tested
-this build on Steam Deck and confirms that it works well. Dedicated Steam Deck AppImages have been withdrawn.
+the prior release on Steam Deck. New rendering changes require fresh testing. Dedicated Steam Deck AppImages have been withdrawn.
 See the [Steam Deck / Steam Controller guide](steam-deck.md).

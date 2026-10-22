@@ -72,6 +72,7 @@ static void append_distant_ships(CPUState *cpu,int margin,uint32_t fp,uint32_t n
         }
         if(error)break;
         if(transform.t[2]<160 || transform.t[2]>FAR_Z+1024)continue;
+        const Camera* previous_transform=far_previous_pose(ship,vp,nv,&transform);
         uint32_t section=psx_mod_read_word(ship+4);
         if(!ram(section,0x9c)){error=2;break;}
         int fi=(int16_t)psx_mod_read_half(section+0x8e);
@@ -80,10 +81,11 @@ static void append_distant_ships(CPUState *cpu,int margin,uint32_t fp,uint32_t n
         if(!(flags&0x20u))++fi;
         if((unsigned)fi>=nf){error=4;break;}
         uint32_t ambient=psx_mod_read_word(fp+(unsigned)fi*20+16);
-        Projected pv[128];
+        Projected pv[128],old_pv[128];
         for(unsigned j=0;j<nv;++j){
             int32_t v[3];for(unsigned k=0;k<3;++k){v[k]=(int16_t)psx_mod_read_half(vp+j*8+k*2);if(v[k]<-512 || v[k]>512)error=2;}
             pv[j]=project(v,&transform);
+            if(previous_transform)old_pv[j]=project(v,previous_transform);
         }
         if(error)break;
         for(unsigned j=0;j<np;++j){
@@ -107,6 +109,13 @@ static void append_distant_ships(CPUState *cpu,int margin,uint32_t fp,uint32_t n
                     if(packet_count>=MAX_PACKETS){error=5;break;}
                     int zsf=(int16_t)cpu->gte_ctrl[n==3?29:30];if(zsf<=0){error=3;break;}
                     FarPacket *p=&packets[packet_count++];wxl_ship_packet(src,type,pf,coords,ambient,p->words);
+                    uint32_t old_coords[4]={0},old_words[13];unsigned old_ok=previous_transform!=NULL;
+                    for(unsigned k=0;k<n && old_ok;++k) {
+                        Projected old=old_pv[psx_mod_read_half(src+4+k*2)];
+                        old_ok&=old.valid;old_coords[k]=xy(old);
+                    }
+                    if(old_ok)wxl_ship_packet(src,type,pf,old_coords,ambient,old_words);
+                    far_packet_previous(p,ship,src,0u,old_ok?old_words:NULL);
                     int64_t z=floor_div((int64_t)sumz*zsf,1024)-480;
                     p->z=z>0?(int32_t)z:0;++added;
                 }

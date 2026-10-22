@@ -1,0 +1,67 @@
+{
+  "version": "0.2.0",
+  "status": "candidate; native CI pending",
+  "date": "2026-10-22",
+  "framework_pin": "8d56cf659fd84367c3f778e17851674ac7896371",
+  "ui_pin": "773155ae7d3be80a21d40851b58f99c79e003de1",
+  "local_windows_build": "RelWithDebInfo; OpenBIOS LLE",
+  "regressions": "9 portable C harnesses plus persistent rendering mod catalog pass",
+  "generation": "41 verified store instructions; 40 guest shards identical after removing metadata callbacks; unchanged dispatcher; mismatch rejected; empty hook config identical",
+  "patch": "clean LF/CRLF pinned framework applies and reproduces rendering implementation",
+  "runtime_measurements": {
+    "menu": [
+      {
+        "target": 60,
+        "source_hz": 29.974459778441176,
+        "vblank_hz": 59.94891955688235,
+        "intermediate_hz": 29.726736970354885,
+        "original_hz": 29.974459778441176
+      },
+      {
+        "target": 90,
+        "source_hz": 29.9749209002796,
+        "vblank_hz": 59.9498418005592,
+        "intermediate_hz": 59.9498418005592,
+        "original_hz": 30.222647519290174
+      },
+      {
+        "target": 120,
+        "source_hz": 30.081215054351123,
+        "vblank_hz": 59.91382502560843,
+        "intermediate_hz": 89.74643499686574,
+        "original_hz": 30.081215054351123
+      }
+    ],
+    "race": [
+      {
+        "target": 60,
+        "source_hz": 29.88352746781459,
+        "vblank_hz": 59.96495909104517,
+        "intermediate_hz": 29.88352746781459,
+        "original_hz": 29.88352746781459
+      },
+      {
+        "target": 90,
+        "source_hz": 29.974438751452034,
+        "vblank_hz": 59.75037128600704,
+        "intermediate_hz": 59.94887750290407,
+        "original_hz": 29.974438751452034
+      },
+      {
+        "target": 120,
+        "source_hz": 28.27650323000162,
+        "vblank_hz": 56.55300646000324,
+        "intermediate_hz": 84.43403412035448,
+        "original_hz": 28.27650323000162
+      }
+    ]
+  },
+  "verification_limits": [
+    "120 fps race initially GPU-limited to about 113 fps",
+    "physical input-to-photon latency unmeasured",
+    "exhaustive track/camera/effect coverage incomplete",
+    "new rendering not tested on physical Linux/Steam Deck/macOS"
+  ],
+  "release_boundary": "setup hosts, emitters, OpenBIOS, sources; no disc/generated game code/retail BIOS/saves/captures",
+  "assets": []
+}

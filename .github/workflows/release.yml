@@ -26,10 +26,8 @@ jobs:
       - name: Apply framework changes
         shell: bash
         run: git -c core.autocrlf=true -C psxrecomp apply ../patches/psxrecomp.patch
-      - name: HUD packet guard regression
-        run: |
-          gcc -Wall -Wextra -Werror tools/test_hud_packet.c -o hud-packet-test
-          ./hud-packet-test
+      - name: Rendering and controls regressions
+        run: python tools/run_release_checks.py
       - name: Build emitters and setup host
         run: |
           set -euo pipefail
@@ -46,6 +44,7 @@ jobs:
           bash scripts/package_setup_release.sh build-ci windows-x64 build-recompiler
           python tools/audit_release.py dist/wipeoutxl-*-windows-x64.zip
           python tools/audit_hud_release.py dist/wipeoutxl-*-windows-x64.zip
+          python tools/audit_render60_release.py dist/wipeoutxl-*-windows-x64.zip
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: wipeoutxl-windows-x64

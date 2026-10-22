@@ -79,3 +79,15 @@ The ELF executables and complete source kit match the pinned released Linux ZIP.
 Steam Input gamepad emulation is configured for Deck and Steam Controller (2026).
 A physical Steam Deck, Gaming Mode, those controller inputs and locally generated
 Linux gameplay remain unverified. This does not claim Valve certification.
+
+## v0.2.0 rendering candidate
+
+The owner accepted the Windows race appearance. Menu 60/90/120 cadence and
+race 60/90 cadence were measured separately from guest source updates; higher
+rates add rendering work and may miss their target on a loaded GPU. See
+[frame-rate evidence](docs/framerate.md). The generated guest instruction
+identity checks, portable synthetic regressions and clean LF/CRLF framework
+patch reproduction pass. Public setup-kit audits require the exact reviewed
+rendering sources and the default-off 60/90/120 catalog in both kit locations.
+Prior release's Steam Deck gameplay testing does not verify this version's
+new smoothing. Native gameplay and physical input-to-photon latency remain open.

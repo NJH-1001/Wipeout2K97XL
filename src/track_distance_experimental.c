@@ -4,6 +4,7 @@
 #include "mod_plugins.h"
 #include "mod_memory.h"
 #include "cpu_state.h"
+#include "gpu.h"
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
@@ -17,16 +18,71 @@
 
 typedef struct { int32_t x, y, z; int valid, input_fits; } Projected;
 typedef struct { uint32_t face; int32_t z; } FarFace;
-typedef struct { uint32_t words[13]; int32_t z; int32_t precise[8]; unsigned has_precise; } FarPacket;
+typedef struct {
+    uint32_t owner,face,part;
+    int32_t previous[4][2]; uint16_t previous_mask;
+} FarMotion;
+typedef struct {
+    uint32_t words[13]; int32_t z; int32_t precise[8]; unsigned has_precise;
+    FarMotion* motion;
+} FarPacket;
 typedef struct { int16_t r[9]; int32_t t[3], offset[3]; } Camera;
 static Projected projected[MAX_VERTICES];
+static Projected previous_projected[MAX_VERTICES];
 static FarFace selected[MAX_FACES];
 static FarPacket packets[MAX_PACKETS];
+static FarMotion far_motion[MAX_PACKETS];
 static uint32_t packet_count, seen_models[2048], seen_count, seen_overflow;
 static Camera camera;
 static uint32_t stats, arena, camera_address, pending, camera_error;
 static int32_t billboard_roll;
 static unsigned billboard_roll_valid;
+static int32_t previous_billboard_roll;
+static unsigned previous_roll_ready;
+extern int wxl_render60_active(void);
+typedef struct {uint32_t owner,mesh,mesh_count,frame;Camera now,previous;unsigned ready;} FarPose;
+static FarPose far_poses[4096];
+static uint32_t far_frame,previous_world;
+static const Camera* far_previous_camera;
+void wxl_far_geometry_reset(void) {
+    memset(far_poses,0,sizeof(far_poses));
+    far_previous_camera=NULL;previous_world=0;previous_roll_ready=0;
+}
+static const Camera* far_previous_pose(uint32_t owner,uint32_t mesh,uint32_t mesh_count,const Camera* now) {
+    if (!wxl_render60_active()) return NULL;
+    unsigned bucket=((owner>>3)*2654435761u)&4095u;
+    for(unsigned i=0;i<32;++i) {
+        FarPose* p=&far_poses[(bucket+i)&4095u];
+        if(p->owner && p->owner!=owner) continue;
+        if(p->frame!=far_frame || !p->owner) {
+            p->ready=p->owner && p->frame+1u==far_frame && p->mesh==mesh && p->mesh_count==mesh_count;
+            p->previous=p->now;p->now=*now;p->owner=owner;p->mesh=mesh;p->mesh_count=mesh_count;p->frame=far_frame;
+        }
+        return p->ready?&p->previous:NULL;
+    }
+    return NULL;
+}
+static void far_packet_previous(FarPacket* p,uint32_t owner,uint32_t face,uint32_t part,
+                                 const uint32_t previous[13]) {
+    if(!wxl_render60_active()) return;
+    FarMotion* motion=&far_motion[p-packets];p->motion=motion;
+    motion->owner=owner;motion->face=face;motion->part=part;motion->previous_mask=0;
+    if(!previous) return;
+    unsigned prefix=(p->words[1]>>24)>=0xe1u?1u:0u;
+    unsigned op=p->words[1+prefix]>>24,n=(op&8u)?4u:3u;
+    unsigned stride=1u+!!(op&4u)+!!(op&16u);
+    uint16_t mask=0;
+    for(unsigned i=0;i<n;++i) {
+        unsigned word=1u+i*stride;
+        uint32_t a=p->words[1u+prefix+word],b=previous[1u+prefix+word];
+        int32_t dx=(int16_t)a-(int16_t)b,dy=(int16_t)(a>>16)-(int16_t)(b>>16);
+        if(dx < -96 || dx>96 || dy < -96 || dy>96) return;
+        motion->previous[i][0]=(int16_t)b*65536;
+        motion->previous[i][1]=(int16_t)(b>>16)*65536;
+        mask|=(uint16_t)(1u<<word);
+    }
+    motion->previous_mask=mask;
+}
 
 /* TCP-readable stats: magic/version/frame-count/status, current/total packets,
  * DMA arena/camera, enable (write 0 or 1 for diagnostic A/B), capacity,
@@ -230,10 +286,12 @@ static void append_scenery(CPUState *cpu, int margin) {
             }
         }
         if (error) break;
+        const Camera* previous_transform=far_previous_pose(model,vp,nv,&transform);
         for (unsigned j=0;j<nv;++j) {
             int32_t vertex[3];
             for (unsigned k=0;k<3;++k) vertex[k]=(int16_t)psx_mod_read_half(vp+j*8+k*2);
             projected[j]=project(vertex,&transform);
+            if(previous_transform) previous_projected[j]=project(vertex,previous_transform);
         }
         int seen=model_seen(model);
         for (unsigned i=0;i<np;++i) {
@@ -252,6 +310,10 @@ static void append_scenery(CPUState *cpu, int margin) {
                         if (packet_count>=MAX_PACKETS) { error=7; break; }
                         FarPacket *p=&packets[packet_count++];
                         memcpy(p->words,words,sizeof words); p->z=center.z; ++billboard_added;
+                        uint32_t old_words[13];
+                        int old_ok=previous_transform && previous_roll_ready &&
+                            billboard_packet(src,type,previous_projected[vi],previous_billboard_roll,margin,old_words);
+                        far_packet_previous(p,model,src,10u,old_ok?old_words:NULL);
                     }
                 }
                 src=next; continue;
@@ -275,6 +337,13 @@ static void append_scenery(CPUState *cpu, int margin) {
                     if (packet_count>=MAX_PACKETS) { error=7; break; }
                     FarPacket *p=&packets[packet_count++];
                     scenery_packet(src,type,flags,v,p->words);
+                    Projected old_v[4];unsigned old_ok=previous_transform!=NULL;
+                    for(unsigned k=0;k<n && old_ok;++k) {
+                        old_v[k]=previous_projected[psx_mod_read_half(src+4+k*2)];old_ok&=old_v[k].valid;
+                    }
+                    uint32_t old_words[13];
+                    if(old_ok) scenery_packet(src,type,flags,old_v,old_words);
+                    far_packet_previous(p,model,src,0u,old_ok?old_words:NULL);
                     /* AVSZ3/4 ordering: widen its intermediate, retain ZSF. */
                     int32_t zsf=(int16_t)cpu->gte_ctrl[n==3?29:30];
                     if (zsf<=0) { error=8; break; }
@@ -341,10 +410,15 @@ static void extend_track_impl(CPUState *cpu, uint32_t address) {
     if (buffer>1 || !arena) { stat(3,4); return; }
     uint32_t ot=psx_mod_read_word(0x80094adcu+buffer*4);
     if (!ram(ot,8192*4) || (ot & 3)) { stat(3,4); return; }
+    far_frame=psx_mod_read_word(stats+8);
+    if(previous_world && previous_world!=world) wxl_far_geometry_reset();
+    previous_world=world;
+    far_previous_camera=far_previous_pose(world,vp,nv,&camera);
     for (uint32_t i=0;i<nv;++i) {
         int32_t v[3];
         for (unsigned j=0;j<3;++j) v[j]=(int32_t)psx_mod_read_word(vp+i*16+j*4);
         projected[i]=project(v,&camera);
+        if(far_previous_camera) previous_projected[i]=project(v,far_previous_camera);
     }
     uint32_t count=0, invalid=0, near=0, outside=0;
     int margin=psx_mod_widescreen_x_margin();
@@ -389,6 +463,13 @@ static void extend_track_impl(CPUState *cpu, uint32_t address) {
             words[3+j*2]=psx_mod_read_half(texture+4+j*2);
         }
         words[3]|=page&0xffff0000u; words[5]|=page<<16;
+        uint32_t old_words[13];memcpy(old_words,words,sizeof(old_words));
+        unsigned old_ok=far_previous_camera!=NULL;
+        for(unsigned j=0;j<4 && old_ok;++j) {
+            Projected old=previous_projected[psx_mod_read_half(face+order[j]*2)];
+            old_ok&=old.valid;old_words[2+j*2]=xy(old);
+        }
+        far_packet_previous(p,world,face,0u,old_ok?old_words:NULL);
     }
     append_scenery(cpu,margin);
     append_distant_ships(cpu,margin,fp,nf);
@@ -398,6 +479,17 @@ static void extend_track_impl(CPUState *cpu, uint32_t address) {
         uint32_t packet=base+i*PACKET_BYTES, slot=ot+bucket(packets[i].z)*4;
         packets[i].words[0]|=psx_mod_read_word(slot)&0xffffffu;
         for (unsigned j=0;j<13;++j) psx_mod_write_word(packet+j*4,packets[i].words[j]);
+        if(packets[i].motion) {
+            FarMotion* motion=packets[i].motion;
+            int32_t previous[12][2]={{0}};
+            unsigned prefix=(packets[i].words[1]>>24)>=0xe1u?1u:0u;
+            unsigned op=packets[i].words[1+prefix]>>24,n=(op&8u)?4u:3u;
+            unsigned stride=1u+!!(op&4u)+!!(op&16u);
+            for(unsigned v=0;v<n;++v)for(unsigned axis=0;axis<2;++axis)
+                previous[1+v*stride][axis]=motion->previous[v][axis];
+            gpu_geometry_tag_packet(packet,motion->owner,motion->face,motion->part);
+            gpu_geometry_tag_previous(packet,previous,motion->previous_mask);
+        }
         if (packets[i].has_precise) for(unsigned v=0;v<4;++v) {
             unsigned w=3+v*2;
             if (!psx_mod_gpu_vertex_set(packet+w*4,packets[i].words[w],
@@ -413,6 +505,7 @@ static void extend_track_impl(CPUState *cpu, uint32_t address) {
 }
 static void extend_track(CPUState *cpu, uint32_t address) {
     extend_track_impl(cpu,address);
+    previous_billboard_roll=billboard_roll;previous_roll_ready=billboard_roll_valid;
     seen_count=seen_overflow=billboard_roll_valid=0;
 }
 static void activate_track_distance(void) {

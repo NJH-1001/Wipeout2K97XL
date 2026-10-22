@@ -1,0 +1,41 @@
+format_version = 5
+id = "wxl.presentation.render60"
+version = "1.0.0"
+name = "Smooth rendering"
+author = "Wipeout2K97XL project"
+description = "Draw intermediate 3D positions while retaining the original game speed, handling, physics, timers and audio. OpenGL required."
+resolver = "declarative"
+save_compatibility = "shared"
+
+[[target]]
+game_id = "SCUS-94351"
+
+[[feature]]
+id = "render60"
+name = "Smooth rendering"
+description = "Render intermediate 3D positions in races and menu previews at 60, 90 or 120 fps. Physics and controls keep their original update rate. Adds visual latency; HUD and effect updates retain their original cadence. OpenGL required."
+group = "Visual"
+default_enabled = false
+
+[[plugin]]
+feature = "render60"
+id = "wxl.render60"
+
+[[option]]
+feature = "render60"
+id = "frame-rate"
+label = "Render frame rate"
+type = "choice"
+default = "60"
+
+[[option.choice]]
+value = "60"
+label = "60 fps"
+
+[[option.choice]]
+value = "90"
+label = "90 fps"
+
+[[option.choice]]
+value = "120"
+label = "120 fps"

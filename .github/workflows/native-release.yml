@@ -36,10 +36,8 @@ jobs:
         run: brew install ninja
       - name: Apply framework changes
         run: git -C psxrecomp apply ../patches/psxrecomp.patch
-      - name: HUD packet guard regression
-        run: |
-          cc -Wall -Wextra -Werror tools/test_hud_packet.c -o hud-packet-test
-          ./hud-packet-test
+      - name: Rendering and controls regressions
+        run: python tools/run_release_checks.py
       - name: Build native emitters and setup host
         run: |
           set -euo pipefail
@@ -55,6 +53,7 @@ jobs:
         run: |
           python tools/audit_native_release.py dist/wipeoutxl-*-${{ matrix.artifact }}.zip '${{ matrix.artifact }}'
           python tools/audit_hud_release.py dist/wipeoutxl-*-${{ matrix.artifact }}.zip
+          python tools/audit_render60_release.py dist/wipeoutxl-*-${{ matrix.artifact }}.zip
       - name: Extracted launcher smoke test (Linux)
         if: runner.os == 'Linux'
         run: xvfb-run -a python tools/smoke_native_setup.py dist/wipeoutxl-*-${{ matrix.artifact }}.zip

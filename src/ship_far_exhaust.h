@@ -57,19 +57,19 @@ static int trail_packet(Projected a,Projected b,uint32_t ca,uint32_t cb,uint32_t
 static int32_t trail_width16(int32_t z) {
     return (int32_t)((int64_t)2*23200*65536/(z>23200?z:23200));
 }
-static void trail_precise_point(const int32_t world[3],int32_t out[2]) {
+static void trail_precise_point(const int32_t world[3],const Camera* c,int32_t out[2]) {
     int64_t eye[3];
     for(unsigned j=0;j<3;++j) {
-        int64_t n=(int64_t)camera.t[j]*4096;
-        for(unsigned k=0;k<3;++k)n+=(int64_t)camera.r[j*3+k]*((int64_t)world[k]+camera.offset[k]);
+        int64_t n=(int64_t)c->t[j]*4096;
+        for(unsigned k=0;k<3;++k)n+=(int64_t)c->r[j*3+k]*((int64_t)world[k]+c->offset[k]);
         eye[j]=floor_div(n,4096);
     }
     out[0]=(int32_t)(160*65536+floor_div(160*65536*eye[0],eye[2]));
     out[1]=(int32_t)(120*65536+floor_div(160*65536*eye[1],eye[2]));
 }
 static void trail_precision(FarPacket *p,const TrailPoint *a,const TrailPoint *b,Projected pa,Projected pb) {
-    trail_precise_point(a->left,p->precise);
-    trail_precise_point(b->left,p->precise+4);
+    trail_precise_point(a->left,&camera,p->precise);
+    trail_precise_point(b->left,&camera,p->precise+4);
     p->precise[2]=p->precise[0]+trail_width16(pa.z);p->precise[3]=p->precise[1];
     p->precise[6]=p->precise[4]+trail_width16(pb.z);p->precise[7]=p->precise[5];
     p->has_precise=1;
@@ -101,6 +101,22 @@ static void append_distant_trails(CPUState *cpu,int margin) {
             FarPacket *p=&packets[packet_count];
             if(!trail_packet(pa,pb,trail_color(a),trail_color(b),state,p->words))continue;
             trail_precision(p,a,b,pa,pb);
+            uint32_t old_words[13];Projected old_a={0},old_b={0};
+            if(far_previous_camera) {
+                old_a=project(a->left,far_previous_camera);old_b=project(b->left,far_previous_camera);
+            }
+            int old_ok=far_previous_camera && trail_packet(old_a,old_b,trail_color(a),trail_color(b),state,old_words);
+            far_packet_previous(p,ship,source+i*0x900u+j*0xd0u,1u,old_ok?old_words:NULL);
+            if(p->motion && p->motion->previous_mask) {
+                int32_t old_xy[8];
+                trail_precise_point(a->left,far_previous_camera,old_xy);
+                trail_precise_point(b->left,far_previous_camera,old_xy+4);
+                old_xy[2]=old_xy[0]+trail_width16(old_a.z);old_xy[3]=old_xy[1];
+                old_xy[6]=old_xy[4]+trail_width16(old_b.z);old_xy[7]=old_xy[5];
+                for(unsigned k=0;k<4;++k) {
+                    p->motion->previous[k][0]=old_xy[k*2];p->motion->previous[k][1]=old_xy[k*2+1];
+                }
+            }
             /* Original71418 uses(RTPS last SZ/4 -160)/2 as its OT slot. */
             p->z=pb.z>640?((pb.z/4-160)/2)*4:0;++packet_count;
         }

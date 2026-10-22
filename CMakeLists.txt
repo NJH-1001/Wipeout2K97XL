@@ -79,3 +79,5 @@ target_sources(psx-runtime PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src/track_distan
 target_sources(psx-runtime PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src/ship_distance_mod.c")
 
 target_sources(psx-runtime PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src/negcon_mod.c")
+
+target_sources(psx-runtime PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src/render60_mod.c")
