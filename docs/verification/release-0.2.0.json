@@ -1,6 +1,6 @@
 {
   "version": "0.2.0",
-  "status": "candidate; native CI pending",
+  "status": "published and verified",
   "date": "2026-10-22",
   "framework_pin": "8d56cf659fd84367c3f778e17851674ac7896371",
   "ui_pin": "773155ae7d3be80a21d40851b58f99c79e003de1",
@@ -63,5 +63,53 @@
     "new rendering not tested on physical Linux/Steam Deck/macOS"
   ],
   "release_boundary": "setup hosts, emitters, OpenBIOS, sources; no disc/generated game code/retail BIOS/saves/captures",
-  "assets": []
+  "assets": [
+    {
+      "name": "wipeoutxl-0.2.0-windows-x64.zip",
+      "sha256": "effe49cb0185b4984f1aa7a0cf4f4390aaf377a3e43fb6c1fd2aa6be93eb4b5a",
+      "bytes": 45448914,
+      "ci_run": 39892665744,
+      "ci_artifact_id": 12475641368
+    },
+    {
+      "name": "wipeoutxl-0.2.0-linux-x64.zip",
+      "sha256": "ee0e2ce8fb03d4c7071c1c98b2860183a839209116a07a25ec7f55ca976b6fc7",
+      "bytes": 46036395,
+      "ci_run": 39892672879,
+      "ci_artifact_id": 12475238811
+    },
+    {
+      "name": "wipeoutxl-0.2.0-macos-arm64.zip",
+      "sha256": "e0e4ff5899b13f94050fd6bb6d60b3dfe84e1bfe186bc7e831a4d57bd929ccb4",
+      "bytes": 22201188,
+      "ci_run": 39892672879,
+      "ci_artifact_id": 12475189174
+    },
+    {
+      "name": "wipeoutxl-0.2.0-macos-x64.zip",
+      "sha256": "74bc723d52abec9d2f56d4d6152f277ce3c0da237477844bf35a9db9a735a87f",
+      "bytes": 22631908,
+      "ci_run": 39892672879,
+      "ci_artifact_id": 12475089936
+    }
+  ],
+  "source_commit": "9d3fd26e392e4b8d195f06bcdc10731f8ac4b704",
+  "ci_runs": {
+    "release.yml": 39892665744,
+    "native-release.yml": 39892672879
+  },
+  "native_launcher_screenshots": "Linux, Intel Mac and Apple Silicon Mac visually reviewed",
+  "windows_extracted_kit": {
+    "kit_sha256": "effe49cb0185b4984f1aa7a0cf4f4390aaf377a3e43fb6c1fd2aa6be93eb4b5a",
+    "bundled_emitters_generation": "40 shards and dispatch identical to local verified candidate",
+    "extracted_source_rebuild": "passed",
+    "player_sha256": "df613b34dab8aecd2e5329bb9255e50228e4bb8e6592f43446fd60bf228382e1",
+    "runtime_boot": "passed: actual Release build with PSX_DEBUG_TOOLS=OFF and PSX_BIOS_HLE=0 reaches visible moving attract-mode race; computer-use window capture reviewed",
+    "runtime_scope": "Visual boot/race smoke check; not a full owner-driven race or physical latency measurement"
+  },
+  "all_ci_conclusions": "success",
+  "package_audits": "CRC; forbidden data; architectures; native executable permissions and dependencies; exact HUD and smoothing sources/catalogs; SHA-256 sidecars",
+  "release_url": "https://github.com/NJH-1001/Wipeout2K97XL/releases/tag/v0.2.0",
+  "published_at": "2026-10-23T03:10:11Z",
+  "tag": "v0.2.0"
 }

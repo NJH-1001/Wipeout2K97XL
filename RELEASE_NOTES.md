@@ -38,3 +38,6 @@ layout, extended draw distance and CRT effects. Framework/UI pins are retained.
 
 [Setup instructions](https://github.com/NJH-1001/Wipeout2K97XL#download-and-setup) ·
 [Rendering details](https://github.com/NJH-1001/Wipeout2K97XL/blob/main/docs/framerate.md)
+
+Build provenance: [Windows](https://github.com/NJH-1001/Wipeout2K97XL/actions/runs/39892665744), [Linux and both Macs](https://github.com/NJH-1001/Wipeout2K97XL/actions/runs/39892672879).
+[Verification and artifact hashes](https://github.com/NJH-1001/Wipeout2K97XL/blob/main/docs/verification/release-0.2.0.json).
