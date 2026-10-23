@@ -9882,7 +9882,7 @@ diff --git a/runtime/include/geometry_packet_tag.h b/runtime/include/geometry_pa
 new file mode 100644
 --- /dev/null
 +++ b/runtime/include/geometry_packet_tag.h
-@@ -0,0 +1,105 @@
+@@ -0,0 +1,107 @@
 +#ifndef PSX_GEOMETRY_PACKET_TAG_H
 +#define PSX_GEOMETRY_PACKET_TAG_H
 +
@@ -9916,8 +9916,10 @@ new file mode 100644
 +    int64_t minx=current[0][0],maxx=minx,miny=current[0][1],maxy=miny;
 +    for(unsigned i=0;i<count;++i)for(unsigned pose=0;pose<2;++pose) {
 +        const int64_t* xy=pose?previous[i]:current[i];
-+        if(xy[0]<minx)minx=xy[0];if(xy[0]>maxx)maxx=xy[0];
-+        if(xy[1]<miny)miny=xy[1];if(xy[1]>maxy)maxy=xy[1];
++        if(xy[0]<minx)minx=xy[0];
++        if(xy[0]>maxx)maxx=xy[0];
++        if(xy[1]<miny)miny=xy[1];
++        if(xy[1]>maxy)maxy=xy[1];
 +    }
 +    return maxx>=(int64_t)left*65536 && minx<=(int64_t)right*65536 &&
 +           maxy>=(int64_t)top*65536 && miny<=(int64_t)bottom*65536;
